@@ -37,7 +37,7 @@ public class InputManager : MonoBehaviour {
             //case GameState.Pause:
             // Do nothing
 			//UpdatePauseState();
-			break;
+			//break;
 		case GameState.GameOver:
 			UpdateGameOverState();
 			break;

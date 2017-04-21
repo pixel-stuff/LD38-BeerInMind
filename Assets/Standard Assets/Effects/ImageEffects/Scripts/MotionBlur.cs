@@ -20,7 +20,7 @@ namespace UnityStandardAssets.ImageEffects
 
         override protected void Start()
         {
-            if (!SystemInfo.supportsRenderTextures)
+            if (!SystemInfo.SupportsRenderTextureFormat(RenderTextureFormat.DefaultHDR))
             {
                 enabled = false;
                 return;

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour {
+public class PSAudioManager : MonoBehaviour {
 
 	#region Singleton
-	private static AudioManager m_instance;
+	private static PSAudioManager m_instance;
 	void Awake(){
 		if(m_instance == null){
 			//If I am the first instance, make me the Singleton

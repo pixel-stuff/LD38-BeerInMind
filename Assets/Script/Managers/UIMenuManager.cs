@@ -24,13 +24,17 @@ public class UIMenuManager : MonoBehaviour {
 		}
     }*/
 
-    AsyncOperation a;
-	float timeStartLoading;
+    AsyncOperation m_a;
+	float m_timeStartLoading;
 
-	public void GoToLevelScene(){
+    public AsyncOperation A { get { return m_a; } set { m_a = value; } }
+
+    public float TimeStartLoading { get { return m_timeStartLoading; } set { m_timeStartLoading = value; }  }
+
+    public void GoToLevelScene(){
 		GameStateManager.setGameState (GameState.Playing);
-        a = SceneManager.LoadSceneAsync("LevelScene");
+        A = SceneManager.LoadSceneAsync("LevelScene");
 		//a.allowSceneActivation = false;
-		timeStartLoading = Time.time;
+		TimeStartLoading = Time.time;
 	}
 }
