@@ -30,5 +30,10 @@ namespace Libs.Graph
                 }
             }
         }
+
+        public List<GraphNode> ToList()
+        {
+            return m_currentNode.ToList();
+        }
     }
 }
