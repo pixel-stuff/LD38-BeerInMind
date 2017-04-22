@@ -5,6 +5,8 @@ using Libs.Graph;
 
 public class Character : MonoBehaviour {
 
+	public WhisperTalkManager m_whisperTalk;
+
 	public EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
 	public Node currentNode;
@@ -93,11 +95,12 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-	void Says(string text){
+	void DisplayWhisper(string text){
 		//CALL BUBULE MANAGER
+		m_whisperTalk.StartDisplayWhisper(text);
 	}
 
-	void TalkToBarman(string text){
+	void WhisperClick(){
 		//CALL First view discussion
 	}
 
