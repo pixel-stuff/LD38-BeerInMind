@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 0da4a83c793e7405194930ff1d367c1d
+timeCreated: 1492901730
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Circular Std Black
+  fontNames:
+  - Circular Std Black
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

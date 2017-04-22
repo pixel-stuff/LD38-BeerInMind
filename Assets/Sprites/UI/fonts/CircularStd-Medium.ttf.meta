@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: e38e682e3934949e48020f0eaee7190b
+timeCreated: 1492901730
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Circular Std Medium
+  fontNames:
+  - Circular Std Medium
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d32f86b6d05cf49dfb3f0e88448c16bc, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
