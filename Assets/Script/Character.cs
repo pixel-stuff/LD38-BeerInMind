@@ -12,6 +12,7 @@ public class Character : MonoBehaviour {
 	public Node currentNode;
 	public bool isOnBar = false;
 	public Vector3 finalPlace;
+	private bool m_isWaitingForClick = false;
 
     Character()
     {
@@ -47,6 +48,9 @@ public class Character : MonoBehaviour {
 
 		PrintGraph(currentGraph.GetCurrentNode(), listConditions);
 		currentNode = null;
+
+		m_isWaitingForClick = false;
+		DisplayWhisper ("skreugneugneu");
 	}
 
 	void CreateNode(Node _node, EditorNode _eNode)
@@ -90,18 +94,13 @@ public class Character : MonoBehaviour {
 				
 				// Appear On Door
 				return;
-
 			}
 		}
 	}
 
 	void DisplayWhisper(string text){
-		//CALL BUBULE MANAGER
+		m_isWaitingForClick = true;
 		m_whisperTalk.StartDisplayWhisper(text);
-	}
-
-	void WhisperClick(){
-		//CALL First view discussion
 	}
 
 	public void OnCharacEnter(){
@@ -110,5 +109,15 @@ public class Character : MonoBehaviour {
 
 	public void OnEnterFinished(){
 		this.gameObject.transform.position = finalPlace;
+	}
+
+	public void OnMouseUp()
+	{
+		if(m_isWaitingForClick){
+			m_isWaitingForClick = false;
+			m_whisperTalk.StopDisplayWhisper();
+			MainTalkManager.m_instance.StartDisplayAnimation ("Jeremy a un tout petit zizi");
+			//TODO: Change State
+		}
 	}
 }
