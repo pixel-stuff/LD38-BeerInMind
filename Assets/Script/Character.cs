@@ -6,7 +6,15 @@ public class Character : MonoBehaviour {
 
 	public EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
+    public Node currentNode;
+
     public string fileName;
+
+    public WhisperTalkManager m_whisperTalk;
+    public bool isOnBar = false;
+    public Vector3 finalPlace;
+
+    private bool m_isWaitingForClick = false;
 
     Character()
     {
@@ -92,6 +100,50 @@ public class Character : MonoBehaviour {
         foreach (Edge e in currentNode.Edges)
         {
             PrintGraph(e.GetExitNode());
+        }
+    }
+
+    void Update()
+    {
+        if (currentNode != (Node)currentGraph.GetCurrentNode())
+        {
+            // Node non changer
+        }
+        else
+        {
+            currentNode = (Node)currentGraph.GetCurrentNode();
+            if (!isOnBar)
+            {
+                // Appear On Door
+                return;
+            }
+        }
+    }
+
+    void DisplayWhisper(string text)
+    {
+        m_isWaitingForClick = true;
+        m_whisperTalk.StartDisplayWhisper(text);
+    }
+
+    public void OnCharacEnter()
+    {
+        //PLAY DING DING SOUND
+    }
+
+    public void OnEnterFinished()
+    {
+        this.gameObject.transform.position = finalPlace;
+    }
+
+    public void OnMouseUp()
+    {
+        if (m_isWaitingForClick)
+        {
+            m_isWaitingForClick = false;
+            m_whisperTalk.StopDisplayWhisper();
+            MainTalkManager.m_instance.StartDisplayAnimation("Jeremy a un tout petit zizi");
+            //TODO: Change State
         }
     }
 }
