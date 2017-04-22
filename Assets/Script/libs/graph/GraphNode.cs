@@ -30,5 +30,16 @@ namespace Libs.Graph
             }
             return currNode;
         }
+
+        public List<GraphNode> ToList()
+        {
+            List<GraphNode> list = new List<GraphNode>();
+            list.Add(this);
+            foreach (GraphEdge e in Edges)
+            {
+                list.AddRange(e.GetExitNode().ToList());
+            }
+            return list;
+        }
     }
 }

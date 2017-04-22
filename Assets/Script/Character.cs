@@ -10,6 +10,11 @@ public class Character : MonoBehaviour {
 	public Node currentNode;
 	public bool isOnBar = false;
 	public Vector3 finalPlace;
+
+    Character()
+    {
+        currentGraph = new Libs.Graph.Graph(new Node());
+    }
 	// Use this for initialization
 	void Start ()
 	{
