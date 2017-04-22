@@ -10,7 +10,8 @@ public struct GameTime {
 }
 
 public class TimeManager : MonoBehaviour {
-	private System.Action<GameTime> OnTicTriggered;
+
+	public static System.Action<GameTime> OnTicTriggered;
 	public GameTime m_currentTime;
 	public float realTime = 2.0f;
 	private float currentRealTime; 
