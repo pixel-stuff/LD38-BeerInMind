@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [System.Serializable]
 public struct GameTime {
@@ -17,6 +18,7 @@ public class TimeManager : MonoBehaviour {
 	private float currentRealTime; 
 	public int gameTimeJump = 10;
 	bool timePlay = true;
+	public Text clockText;
 
 	// Use this for initialization
 	void Start () {
@@ -47,6 +49,9 @@ public class TimeManager : MonoBehaviour {
 				}
 			}
 		}
-		
+		clockText.text = m_currentTime.hours.ToString() + ':' + m_currentTime.minutes.ToString();
+		if (m_currentTime.minutes == 0) {
+			clockText.text += '0';
+		}
 	}
 }
