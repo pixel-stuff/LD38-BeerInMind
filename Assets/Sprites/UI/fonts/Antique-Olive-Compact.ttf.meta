@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: a3c31204980bb49a9aec8f6c861567a5
+timeCreated: 1492902408
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Antique Olive Compact
+  fontNames:
+  - Antique Olive Compact
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

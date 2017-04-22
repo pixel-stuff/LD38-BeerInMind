@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: d0b81a81595ec4e4f8113bff209e80fb
+timeCreated: 1492902408
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Antique Olive Nord Italic
+  fontNames:
+  - Antique Olive Nord Italic
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
