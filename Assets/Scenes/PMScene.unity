@@ -320,24 +320,25 @@ MonoBehaviour:
     completedText: 
     lifetime: 0
     edges:
-    - condition: 01000000
+    - condition: 1000000
       targetNode:
         name: 
         text: MOTHAFUCKA
         completedText: 
         lifetime: 0
         edges: []
-    - condition: 04000000
+    - condition: 4000000
       targetNode:
         name: 
         text: GIMME MY KEYS
         completedText: 
         lifetime: 0
         edges: []
-    - condition: 0d000000
+    - condition: 0
       targetNode:
         name: 
         text: WOAA NICE MATCH
         completedText: 
         lifetime: 0
         edges: []
+  fileName: brigitte.json

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8"/>
+<!--
+/*************************************************************************************
+The MIT License (MIT)
+
+Copyright (c) 2016 Pierre-Marie Plans
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+**************************************************************************************/
+-->
+<head>
+	<title>NPC Social Graph Editor</title>
+    <script type="text/javascript" src="includes/vis.min.js"></script>
+	<script type="text/javascript" src="jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="settings/barcharacter.settings" charset="utf-8"></script>
+    <script type="text/javascript" src="libgui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="link.js" charset="utf-8"></script>
+    <script type="text/javascript" src="charactersheet.js" charset="utf-8"></script>
+    <script type="text/javascript" src="graphengine.js" charset="utf-8"></script>
+	<script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+    <link href="includes/vis.css" rel="stylesheet" type="text/css" />
+    <link href="jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="includes/font-awesome-4.5.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<body id ="body">
+	<a href="display.html"><div id="header"></div></a>
+	<div id="page">
+		<div id="menu">
+			<button type="button" onclick="about_us()">About us</button>
+			<!--button type="button" onclick="redrawHierarchical()">Redraw (Hierarchical)</button-->
+			<button type="button" onclick="redrawNormal()">Redraw (Normal display)</button>
+			<button type="button" onclick="save()">Save</button>
+			<button type="button" onclick="load()">Load</button>
+			<button type="button" onclick="showhide()" id="button_showhide">
+				<span style="display: none;">Show</span>
+				<span>Hide</span>
+			</button>
+			<div id="load_submenu">
+				<input type="file" id="files" name="file" />
+				<button onclick="abortRead();">Cancel</button>
+				<div id="progress_bar">
+					<div class="percent">0%</div>
+				</div>
+			</div>
+		</div>
+		<span id="eventSpan"></span>
+		<div id="about_us">
+			<p>We are guys that share a passion for role-playing.</p>
+			<p>Draedrus &amp; Jaggerwock</p>
+			<p>ps: you can contact us (Draedrus) via irc (irc.wanascape.net) channels: la-taverne or wanascape.
+		</div>
+		<div id="content">
+			<div id="sideinfo">
+				<div id="nodeInfo">
+					<div id="charactersheet-presentation"></div>
+				</div>
+				<div id="editor">
+					<span id="operation">node</span> <br>
+					<div id="charactersheet"></div>
+					<input value="save" id="saveButton" type="button">
+					<input value="cancel" id="cancelButton" type="button">
+				</div>
+				<div id="EdgeEditor">
+					<span id="EdgeOperation">Edge</span>
+					<br/>
+					<div id="edge-form"></div>
+					<br/><input value="save" id="EdgeSaveButton" type="button">
+					<input value="cancel" id="EdgeCancelButton" type="button">
+				</div>
+			</div>
+			<div id="mynetwork"></div>
+		</div>
+	</div>
+	<!--div id="clear"></div-->
+</body>
+</html>

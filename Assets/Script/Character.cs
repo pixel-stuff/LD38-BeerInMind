@@ -6,20 +6,33 @@ public class Character : MonoBehaviour {
 
 	public EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
+    public string fileName;
 
     Character()
     {
         currentGraph = new Libs.Graph.Graph(new Node());
     }
-	// Use this for initialization
-	void Start ()
+
+    public Libs.Graph.GraphNode CreateGraphNode(Libs.Graph.JSONNode _node)
+    {
+        return new Node(System.DateTime.Now, System.UInt32.Parse(_node.lifetime), _node.text);
+    }
+
+    public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
+    {
+        Edge.Condition condition = new Edge.Condition((Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type));
+        return new Edge(from, to, condition);
+    }
+
+    // Use this for initialization
+    void Start ()
 	{
 		Node node = new Node(System.DateTime.Now,
 			(System.UInt32)m_startNode.lifetime,
 			m_startNode.text);
 		print(m_startNode.text);
 		CreateNode(node, m_startNode);
-		currentGraph = new Libs.Graph.Graph(node);
+		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
 		List<Edge.Condition> listConditions = new List<Edge.Condition>();
 		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OPENING));
@@ -39,7 +52,7 @@ public class Character : MonoBehaviour {
 		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OTHER));
 		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DEFAULT));
 
-		PrintGraph(currentGraph.GetCurrentNode(), listConditions);
+		PrintGraph(currentGraph.GetCurrentNode());
 	}
 
 	void CreateNode(Node _node, EditorNode _eNode)
@@ -70,5 +83,15 @@ public class Character : MonoBehaviour {
 				PrintGraph(transition, _conditions);
 			}
 		}
-	}
+    }
+
+    private void PrintGraph(Libs.Graph.GraphNode _node)
+    {
+        Libs.Graph.GraphNode currentNode = _node;
+        print(currentNode.ToString()+" "+currentNode.Edges.Count);
+        foreach (Edge e in currentNode.Edges)
+        {
+            PrintGraph(e.GetExitNode());
+        }
+    }
 }

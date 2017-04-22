@@ -27,14 +27,18 @@ public class GraphEditor : EditorWindow
         editor.Init();
     }
 
+    public GraphEditor()
+    {
+        m_windowRects = new List<Rect>();
+        m_nodes = new List<Libs.Graph.GraphNode>();
+        m_edges = new List<Libs.Graph.GraphEdge>();
+    }
+
     public void Init()
     {
         //window1 = new Rect(10, 10, 100, 100);
         //window2 = new Rect(210, 210, 100, 100);
         working = false;
-        m_windowRects = new List<Rect>();
-        m_nodes = new List<Libs.Graph.GraphNode>();
-        m_edges = new List<Libs.Graph.GraphEdge>();
     }
 
     void OnGUI()
@@ -99,7 +103,15 @@ public class GraphEditor : EditorWindow
             }
             foreach(Node n in m_nodes)
             {
-                m_windowRects[id] = GUI.Window(id, m_windowRects[id], DrawNodeWindow, n.ToString());
+                if(m_drawingEdge && m_windowRects[id]==m_drawingEdgeFrom)
+                {
+                    m_windowRects[id] = GUI.Window(id, m_windowRects[id], DrawFixedDraggableNodeWindow, n.ToString());
+                }
+                else
+                {
+                    m_windowRects[id] = GUI.Window(id, m_windowRects[id], DrawDraggableNodeWindow, n.ToString());
+                }
+
                 id++;
             }
                 //DrawGraph(m_graph.GetCurrentNode(), MakeNode((Node)m_graph.GetCurrentNode(), new Vector2(10, 50)));
@@ -165,6 +177,7 @@ public class GraphEditor : EditorWindow
     void CreateEdge(object obj)
     {
         m_drawingEdge = true;
+        m_drawingEdgeFrom = m_windowRects[(int)((System.UInt32)obj)];
     }
 
     private Rect MakeNode(Node n, Vector2 pos)
@@ -179,7 +192,6 @@ public class GraphEditor : EditorWindow
         UnityEngine.Event currentEvent = UnityEngine.Event.current;
         if (currentEvent.type == UnityEngine.EventType.MouseDown && currentEvent.button == 0)
         {
-            m_drawingEdge = true;
             int idr = -1;
             for (int i = 0; i < m_windowRects.Count; i++)
             {
@@ -188,15 +200,28 @@ public class GraphEditor : EditorWindow
                     idr = i;
                 }
             }
-            if(idr>-1)
-            m_drawingEdgeFrom = m_windowRects[idr];
+            if (idr > -1)
+            {
+                m_drawingEdgeFrom = m_windowRects[idr];
+                m_drawingEdge = true;
+            }
         }
         /*if (currentEvent.type == UnityEngine.EventType.MouseDown && currentEvent.button == 0)
         {
             Debug.Log("should work");
         }*/
+    }
+    void DrawFixedDraggableNodeWindow(int id)
+    {
+        DrawNodeWindow(id);
+    }
+
+    void DrawDraggableNodeWindow(int id)
+    {
+        DrawNodeWindow(id);
         GUI.DragWindow();
     }
+    
 
     void DrawNodeCurve(Rect start, Rect end)
     {

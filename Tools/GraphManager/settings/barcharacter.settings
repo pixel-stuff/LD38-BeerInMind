@@ -1,0 +1,61 @@
+document.Settings =
+	{
+		"Name": "barcharacter",
+		"Html_ids_prefix": "character",
+		"CharacterSheet":
+		[
+			{"variable": "starttime", "label": "Start Time", "type": "text", "defaultvalue":""},
+			{"variable": "lifetime", "label": "Life time", "type": "text", "defaultvalue":""},
+			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""}
+		],
+		"Groups":
+		{
+		},
+		"Edges":
+		{
+			"types":
+			{
+				"defaultvalue": 0,
+				"values":[
+					{"value": "OPENING",		"label": "OPENING",		"color": "#FF0000", "width": 2, "style": "color: #FF0000;font-weight:bold;"},
+					{"value": "BEERLIGHT",		"label": "BEERLIGHT",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
+					{"value": "BEERBROWN",		"label": "BEERBROWN",	"color": "#FF5555", "width": 1, "style": "color: #FF5555;"},
+					{"value": "DOOR",			"label": "DOOR",		"color": "#000000", "width": 1, "style": "color: #000000;"},
+					{"value": "KEYS",			"label": "KEYS",		"color": "#008800", "width": 1, "style": "color: #008800;"},
+					{"value": "PHONE_POLICE",	"label": "PHONE_POLICE","color": "#00FF00", "width": 1, "style": "color: #00FF00;"},
+					{"value": "PHONE_TAXI",		"label": "PHONE_TAXI",	"color": "#FF0088", "width": 1, "style": "color: #FF0088;"},
+					{"value": "BARCLOSED",		"label": "BARCLOSED",	"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;"},
+					{"value": "MINOR",			"label": "MINOR",		"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;font-size: 18px;"},
+					{"value": "FIRESTARTING",	"label": "FIRESTARTING","color": "#B56617", "width": 3, "style": "color: #B56617;font-weight: bold;"},
+					{"value": "ENDOFTHEDAY",	"label": "ENDOFTHEDAY",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "BASEBALLBAT",	"label": "BASEBALLBAT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "JUKEBOX",		"label": "JUKEBOX",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "TV",				"label": "TV",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "FREEBEER",		"label": "FREEBEER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "OTHER",			"label": "OTHER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "DEFAULT",		"label": "DEFAULT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"}
+				]
+			},
+			"arrows":
+			{
+				"defaultvalue": "",
+				"values": [
+					{"value": "",			"label": "None"},
+					{"value": "to",			"label": "To"},
+					{"value": "middle",		"label": "Middle"},
+					{"value": "from",		"label": "From"},
+					{"value": "to;from",	"label": "To &amp; From"}
+				]
+			}
+		},
+		"CharactersheetPresentation": 
+					"<h2 id=\"{Html_ids_prefix}-info-label\"></h2> \
+					<span id=\"{Html_ids_prefix}-info-firstname\"></span> <span id=\"{Html_ids_prefix}-info-lastname\"></span> (<span id=\"{Html_ids_prefix}-info-sex\"></span>) <span id=\"{Html_ids_prefix}-info-condition\"></span><hr/><span id=\"{Html_ids_prefix}-info-race\" style=\"font-weight: bold;\"></span> \
+					<br/><span id=\"{Html_ids_prefix}-info-clan\"></span> generation <span id=\"{Html_ids_prefix}-info-generation\"></span> \
+					<hr/> \
+					<p id=\"{Html_ids_prefix}-info-description\"></p> \
+					<p>Affiliation: <span id=\"{Html_ids_prefix}-info-group\"></span></p> \
+					<p>File attached: <a id=\"{Html_ids_prefix}-info-file\"></span></p> \
+					<h2>Connections from</h2> \
+					<div id=\"{Html_ids_prefix}-info-connections\"></div>"
+	};

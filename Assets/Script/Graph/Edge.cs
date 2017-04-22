@@ -7,6 +7,7 @@ public class Edge : GraphEdge
     public class Condition : GraphEdge.Condition
 #pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     {
+        [Flags]
         public enum ENUM
         {
             OPENING,

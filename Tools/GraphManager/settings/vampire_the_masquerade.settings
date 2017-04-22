@@ -1,0 +1,121 @@
+document.Settings =
+	{
+		"Name": "VampireTheMasquerade",
+		"Html_ids_prefix": "character",
+		"CharacterSheet":
+		[
+			{"variable": "firstname", "label": "Firstname", "type": "text", "defaultvalue":""},
+			{"variable": "lastname", "label": "Lastname", "type": "text", "defaultvalue":""},
+			{"variable": "isalive", "label": "Is alive ?", "type": "combobox", "defaultvalue":"alive", "values":
+				[
+					{"value": "alive",				"label": "yes"},
+					{"value": "injured",			"label": "injured"},
+					{"value": "injured_aggravated",	"label": "injured_aggravated"},
+					{"value": "severely_sick",		"label": "severely_sick"},
+					{"value": "dead",				"label": "dead"},
+					{"value": "considered_dead",	"label": "considerated as dead"}
+				]
+			},
+			{"variable": "sex", "label": "Sex", "type": "combobox", "defaultvalue":"unknown", "values":
+				[
+					{"value": "unknown",	"label": "Unknown"},
+					{"value": "male",		"label": "Male"},
+					{"value": "female",		"label": "Female"}
+				]
+			},
+			{"variable": "race", "label": "Eace", "type": "combobox", "defaultvalue": "vampire", "values":
+				[
+					{"value": "human",		"label": "Human"},
+					{"value": "wizard",		"label": "Wizard"},
+					{"value": "vampire",	"label": "Vampire"},
+					{"value": "ghoul",		"label": "Ghoul"},
+					{"value": "gargoyle",	"label": "Gargoyle"},
+					{"value": "werewolf",	"label": "Werewolf"},
+					{"value": "wraith",		"label": "Wraith"},
+					{"value": "mummy",		"label": "Mummy"}
+				]
+			},
+			{"variable": "clan", "label": "Clan", "type": "text", "defaultvalue":""},
+			{"variable": "generation", "label": "Generation", "type": "text", "defaultvalue":"13"},
+			//{"variable": "group", "label": "Group", "type": "text", "defaultvalue":""},
+			{"variable": "group", "label": "Group", "type": "combobox", "defaultvalue": "Camarilla", "values":
+				[
+					{"value": "Camarilla",	"label": "Camarilla"},
+					{"value": "Sabbat",		"label": "Sabbat"},
+					{"value": "Anarch",		"label": "Anarch"},
+					{"value": "Inconnu",	"label": "Inconnu"},
+					{"value": "Mortals",	"label": "Mortals"},
+					{"value": "Mages",		"label": "Mages"},
+					{"value": "Alone",		"label": "Alone"}
+				]
+			},
+			{"variable": "description", "label": "Description", "type": "textarea", "defaultvalue":""}
+		],
+		"Groups":
+		{
+			"Camarilla": {
+				"color": {"background":"#BBBBFF"}
+			},
+			"Sabbat": {
+				"color":	{"background":"#AA1111"},
+				"font":		{"color": "#FFFFFF"}
+			},
+			"Anarch": {
+				"color":	{"background":"#FF6600"}
+			},
+			"Inconnu": {
+				"color":	{"background":"#0066AA"}
+			},
+			"Mortals": {
+				"color":	{"background":"#AAFFAA"}
+			},
+			"Mages": {
+				"color":	{"background":"#AB44AB"},
+				"font":		{"color": "#FFFFFF"}
+			},
+			"Alone": {
+				"color":	{"background":"#888888"}
+			}
+		},
+		"Edges":
+		{
+			"types":
+			{
+				"defaultvalue": 0,
+				"values":[
+					{"value": -3,	"label": "Archennemy",	"color": "#FF0000", "width": 2, "style": "color: #FF0000;font-weight:bold;"},
+					{"value": -2,	"label": "Ennemy",		"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
+					{"value": -1,	"label": "Hostile",		"color": "#FF5555", "width": 1, "style": "color: #FF5555;"},
+					{"value": 0,	"label": "Known",		"color": "#000000", "width": 1, "style": "color: #000000;"},
+					{"value": 1,	"label": "Friendly",	"color": "#008800", "width": 1, "style": "color: #008800;"},
+					{"value": 2,	"label": "Friends",		"color": "#00FF00", "width": 1, "style": "color: #00FF00;"},
+					{"value": 3,	"label": "In love",		"color": "#FF0088", "width": 1, "style": "color: #FF0088;"},
+					{"value": 4,	"label": "Fascination",	"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;"},
+					{"value": 5,	"label": "Bloodbond",	"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;font-size: 18px;"},
+					{"value": 6,	"label": "Family",		"color": "#B56617", "width": 3, "style": "color: #B56617;font-weight: bold;"},
+					{"value": 7,	"label": "Sire",		"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"}
+				]
+			},
+			"arrows":
+			{
+				"defaultvalue": "",
+				"values": [
+					{"value": "",			"label": "None"},
+					{"value": "to",			"label": "To"},
+					{"value": "middle",		"label": "Middle"},
+					{"value": "from",		"label": "From"},
+					{"value": "to;from",	"label": "To &amp; From"}
+				]
+			}
+		},
+		"CharactersheetPresentation": 
+					"<h2 id=\"{Html_ids_prefix}-info-label\"></h2> \
+					<span id=\"{Html_ids_prefix}-info-firstname\"></span> <span id=\"{Html_ids_prefix}-info-lastname\"></span> (<span id=\"{Html_ids_prefix}-info-sex\"></span>) <span id=\"{Html_ids_prefix}-info-condition\"></span><hr/><span id=\"{Html_ids_prefix}-info-race\" style=\"font-weight: bold;\"></span> \
+					<br/><span id=\"{Html_ids_prefix}-info-clan\"></span> generation <span id=\"{Html_ids_prefix}-info-generation\"></span> \
+					<hr/> \
+					<p id=\"{Html_ids_prefix}-info-description\"></p> \
+					<p>Affiliation: <span id=\"{Html_ids_prefix}-info-group\"></span></p> \
+					<p>File attached: <a id=\"{Html_ids_prefix}-info-file\"></span></p> \
+					<h2>Connections from</h2> \
+					<div id=\"{Html_ids_prefix}-info-connections\"></div>"
+	};

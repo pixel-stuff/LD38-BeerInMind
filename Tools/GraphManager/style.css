@@ -1,0 +1,126 @@
+/*************************************************************************************
+The MIT License (MIT)
+
+Copyright (c) 2016 Pierre-Marie Plans
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+**************************************************************************************/
+
+/*@font-face {
+    font-family: vampire;
+    src: url(PERCTEXT.TTF);
+}*/
+
+* {
+	margin: 0px;
+	padding: 0px;
+	font-family: vampire;
+}
+
+body {
+	margin: 0% 10% 0% 10%;
+	background-color: #EDEDED;
+
+}
+
+#header {
+	background: url('images/header.png') #F2F2FA;
+	width: 800px;
+	height: 50px;
+}
+
+#page {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#about_us {
+	display: none;
+}
+
+canvas {
+	background-color: rgba(255, 255, 255, 0.8);
+}
+
+#load_submenu {
+	display: none;
+}
+
+#sideinfo {
+	display: none;
+	float: left;
+	width: 198px;
+}
+
+#nodeInfo {
+	display: block;
+}
+
+#nodeInfo > table {
+	border: 0px;
+}
+
+#editor {
+	display: none;
+}
+
+#EdgeEditor {
+	display: none;
+}
+
+#mynetwork {
+	float: left;
+	width: 80vw;
+	height:80vh;
+	border: 1px solid lightgray;
+}
+
+#clear {
+	clear: both;
+}
+
+.node-injured {
+	font-weight: bold;
+	color: #ffff99;
+	text-transform: capitalize;
+}
+.node-injured_aggravated {
+	font-weight: bold;
+	color: #ff9966;
+	text-transform: uppercase;
+}
+.node-severely_sick {
+	font-weight: bold;
+	color: #00cc00;
+	text-transform: uppercase;
+}
+.node-dead {
+	font-weight: bold;
+	color: #ff0000;
+	text-transform: uppercase;
+}
+.node-considered_dead {
+	font-weight: bold;
+	color: #6600cc;
+	text-transform: uppercase;
+}
+.node-alive {
+	font-weight: bold;
+	color: #00ff99;
+	text-transform: capitalize;
+}
