@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Libs.Graph;
 
 public class Character : MonoBehaviour {
 
 	public EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
+	public Node currentNode;
+	public bool isOnBar = false;
+	public Vector3 finalPlace;
 	// Use this for initialization
 	void Start ()
 	{
@@ -35,6 +39,7 @@ public class Character : MonoBehaviour {
 		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DEFAULT));
 
 		PrintGraph(currentGraph.GetCurrentNode(), listConditions);
+		currentNode = null;
 	}
 
 	void CreateNode(Node _node, EditorNode _eNode)
@@ -65,5 +70,37 @@ public class Character : MonoBehaviour {
 				PrintGraph(transition, _conditions);
 			}
 		}
+	}
+
+	void Update(){
+		if (currentNode != (Node)currentGraph.GetCurrentNode()) {
+			// Node non changer
+
+			
+		} else {
+			currentNode = (Node)currentGraph.GetCurrentNode ();
+			if (!isOnBar) {
+				
+				// Appear On Door
+				return;
+
+			}
+		}
+	}
+
+	void Says(string text){
+		//CALL BUBULE MANAGER
+	}
+
+	void TalkToBarman(string text){
+		//CALL First view discussion
+	}
+
+	public void OnCharacEnter(){
+		//PLAY DING DING SOUND
+	}
+
+	public void OnEnterFinished(){
+		this.gameObject.transform.position = finalPlace;
 	}
 }
