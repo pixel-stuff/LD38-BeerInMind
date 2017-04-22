@@ -5,14 +5,11 @@ namespace Libs.Graph
 {
     public class Graph
     {
-
-        GraphNode m_startNode;
         GraphNode m_currentNode;
 
         // Use this for initialization
         public Graph(GraphNode startNode)
         {
-            m_startNode = startNode;
             m_currentNode = startNode;
         }
 
@@ -26,7 +23,11 @@ namespace Libs.Graph
             GraphNode nextNode = m_currentNode;
             foreach (GraphEdge e in m_currentNode.Edges)
             {
-                nextNode = e.Transition(_condition);
+                GraphNode transittedNode = nextNode;
+                if(e.Transition(_condition, out transittedNode))
+                {
+                    nextNode = transittedNode;
+                }
             }
         }
     }

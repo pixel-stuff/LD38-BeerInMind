@@ -12,22 +12,25 @@ namespace Libs.Graph
 
         public abstract class Condition
         {
-            public abstract bool Test();
+            public abstract bool Equals(Condition _condition);
         }
 
-        public GraphEdge(GraphNode _enter, GraphNode _exit)
+        public GraphEdge(GraphNode _enter, GraphNode _exit, Condition _condition)
         {
             m_enter = _enter;
             m_exit = _exit;
+            m_condition = _condition;
         }
 
-        public GraphNode Transition(Condition _condition)
+        public bool Transition(Condition _condition, out GraphNode _outNode)
         {
+            _outNode = m_enter;
             if (m_condition.Equals(_condition))
             {
-                return m_exit;
+                _outNode = m_exit;
+                return true;
             }
-            return m_enter;
+            return false;
         }
     }
 }
