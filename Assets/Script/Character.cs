@@ -50,7 +50,6 @@ public class Character : MonoBehaviour {
 		currentNode = null;
 
 		m_isWaitingForClick = false;
-		DisplayWhisper ("skreugneugneu");
 	}
 
 	void CreateNode(Node _node, EditorNode _eNode)
