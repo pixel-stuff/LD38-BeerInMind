@@ -5,6 +5,9 @@ using UnityEngine;
 public class Character : MonoBehaviour {
 
 	public EditorNode m_startNode;
+	//public Node currentNode;
+
+
 	// Use this for initialization
 	void Start () {
 		
