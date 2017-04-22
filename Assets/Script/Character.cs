@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public EditorNode m_startNode;
+    public Libs.Graph.Graph m_graph;
     // Use this for initialization
     void Start()
     {
