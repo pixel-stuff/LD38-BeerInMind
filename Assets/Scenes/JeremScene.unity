@@ -137,14 +137,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_startNode:
     name: 
-    text: 
+    text: Have beer ?
     completedText: 
     lifetime: 0
     edges:
-    - condition: 000000000000000001000000
+    - condition: 0
       targetNode:
         name: 
-        text: 
+        text: Nice thanks !
+        completedText: 
+        lifetime: 0
+        edges: []
+    - condition: 4
+      targetNode:
+        name: 
+        text: MOTHAFUCKA GIMME MY KEYS !!!
+        completedText: 
+        lifetime: 0
+        edges:
+        - condition: 3
+          targetNode:
+            name: 
+            text: pouet pouet
+            completedText: 
+            lifetime: 0
+            edges:
+            - condition: 4
+              targetNode:
+                name: 
+                text: pouet pouet 2
+                completedText: 
+                lifetime: 0
+                edges: []
+    - condition: 13
+      targetNode:
+        name: 
+        text: Wooa nice maatch !!!
         completedText: 
         lifetime: 0
         edges: []

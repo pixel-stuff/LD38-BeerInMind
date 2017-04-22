@@ -1,7 +1,7 @@
 ﻿using System;
 using Libs.Graph;
 
-class Edge : GraphEdge
+public class Edge : GraphEdge
 {
 #pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public class Condition : GraphEdge.Condition
@@ -20,7 +20,7 @@ class Edge : GraphEdge
             MINOR,
             FIRESTARTING,
             ENDOFTHEDAY,
-            BATEDEBASEBALL,
+            BASEBALLBAT,
             JUKEBOX,
             TV,
             FREEBEER,

@@ -271,6 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1420688398}
   - component: {fileID: 1420688399}
+  - component: {fileID: 1420688400}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -302,3 +303,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c57932bcb9cf1424a99756fbc8bd4efd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1420688400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1420688397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816ad752630184fa4ac5a15321e6a934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_startNode:
+    name: 
+    text: Have a beer ?
+    completedText: 
+    lifetime: 0
+    edges:
+    - condition: 01000000
+      targetNode:
+        name: 
+        text: MOTHAFUCKA
+        completedText: 
+        lifetime: 0
+        edges: []
+    - condition: 04000000
+      targetNode:
+        name: 
+        text: GIMME MY KEYS
+        completedText: 
+        lifetime: 0
+        edges: []
+    - condition: 0d000000
+      targetNode:
+        name: 
+        text: WOAA NICE MATCH
+        completedText: 
+        lifetime: 0
+        edges: []
