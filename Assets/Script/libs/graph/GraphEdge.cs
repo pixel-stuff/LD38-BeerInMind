@@ -22,6 +22,11 @@ namespace Libs.Graph
             m_condition = _condition;
         }
 
+        public GraphNode GetExitNode()
+        {
+            return m_exit;
+        }
+
         public bool Transition(Condition _condition, out GraphNode _outNode)
         {
             _outNode = m_enter;

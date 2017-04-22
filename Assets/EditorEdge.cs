@@ -4,13 +4,7 @@ using UnityEngine;
 using System;
 [System.Serializable]
 public struct EditorEdge {
-	public Test[] condition;
+	public Edge.Condition.ENUM condition;
 	public EditorNode targetNode;
 
-}
-
-public enum Test{
-	lifeEnd,
-	toto,
-	titi
 }
