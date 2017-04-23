@@ -130,9 +130,9 @@ public class Character : MonoBehaviour {
 
 			//check Transition (ETAT)
 			if(TVisOn)
-				currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
+				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 			if(!TVisOn)
-				currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
+				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
 
 
 			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit 
@@ -206,14 +206,14 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnBeerReady(){
-		currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
+		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
 	}
 
 	void OnTick(GameTime gametime){
 		currentGameTime = gametime;
 		tickTimeout--;
 		if (tickTimeout <= 0) {
-			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TIMEOUT));
+			currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TIMEOUT));
 		}
 	}
 

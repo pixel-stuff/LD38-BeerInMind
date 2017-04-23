@@ -27,7 +27,7 @@ namespace Libs.Graph
             return m_currentNode;
         }
 
-        public void Transition(GraphEdge _edge, GraphEdge.Condition _condition)
+        public void Transition(GraphEdge.Condition _condition)
         {
             GraphNode nextNode = m_currentNode;
             foreach (GraphEdge e in m_currentNode.Edges)
@@ -38,6 +38,7 @@ namespace Libs.Graph
                     nextNode = transittedNode;
                 }
             }
+			m_currentNode = nextNode;
         }
 
         public void JSONParse(string _filepath, CreateNode _cbCreateNode, CreateEdge _cbCreateEdge)
