@@ -8,7 +8,7 @@ public class IronCurtainManager : MonoBehaviour {
 	void Awake(){
 		if(m_instance == null){
 			m_instance = this;
-			RuntimeInitializeLoadType ();
+			Init ();
 		}else{
 			//If a Singleton already exists and you find
 			//another reference in scene, destroy it!
