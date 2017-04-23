@@ -29,4 +29,8 @@ public class IronCurtainManager : MonoBehaviour {
 	public void SetGameOver(string message){
 	}
 
+	public void OnDestroy(){
+		TimeManager.m_DayEnding -= EndTheDay ();
+	}
+
 }
