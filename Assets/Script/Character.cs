@@ -164,9 +164,9 @@ public class Character : MonoBehaviour {
 		//idea if dans le bar et pas encore le temps, dire des phrase NPC
 
 		// check StartTime
-		if(currentNode.GetDay() == -1 ||
-			(currentNode.GetDay() == currentGameTime.day &&
-				((currentNode.GetHour()*100 + currentNode.GetMinut()) <  (currentGameTime.hours *100 + currentGameTime.minutes)))){
+		if (currentNode.GetDay () == -1 ||
+		   (currentNode.GetDay () == currentGameTime.day &&
+		   ((currentNode.GetHour () * 100 + currentNode.GetMinut ()) < (currentGameTime.hours * 100 + currentGameTime.minutes)))) {
 
 			if (!isOnBar) {
 				if (!isOnAnimation) {
@@ -179,14 +179,14 @@ public class Character : MonoBehaviour {
 			}
 
 			//check Transition (ETAT)
-			if(TVisOn)
-				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
-			if(!TVisOn)
-				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TVOFF));
+			if (TVisOn)
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TV));
+			if (!TVisOn)
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TVOFF));
 
 
 			//Special Option
-			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
 					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
 					isOnAnimation = true;
@@ -194,16 +194,16 @@ public class Character : MonoBehaviour {
 				return;
 			}
 
-			if (currentNode.GetTextMiniType() == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
-				IronCurtainManager.m_instance.SetGameOver(currentNode.GetText());
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
+				IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
 				return;
 			}
 
-			if (currentNode.GetTextMiniType() == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
 				isOnDicussion = true;
 				string answer1 = "";
 				string answer2 = "";
-				foreach(GraphEdge edge in currentNode.Edges){
+				foreach (GraphEdge edge in currentNode.Edges) {
 					Edge e = (Edge)edge;
 					if (e.Text != "") {
 						if (answer1 == "") {
@@ -213,18 +213,33 @@ public class Character : MonoBehaviour {
 						}
 					}
 				}
-				BarmanManager.m_instance.Says(answer1,answer2);
+				BarmanManager.m_instance.Says (answer1, answer2);
 				return;
 			}
 
 			//display text
-			if(!BubbleAlreadyDisplayed){
+			if (!BubbleAlreadyDisplayed) {
+				textStruct = TextManager.m_instance.GetTextStruc (currentNode.GetTextMiniType ());
+				//override with node value
 				if (currentNode.GetMiniText () != "") {
-					DisplayWhisper (currentNode.GetMiniText ());
+					textStruct.m_whisper = currentNode.GetMiniText ();
 				}
-				textStruct = TextManager.m_instance.GetTextStruc(currentNode.GetTextMiniType ());
+				if (currentNode.GetText () != "") {
+					textStruct.m_mainTalk = currentNode.GetText ();
+				}
+
 				DisplayWhisper (textStruct.m_whisper);
 
+			}
+		} else {
+			// NOT ON TIME YET
+			if(isOnBar){
+				//tell default conversation
+				if(!BubbleAlreadyDisplayed){
+					textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.DEFAULT);
+					DisplayWhisper (textStruct.m_whisper);
+
+				}
 			}
 		}
     }
@@ -272,7 +287,7 @@ public class Character : MonoBehaviour {
             m_isWaitingForClick = false;
 			Character.CharacterHightlight (this);
 
-				if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
+				if (textStruct.m_mainTalk != "") {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
 					MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
