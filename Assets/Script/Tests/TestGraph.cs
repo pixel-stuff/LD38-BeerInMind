@@ -13,7 +13,7 @@ public class TestGraph : MonoBehaviour {
         Node child1 = new Node();
         Node child2 = new Node();
 
-        Edge.Condition conditionBeer = new Edge.Condition(Edge.Condition.ENUM.BEERLIGHT);
+        Edge.Condition conditionBeer = new Edge.Condition(Edge.Condition.ENUM.BEER);
         Edge.Condition conditionDoor = new Edge.Condition(Edge.Condition.ENUM.DOOR);
 
         Edge edge1 = new Edge(start, child1, conditionBeer);
