@@ -72,6 +72,8 @@ namespace Libs.Graph
                 GraphNode newNode = _cbCreateNode(nTo);
                 GraphEdge newEdge = _cbCreateEdge(e, currentNode, newNode);
                 currentNode.Edges.Add(newEdge);
+                e.processed = true;
+                node.processed = true;
                 JSONMakeNode(nTo, newNode, _graph, _cbCreateNode, _cbCreateEdge);
             }
         }

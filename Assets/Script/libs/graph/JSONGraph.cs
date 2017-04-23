@@ -18,6 +18,7 @@ namespace Libs.Graph
         public string minitext;
         public string textminitype;
         public string mood;
+        public bool processed = false;
     }
     [System.Serializable]
     public class JSONEdge
@@ -27,6 +28,7 @@ namespace Libs.Graph
         public string type;
         public string arrows;
         public string label;
+        public bool processed = false;
     }
     [System.Serializable]
     public class JSONGraph
@@ -64,7 +66,7 @@ namespace Libs.Graph
             List<JSONEdge> rEdges = new List<JSONEdge>();
             foreach (JSONEdge e in edges)
             {
-                if (_node.id == e.from)
+                if (_node.id == e.from && !e.processed)
                 {
                     rEdges.Add(e);
                 }
@@ -76,7 +78,7 @@ namespace Libs.Graph
         {
             foreach (JSONNode n in nodes)
             {
-                if (n.id == _id)
+                if (n.id == _id && !n.processed)
                 {
                     return n;
                 }
