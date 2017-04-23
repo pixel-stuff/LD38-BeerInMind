@@ -84,7 +84,8 @@ public class Character : MonoBehaviour {
 	{
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
-		PrintGraph(currentGraph.GetCurrentNode());
+        //Print without parcour check, this can lead to infinite loop in wrong hands
+		//PrintGraph(currentGraph.GetCurrentNode());
 
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
