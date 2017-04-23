@@ -76,12 +76,15 @@ document.Settings =
 		},
 		"CharactersheetPresentation": 
 					"<h2 id=\"{Html_ids_prefix}-info-label\"></h2> \
-					<span id=\"{Html_ids_prefix}-info-firstname\"></span> <span id=\"{Html_ids_prefix}-info-lastname\"></span> (<span id=\"{Html_ids_prefix}-info-sex\"></span>) <span id=\"{Html_ids_prefix}-info-condition\"></span><hr/><span id=\"{Html_ids_prefix}-info-race\" style=\"font-weight: bold;\"></span> \
-					<br/><span id=\"{Html_ids_prefix}-info-clan\"></span> generation <span id=\"{Html_ids_prefix}-info-generation\"></span> \
+					<p>Start day: <span id=\"{Html_ids_prefix}-info-day\"></span></p> \
+					<p>Hour: <span id=\"{Html_ids_prefix}-info-hourminut\"></span></p> \
+					<p>Ticks(x10 in minuts): <span id=\"{Html_ids_prefix}-info-lifetime\"></span> \
 					<hr/> \
-					<p id=\"{Html_ids_prefix}-info-description\"></p> \
-					<p>Affiliation: <span id=\"{Html_ids_prefix}-info-group\"></span></p> \
-					<p>File attached: <a id=\"{Html_ids_prefix}-info-file\"></span></p> \
+					<p id=\"{Html_ids_prefix}-info-text\"></p> \
+					<p id=\"{Html_ids_prefix}-info-minitext\"></p> \
+					<hr/> \
+					<p>textminitype: <span id=\"{Html_ids_prefix}-info-textminitype\"></span> \
+					<p>mood: <span id=\"{Html_ids_prefix}-info-mood\"></span></p> \
 					<h2>Connections from</h2> \
 					<div id=\"{Html_ids_prefix}-info-connections\"></div>"
 	};
