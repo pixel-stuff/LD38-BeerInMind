@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Libs;
+using System;
 
 public class Character : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class Character : MonoBehaviour {
 	public Vector3 doorPlace;
 	public int tickTimeout = -1;
 	GameTime currentGameTime;
+
+	TextStruct textStruct;
 
 	public bool TVisOn = false;
 	public bool BubbleAlreadyDisplayed = false;
@@ -81,8 +84,15 @@ public class Character : MonoBehaviour {
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		TimeManager.OnTicTriggered += OnTick;
-		DraughtEvent.m_mainTrigger += OnBeerReady;
 		m_isWaitingForClick = false;
+	}
+
+	void subcribeAll(){
+		if(DraughtEvent.m_mainTrigger != null) 
+		foreach (Delegate d in DraughtEvent.m_mainTrigger.GetInvocationList())
+			DraughtEvent.m_mainTrigger -= (d as Action);
+		
+		DraughtEvent.m_mainTrigger += OnBeerReady;
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -126,6 +136,7 @@ public class Character : MonoBehaviour {
 
 			if (!isOnBar) {
 				if (!isOnAnimation) {
+					tickTimeout += 2;
 					this.gameObject.transform.position = doorPlace;
 					this.GetComponent<Animator> ().SetTrigger ("EnterBar");
 					isOnAnimation = true;
@@ -137,8 +148,7 @@ public class Character : MonoBehaviour {
 			if(TVisOn)
 				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 			if(!TVisOn)
-				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
-
+				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TVOFF)); 
 
 			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit 
 				if (!isOnAnimation) {
@@ -153,7 +163,8 @@ public class Character : MonoBehaviour {
 				if (currentNode.GetMiniText () != "") {
 					DisplayWhisper (currentNode.GetMiniText ());
 				}
-				DisplayWhisper (currentNode.GetTextMiniType ().ToString ());
+				textStruct = TextManager.m_instance.GetTextStruc(currentNode.GetTextMiniType ());
+				DisplayWhisper (textStruct.m_whisper);
 
 			}
 		}
@@ -199,10 +210,13 @@ public class Character : MonoBehaviour {
         if (m_isWaitingForClick)
         {
             m_isWaitingForClick = false;
-            m_whisperTalk.StopDisplayWhisper();
-			BubbleAlreadyDisplayed = false;
-            MainTalkManager.m_instance.StartDisplayAnimation("Jeremy a un tout petit zizi");
-            //TODO: Change State
+			if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
+	            m_whisperTalk.StopDisplayWhisper();
+				BubbleAlreadyDisplayed = false;
+				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk);
+				subcribeAll ();
+	            //TODO: Change State
+			}
         }
     }
 
@@ -216,7 +230,8 @@ public class Character : MonoBehaviour {
 
 	void OnTick(GameTime gametime){
 		currentGameTime = gametime;
-		tickTimeout--;
+		if(!isOnAnimation)
+			tickTimeout--;
 		if (tickTimeout <= 0) {
 			currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TIMEOUT));
 		}
