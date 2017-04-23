@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class MainTalkManager : MonoBehaviour {
 
@@ -39,7 +40,11 @@ public class MainTalkManager : MonoBehaviour {
 
 	public void StartDisplayAnimation(string txt, Sprite sprite, string caracName){
 		m_customer.sprite = sprite;
-		m_textToDisplay = txt;
+		if (txt == null) {
+			m_textToDisplay = "Le texte recu est null jeremy :(";
+		} else {
+			m_textToDisplay = txt;
+		}
 		m_name.text = caracName;
 		RestartInit ();
 		this.GetComponent<Animation> ().Play ();
@@ -53,9 +58,7 @@ public class MainTalkManager : MonoBehaviour {
 	public IEnumerator DisplayAnimationCorout(){
 		yield return new WaitForSeconds (this.GetComponent<Animation> ().clip.length);
 		int characDisplay = 0;
-		if (m_textToDisplay.Length == 0) {
-			Debug.LogError ("Lenght = 0");
-		}
+		Debug.Log ("m_textToDisplay :" + m_textToDisplay);
 		int characTarget = m_textToDisplay.Length;
 		m_text.text = "";
 		do{
