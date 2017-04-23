@@ -19,6 +19,8 @@ document.Settings =
 					{"value": "wait",				"label": "wait"},
 					{"value": "tv",					"label": "tv"},
 					{"value": "notv",				"label": "notv"},
+					{"value": "tvon",				"label": "tvon"},
+					{"value": "tvoff",				"label": "tvoff"},
 					{"value": "fire",				"label": "fire"},
 					{"value": "endoftheday",		"label": "endoftheday"},
 					{"value": "hygiena",			"label": "hygiena"},
@@ -45,8 +47,7 @@ document.Settings =
 				"defaultvalue": 0,
 				"values":[
 					{"value": "OPENING",		"label": "OPENING",		"color": "#FF0000", "width": 2, "style": "color: #FF0000;font-weight:bold;"},
-					{"value": "BEERLIGHT",		"label": "BEERLIGHT",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
-					{"value": "BEERBROWN",		"label": "BEERBROWN",	"color": "#FF5555", "width": 1, "style": "color: #FF5555;"},
+					{"value": "BEER",		"label": "BEER",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
 					{"value": "DOOR",			"label": "DOOR",		"color": "#000000", "width": 1, "style": "color: #000000;"},
 					{"value": "KEYS",			"label": "KEYS",		"color": "#008800", "width": 1, "style": "color: #008800;"},
 					{"value": "PHONE_POLICE",	"label": "PHONE_POLICE","color": "#00FF00", "width": 1, "style": "color: #00FF00;"},
