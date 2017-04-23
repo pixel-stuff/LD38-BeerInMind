@@ -49,6 +49,9 @@ public class MainTalkManager : MonoBehaviour {
 	public IEnumerator DisplayAnimationCorout(){
 		yield return new WaitForSeconds (this.GetComponent<Animation> ().clip.length);
 		int characDisplay = 0;
+		if (m_textToDisplay.Length == 0) {
+			Debug.LogError ("Lenght = 0");
+		}
 		int characTarget = m_textToDisplay.Length;
 		m_text.text = "";
 		do{
