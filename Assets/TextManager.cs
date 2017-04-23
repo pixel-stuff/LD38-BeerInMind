@@ -48,30 +48,29 @@ public class TextManager : MonoBehaviour {
 			string[] parts = line.Split (';');
 
 			TextStruct txtStruc = new TextStruct ();
-			string str = parts[0];
+			if (parts.Length > 0 && !parts[0].Equals("")) {
+				txtStruc.m_textType = (Node.eTextMiniType)Enum.Parse (typeof(Node.eTextMiniType), parts [0]);
+				txtStruc.m_whisper = parts [1];
+				if (parts.Length > 2) {
+					txtStruc.m_mainTalk = parts [2];
+				} else {
+					txtStruc.m_mainTalk = "";
+				}
+				if (!m_dict.ContainsKey (txtStruc.m_textType)) {
+					m_dict.Add (txtStruc.m_textType, new List<TextStruct> ());
+				}
 
-			Node.eTextMiniType type = (Node.eTextMiniType)Enum.Parse(typeof(Node.eTextMiniType), str);
-			txtStruc.m_textType = type;
-			txtStruc.m_whisper = parts[1];
-			txtStruc.m_mainTalk = parts[2];
-			if (!m_dict.ContainsKey (type)) {
-				m_dict.Add (type, new List<TextStruct> ());
+				m_dict [txtStruc.m_textType].Add (txtStruc);
 			}
-
-			m_dict [type].Add (txtStruc);
 			//Debug.Log ("" + txtStruc.m_textType + " / " + txtStruc.m_whisper + " / " + txtStruc.m_mainTalk);
 		}
-
-
-
-		Debug.Log ("" + m_dict[Node.eTextMiniType.DRUNKGUY]);
 	}
 
 	public TextStruct GetTextStruc(Node.eTextMiniType typeText){
 		TextStruct stru;
 		List<TextStruct> list = m_dict [typeText];
 
-
-		return list [0];
+		int ran = UnityEngine.Random.Range (0, list.Count - 1);
+		return list [ran];
 	}
 }
