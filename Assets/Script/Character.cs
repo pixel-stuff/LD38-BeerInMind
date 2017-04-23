@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Libs;
 
 public class Character : MonoBehaviour {
 
@@ -12,7 +13,9 @@ public class Character : MonoBehaviour {
 
     public WhisperTalkManager m_whisperTalk;
     public bool isOnBar = false;
+	public bool isOnAnimation = false;
     public Vector3 finalPlace;
+	public Vector3 doorPlace;
 
     private bool m_isWaitingForClick = false;
 
@@ -62,6 +65,9 @@ public class Character : MonoBehaviour {
 
 		PrintGraph(currentGraph.GetCurrentNode());
 
+
+
+
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		m_isWaitingForClick = false;
 
@@ -93,19 +99,27 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-        if (currentNode != (Node)currentGraph.GetCurrentNode())
-        {
+		currentNode = (Node)currentGraph.GetCurrentNode();
+
+		// check StartTime
+
+		if (!isOnBar) {
+			if (!isOnAnimation) {
+				this.gameObject.transform.position = doorPlace;
+				this.GetComponent<Animator> ().SetTrigger ("EnterBar");
+				isOnAnimation = true;
+			}
+			return;
+		}
+
             // Node non changer
-        }
-        else
-        {
-            currentNode = (Node)currentGraph.GetCurrentNode();
-            if (!isOnBar)
-            {
-                // Appear On Door
-                return;
-            }
-        }
+			//check Transition
+			//display text
+			// if exitState, lancer l'animation exit 
+		this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+		isOnAnimation = true;
+      
+  
     }
 
 	void DisplayWhisper(string text, bool displayOnRight = true)
@@ -115,7 +129,7 @@ public class Character : MonoBehaviour {
     }
 
 	void DisplayWhisperStop(){
-
+		//TODO display an other wisper
 	}
 
     public void OnCharacEnter()
@@ -126,7 +140,14 @@ public class Character : MonoBehaviour {
     public void OnEnterFinished()
     {
         this.gameObject.transform.position = finalPlace;
+		isOnBar = true;
+		isOnAnimation = true;
     }
+
+	public void OnDoorExit(){
+
+
+	}
 
     public void OnMouseUp()
     {
@@ -138,4 +159,6 @@ public class Character : MonoBehaviour {
             //TODO: Change State
         }
     }
+
+	//currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 }
