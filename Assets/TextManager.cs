@@ -14,8 +14,21 @@ public class TextManager : MonoBehaviour {
 	public TextAsset m_dialogues;
 	private Dictionary<Node.eTextMiniType,List<TextStruct>> m_dict;
 
+	public static TextManager m_instance;
+	void Awake(){
+		if(m_instance == null){
+			m_instance = this;
+			Init ();
+		}else{
+			//If a Singleton already exists and you find
+			//another reference in scene, destroy it!
+			if(this != m_instance)
+				Destroy(this.gameObject);
+		}
+	}
+
 	// Use this for initialization
-	void Awake () {
+	public void Init () {
 		m_dict = new Dictionary<Node.eTextMiniType, List<TextStruct>> ();
 		ParseCSV ();
 	}
