@@ -16,7 +16,11 @@ public class Character : MonoBehaviour {
 	public bool isOnAnimation = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
+	public int tickTimeout = -1;
+	GameTime currentGameTime;
 
+	public bool TVisOn = false;
+	public bool BubbleAlreadyDisplayed = false;
     private bool m_isWaitingForClick = false;
 
     Character()
@@ -65,12 +69,11 @@ public class Character : MonoBehaviour {
 
 		PrintGraph(currentGraph.GetCurrentNode());
 
-
-
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
+		TimeManager.OnTicTriggered += OnTick;
+		DraughtEvent.m_mainTrigger += OnBeerReady;
 		m_isWaitingForClick = false;
-
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -99,37 +102,63 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-		currentNode = (Node)currentGraph.GetCurrentNode();
-
-		// check StartTime
-
-		if (!isOnBar) {
-			if (!isOnAnimation) {
-				this.gameObject.transform.position = doorPlace;
-				this.GetComponent<Animator> ().SetTrigger ("EnterBar");
-				isOnAnimation = true;
-			}
-			return;
+		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
+			//ChangeNode
+			currentNode = (Node)currentGraph.GetCurrentNode();
+			tickTimeout = currentNode.GetTicksDuration ();
+			BubbleAlreadyDisplayed = false;
+			m_whisperTalk.StopDisplayWhisper ();
 		}
 
-            // Node non changer
-			//check Transition
+		// check StartTime
+		if(currentNode.GetDay() == -1 || 
+			(currentNode.GetDay() == currentGameTime.day &&
+				((currentNode.GetHour()*100 + currentNode.GetMinut()) <  (currentGameTime.hours *100 + currentGameTime.minutes)))){
+
+			if (!isOnBar) {
+				if (!isOnAnimation) {
+					this.gameObject.transform.position = doorPlace;
+					this.GetComponent<Animator> ().SetTrigger ("EnterBar");
+					isOnAnimation = true;
+				}
+				return;
+			}
+
+			//check Transition (ETAT)
+			if(TVisOn)
+				currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
+			if(!TVisOn)
+				currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
+
+
+			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit 
+				if (!isOnAnimation) {
+					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+					isOnAnimation = true;
+				}
+				return;
+			}
+
 			//display text
-			// if exitState, lancer l'animation exit 
-		this.GetComponent<Animator> ().SetTrigger ("ExitBar");
-		isOnAnimation = true;
-      
-  
+			if(!BubbleAlreadyDisplayed){
+				if (currentNode.GetMiniText () != "") {
+					DisplayWhisper (currentNode.GetMiniText ());
+				}
+				DisplayWhisper (currentNode.GetTextMiniType ().ToString ());
+
+			}
+		}
     }
 
 	void DisplayWhisper(string text, bool displayOnRight = true)
     {
+		BubbleAlreadyDisplayed = true;
         m_isWaitingForClick = true;
 		m_whisperTalk.StartDisplayWhisper(text,displayOnRight);
     }
 
 	void DisplayWhisperStop(){
-		//TODO display an other wisper
+		BubbleAlreadyDisplayed = false;
 	}
 
     public void OnCharacEnter()
@@ -141,12 +170,19 @@ public class Character : MonoBehaviour {
     {
         this.gameObject.transform.position = finalPlace;
 		isOnBar = true;
-		isOnAnimation = true;
+		isOnAnimation = false;
     }
 
-	public void OnDoorExit(){
+	public void OnGoToDoor(){
+		this.gameObject.transform.position = doorPlace;
+		m_whisperTalk.StartDisplayWhisper (Node.eTextMiniType.CHARACTEREXIT.ToString()); //Node.eTextMiniType.CHARACTEREXIT
+	}
 
 
+	public void OnLeaveBar(){
+		m_whisperTalk.StopDisplayWhisper();
+		isOnAnimation = false;
+		isOnBar = false;
 	}
 
     public void OnMouseUp()
@@ -155,18 +191,26 @@ public class Character : MonoBehaviour {
         {
             m_isWaitingForClick = false;
             m_whisperTalk.StopDisplayWhisper();
+			BubbleAlreadyDisplayed = false;
             MainTalkManager.m_instance.StartDisplayAnimation("Jeremy a un tout petit zizi");
             //TODO: Change State
         }
     }
 
 	void TvIsTrigger(bool isOn){
-		Debug.Log ("jerem was here : " + isOn);
-		if(isOn)
-			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
-		if(!isOn)
-			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
-	
+		TVisOn = isOn;
+	}
+
+	void OnBeerReady(){
+		currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
+	}
+
+	void OnTick(GameTime gametime){
+		currentGameTime = gametime;
+		tickTimeout--;
+		if (tickTimeout <= 0) {
+			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TIMEOUT));
+		}
 	}
 
 	//currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));

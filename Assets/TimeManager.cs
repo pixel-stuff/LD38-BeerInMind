@@ -43,15 +43,17 @@ public class TimeManager : MonoBehaviour {
 						m_currentTime.hours = 18;
 						m_currentTime.minutes = 0;
 						timePlay = false;
-						//GONEXTDAY
+						//TODO GONEXTDAY
 					}
 					OnTicTriggered (m_currentTime);
 				}
 			}
 		}
-		clockText.text = m_currentTime.hours.ToString() + ':' + m_currentTime.minutes.ToString();
-		if (m_currentTime.minutes == 0) {
-			clockText.text += '0';
+		if (clockText) {
+			clockText.text = m_currentTime.hours.ToString () + ':' + m_currentTime.minutes.ToString ();
+			if (m_currentTime.minutes == 0) {
+				clockText.text += '0';
+			}
 		}
 	}
 }
