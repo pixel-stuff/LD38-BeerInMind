@@ -188,6 +188,7 @@ public class Character : MonoBehaviour {
 
 			if (currentNode.GetTextMiniType() == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
 				
+				//BarmanManager.m_instance.Says();
 				return;
 			}
 
