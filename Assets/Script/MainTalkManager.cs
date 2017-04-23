@@ -8,6 +8,7 @@ public class MainTalkManager : MonoBehaviour {
 	public GameObject m_bulle;
 	public Image m_customer;
 	public Text m_text;
+	public Text m_name;
 	public GameObject m_back;
 
 	public string m_textToDisplay = "I'm a baby girl in a baby world";
@@ -36,12 +37,15 @@ public class MainTalkManager : MonoBehaviour {
 		m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
 	}
 
-	public void StartDisplayAnimation(string txt, Sprite sprite){
+	public void StartDisplayAnimation(string txt, Sprite sprite, string caracName){
 		m_customer.sprite = sprite;
 		m_textToDisplay = txt;
+		m_name.text = caracName;
 		RestartInit ();
 		this.GetComponent<Animation> ().Play ();
 		TimeManager.timePlay = false;
+		if(BarmanManager.m_instance != null)
+			BarmanManager.m_instance.Dismiss ();
 		StartCoroutine (DisplayAnimationCorout());
 	}
 

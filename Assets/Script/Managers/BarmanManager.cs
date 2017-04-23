@@ -27,8 +27,7 @@ public class BarmanManager : MonoBehaviour {
 	public TextMesh m_answer1;
 	public TextMesh m_answer2;
 
-	public Action<string> Answer1Click; //renvoyer le text cliquer
-	public Action<string> Answer2Click;
+	public Action<string> Answer; //renvoyer le text cliquer
 
 	public void Says(string answer1, string answer2){
 		m_answer1.text = answer1;
@@ -42,15 +41,15 @@ public class BarmanManager : MonoBehaviour {
 	}
 
 	public void StartAnswer1Click(){
-		if (Answer1Click != null) {
-			Answer1Click (m_answer1.text);
+		if (Answer != null) {
+			Answer (m_answer1.text);
 		}
 		Dismiss ();
 	}
 
 	public void StartAnswer2Click(){
-		if (Answer2Click != null) {
-			Answer2Click (m_answer1.text);
+		if (Answer != null) {
+			Answer (m_answer1.text);
 		}
 		Dismiss ();
 	}
