@@ -16,8 +16,8 @@ public class TestGraph : MonoBehaviour {
         Edge.Condition conditionBeer = new Edge.Condition(Edge.Condition.ENUM.BEER);
         Edge.Condition conditionDoor = new Edge.Condition(Edge.Condition.ENUM.DOOR);
 
-        Edge edge1 = new Edge(start, child1, conditionBeer);
-        Edge edge2 = new Edge(start, child2, conditionDoor);
+        Edge edge1 = new Edge(start, child1, conditionBeer, "");
+        Edge edge2 = new Edge(start, child2, conditionDoor, "");
 
         start.Edges.Add(edge1);
         start.Edges.Add(edge2);

@@ -42,8 +42,12 @@ public class Edge : GraphEdge
         }
     }
 
-    public Edge(GraphNode _enter, GraphNode _exit, Condition _condition) : base(_enter, _exit, _condition)
+    private string m_label;
+    public string Text { get { return m_label; } set { } }
+
+    public Edge(GraphNode _enter, GraphNode _exit, Condition _condition, string _label) : base(_enter, _exit, _condition)
     {
+        m_label = _label;
     }
 
     public override bool TransitionDefault(out GraphNode _outNode)
