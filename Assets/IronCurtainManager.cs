@@ -8,7 +8,7 @@ public class IronCurtainManager : MonoBehaviour {
 	void Awake(){
 		if(m_instance == null){
 			m_instance = this;
-			RuntimeInitializeLoadType ();
+			Init ();
 		}else{
 			//If a Singleton already exists and you find
 			//another reference in scene, destroy it!
@@ -19,7 +19,7 @@ public class IronCurtainManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Init () {
-		TimeManager.m_DayEnding += EndTheDay ();
+		TimeManager.m_DayEnding += EndTheDay;
 	}
 
 	public void EndTheDay(){
@@ -27,6 +27,10 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void SetGameOver(string message){
+	}
+
+	public void OnDestroy(){
+		TimeManager.m_DayEnding -= EndTheDay;
 	}
 
 }
