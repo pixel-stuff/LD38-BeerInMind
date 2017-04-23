@@ -18,7 +18,6 @@ namespace Libs.Graph
         public string minitext;
         public string textminitype;
         public string mood;
-        public bool processed = false;
     }
     [System.Serializable]
     public class JSONEdge
@@ -78,7 +77,7 @@ namespace Libs.Graph
         {
             foreach (JSONNode n in nodes)
             {
-                if (n.id == _id && !n.processed)
+                if (n.id == _id)
                 {
                     return n;
                 }

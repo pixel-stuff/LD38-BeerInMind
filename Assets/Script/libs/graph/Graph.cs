@@ -68,13 +68,15 @@ namespace Libs.Graph
         {
             foreach(JSONEdge e in _graph.GetEdgesFromNode(node))
             {
-                JSONNode nTo = _graph.GetNodeFromID(e.to);
-                GraphNode newNode = _cbCreateNode(nTo);
-                GraphEdge newEdge = _cbCreateEdge(e, currentNode, newNode);
-                currentNode.Edges.Add(newEdge);
-                e.processed = true;
-                node.processed = true;
-                JSONMakeNode(nTo, newNode, _graph, _cbCreateNode, _cbCreateEdge);
+                if (!e.processed)
+                {
+                    JSONNode nTo = _graph.GetNodeFromID(e.to);
+                    GraphNode newNode = _cbCreateNode(nTo);
+                    GraphEdge newEdge = _cbCreateEdge(e, currentNode, newNode);
+                    currentNode.Edges.Add(newEdge);
+                    e.processed = true;
+                    JSONMakeNode(nTo, newNode, _graph, _cbCreateNode, _cbCreateEdge);
+                }
             }
         }
 
