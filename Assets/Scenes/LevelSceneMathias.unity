@@ -1052,56 +1052,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224578208362486956, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224578208362486956, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224578208362486956, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224578208362486956, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223619561105440, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223619561105440, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223619561105440, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224223619561105440, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224585497128774468, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 295.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 224862325727109496, guid: b0e916bd58f5e42aeb88f5796f277358,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 295.07
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0e916bd58f5e42aeb88f5796f277358, type: 2}
   m_IsPrefabParent: 0
