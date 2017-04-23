@@ -40,9 +40,15 @@ public class Character : MonoBehaviour {
 			m_startNode.text);
 		print(m_startNode.text);
 		CreateNode(node, m_startNode);
+
+
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
 		PrintGraph(currentGraph.GetCurrentNode());
+
+		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
+		m_isWaitingForClick = false;
+
 	}
 
 	void CreateNode(Node _node, EditorNode _eNode)
@@ -102,11 +108,15 @@ public class Character : MonoBehaviour {
         }
     }
 
-    void DisplayWhisper(string text)
+	void DisplayWhisper(string text, bool displayOnRight = true)
     {
         m_isWaitingForClick = true;
-        m_whisperTalk.StartDisplayWhisper(text);
+		m_whisperTalk.StartDisplayWhisper(text,displayOnRight);
     }
+
+	void DisplayWhisperStop(){
+
+	}
 
     public void OnCharacEnter()
     {

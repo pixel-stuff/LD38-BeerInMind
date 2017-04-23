@@ -8,6 +8,8 @@ public class WhisperTalkManager : MonoBehaviour {
 	public TextMesh m_text;
 	public int m_tickAlive = 3;
 	private int m_tickBeforeErase = 0;
+
+	public Action m_tickDisplayOver;
 	// Use this for initialization
 	void Awake () {
 		StopDisplayWhisper ();
@@ -41,6 +43,9 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_tickBeforeErase--;
 		if (m_tickBeforeErase <= 0) {
 			StopDisplayWhisper ();
+			if (m_tickDisplayOver != null) {
+				m_tickDisplayOver();
+			}
 		}
 	}
 
