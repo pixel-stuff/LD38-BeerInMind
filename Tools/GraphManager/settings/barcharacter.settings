@@ -12,6 +12,7 @@ document.Settings =
 			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"default", "values":
 				[
 					{"value": "DEFAULT",			"label": "default"},
+					{"value": "TIMEOUT",			"label": "timeout"},
 					{"value": "CHARACTERENTRY",		"label": "character enter"},
 					{"value": "CHARACTEREXIT",		"label": "character exit"},
 					{"value": "BEER",				"label": "beer"},
@@ -61,6 +62,7 @@ document.Settings =
 					{"value": "TV",				"label": "TV",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
 					{"value": "FREEBEER",		"label": "FREEBEER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
 					{"value": "OTHER",			"label": "OTHER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
+					{"value": "TIMEOUT",		"label": "TIMEOUT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
 					{"value": "DEFAULT",		"label": "DEFAULT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"}
 				]
 			},

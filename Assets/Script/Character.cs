@@ -34,8 +34,11 @@ public class Character : MonoBehaviour {
         int minut = -1;
         int lifetime = 0;
         System.Int32.TryParse(_node.day, out day);
-        System.Int32.TryParse(hourminut[0], out hour);
-        System.Int32.TryParse(hourminut[1], out minut);
+        if (hourminut.Length > 1)
+        {
+            System.Int32.TryParse(hourminut[0], out hour);
+            System.Int32.TryParse(hourminut[1], out minut);
+        }
         System.Int32.TryParse(_node.lifetime, out lifetime);
         return new Node(
             day,
