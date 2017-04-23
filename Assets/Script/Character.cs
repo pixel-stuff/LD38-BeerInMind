@@ -288,7 +288,7 @@ public class Character : MonoBehaviour {
 				if (textStruct.m_mainTalk != "") {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite,this.name);
+				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainSprite,this.name);
 					subcribeAll ();
 				}
         }
