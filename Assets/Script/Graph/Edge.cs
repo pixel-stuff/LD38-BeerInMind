@@ -25,6 +25,7 @@ public class Edge : GraphEdge
             TV,
             FREEBEER,
             OTHER,
+            TIMEOUT,
             DEFAULT
         }
         private ENUM m_condition;

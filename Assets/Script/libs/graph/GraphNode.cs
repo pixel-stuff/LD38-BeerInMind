@@ -17,7 +17,7 @@ namespace Libs.Graph
         public abstract void OnEnter();
         public abstract void OnExit();
 
-        public GraphNode Transition(GraphEdge.Condition _condition)
+        public GraphNode Transition(GraphEdge.Condition _condition, bool useDefault = false)
         {
             GraphNode currNode = this;
             foreach(GraphEdge e in m_edges)
@@ -28,14 +28,15 @@ namespace Libs.Graph
                     return transittedNode;
                 }
             }
-            foreach (GraphEdge e in m_edges)
-            {
-                GraphNode transittedNode = currNode;
-                if (e.TransitionDefault(out transittedNode))
+            if(useDefault)
+                foreach (GraphEdge e in m_edges)
                 {
-                    return transittedNode;
+                    GraphNode transittedNode = currNode;
+                    if (e.TransitionDefault(out transittedNode))
+                    {
+                        return transittedNode;
+                    }
                 }
-            }
             return currNode;
         }
 
