@@ -72,7 +72,7 @@ public class Character : MonoBehaviour {
     public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
     {
         Edge.Condition condition = new Edge.Condition((Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type));
-        return new Edge(from, to, condition);
+        return new Edge(from, to, condition, _edge.label);
     }
 
     // Use this for initialization
@@ -80,7 +80,7 @@ public class Character : MonoBehaviour {
 	{
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
-		//PrintGraph(currentGraph.GetCurrentNode());
+		PrintGraph(currentGraph.GetCurrentNode());
 
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
@@ -216,7 +216,7 @@ public class Character : MonoBehaviour {
 				if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
 	            m_whisperTalk.StopDisplayWhisper();
 				BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,null);
+				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
 				subcribeAll ();
 	            //TODO: Change State
 						}
