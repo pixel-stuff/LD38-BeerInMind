@@ -216,7 +216,7 @@ public class Character : MonoBehaviour {
 				if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
 	            m_whisperTalk.StopDisplayWhisper();
 				BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,null);
+				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
 				subcribeAll ();
 	            //TODO: Change State
 						}
