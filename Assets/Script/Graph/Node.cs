@@ -13,6 +13,8 @@ public class Node : GraphNode
         WAIT,
         TV,
         NOTV,
+        TVON,
+        TVOFF,
         FIRE,
         ENDOFTHEDAY,
         HYGIENA,
