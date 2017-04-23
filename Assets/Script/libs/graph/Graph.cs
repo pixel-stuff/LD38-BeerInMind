@@ -7,12 +7,14 @@ namespace Libs.Graph
     public class Graph
     {
         GraphNode m_currentNode;
+        private Dictionary<string, GraphNode> m_nodeDictionary;
 
         public delegate GraphNode CreateNode(JSONNode _node);
         public delegate GraphEdge CreateEdge(JSONEdge _edge, GraphNode _nodeFrom, GraphNode _nodeTo);
 
         public Graph(string filepath, CreateNode _cbCreateNode, CreateEdge _cbCreateEdge)
         {
+            m_nodeDictionary = new Dictionary<string, GraphNode>();
             JSONParse(filepath, _cbCreateNode, _cbCreateEdge);
         }
 
@@ -71,7 +73,13 @@ namespace Libs.Graph
                 if (!e.processed)
                 {
                     JSONNode nTo = _graph.GetNodeFromID(e.to);
-                    GraphNode newNode = _cbCreateNode(nTo);
+                    GraphNode newNode = null;
+                    if (!m_nodeDictionary.TryGetValue(e.to, out newNode))
+                    {
+                        newNode = _cbCreateNode(nTo);
+                        m_nodeDictionary.Add(e.to, newNode);
+                    }
+                    
                     GraphEdge newEdge = _cbCreateEdge(e, currentNode, newNode);
                     currentNode.Edges.Add(newEdge);
                     e.processed = true;

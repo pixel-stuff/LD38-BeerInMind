@@ -80,7 +80,7 @@ public class Character : MonoBehaviour {
 	{
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
-		//PrintGraph(currentGraph.GetCurrentNode());
+		PrintGraph(currentGraph.GetCurrentNode());
 
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
