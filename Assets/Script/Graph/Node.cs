@@ -21,6 +21,7 @@ public class Node : GraphNode
         MINOR,
         DRUNKGUY,
         FIGHT,
+        DISCUSSION,
         GAMEOVER
     }
 
