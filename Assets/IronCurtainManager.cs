@@ -19,7 +19,7 @@ public class IronCurtainManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void Init () {
-		TimeManager.m_DayEnding += EndTheDay ();
+		TimeManager.m_DayEnding += EndTheDay;
 	}
 
 	public void EndTheDay(){
@@ -30,7 +30,7 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void OnDestroy(){
-		TimeManager.m_DayEnding -= EndTheDay ();
+		TimeManager.m_DayEnding -= EndTheDay;
 	}
 
 }
