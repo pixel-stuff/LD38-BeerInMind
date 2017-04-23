@@ -9,9 +9,6 @@ public class Character : MonoBehaviour {
 
 	static Action<Character> CharacterHightlight;
 
-	public Sprite onFootHighlightSprite;
-	public Sprite onFootSprite;
-
 	public Sprite mainSprite;
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
@@ -290,7 +287,7 @@ public class Character : MonoBehaviour {
 				if (textStruct.m_mainTalk != "") {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
-					MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
+				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite,this.name);
 					subcribeAll ();
 				}
         }

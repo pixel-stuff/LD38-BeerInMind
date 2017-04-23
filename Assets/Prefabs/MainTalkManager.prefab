@@ -492,6 +492,7 @@ MonoBehaviour:
   m_bulle: {fileID: 1535600097584596}
   m_customer: {fileID: 114332911776522228}
   m_text: {fileID: 114385569651418914}
+  m_name: {fileID: 114214180144049470}
   m_back: {fileID: 1503960487203112}
   m_textToDisplay: I'm a barbie girl in a barbie world
   m_animationDisplayLetterEvery: 0.07
