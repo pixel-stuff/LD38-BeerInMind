@@ -22,8 +22,7 @@ public class BarmanManager : MonoBehaviour {
 	#endregion Singleton
 
 
-	public Action<string> Answer1; //renvoyer le text cliquer
-	public Action<string> Answer2;
+	public Action<string> Answer; //renvoyer le text cliquer
 
 	public void Says(string answer1, string answer2){
 		
