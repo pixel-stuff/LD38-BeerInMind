@@ -421,20 +421,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114395661152443998, guid: 8a3909852c14d4d179d66a56556c41c2,
-        type: 2}
-      propertyPath: m_name
-      value: 
-      objectReference: {fileID: 203081381}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a3909852c14d4d179d66a56556c41c2, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &203081381 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114214180144049470, guid: 8a3909852c14d4d179d66a56556c41c2,
-    type: 2}
-  m_PrefabInternal: {fileID: 203081380}
-  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &275417910
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,12 +611,12 @@ Prefab:
     - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
       propertyPath: finalPlace.x
-      value: 0
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
       propertyPath: finalPlace.y
-      value: 0
+      value: 2.17
       objectReference: {fileID: 0}
     - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
@@ -1646,6 +1635,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5a39b848d405141cea831cf306b3608d, type: 2}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_Name
+      value: Brigitte lasticot
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
