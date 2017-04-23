@@ -39,8 +39,9 @@ GameObject:
   - component: {fileID: 212141264924454976}
   - component: {fileID: 114919093851182536}
   - component: {fileID: 61696067651299700}
+  - component: {fileID: 111053537719986668}
   m_Layer: 0
-  m_Name: BulleManager
+  m_Name: WhisperManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,6 +227,22 @@ TextMesh:
   m_Color:
     serializedVersion: 2
     rgba: 4278190080
+--- !u!111 &111053537719986668
+Animation:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1234043583693842}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 41fe164e6252c4bf8a506e1c2fd3429f, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 41fe164e6252c4bf8a506e1c2fd3429f, type: 2}
+  - {fileID: 7400000, guid: fa123669219304456a741748ac6e0195, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!114 &114909780105756536
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,7 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816ad752630184fa4ac5a15321e6a934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_whisperTalk: {fileID: 114919093851182536}
   m_startNode:
     name: 
     text: Have beer ?
@@ -279,6 +295,8 @@ MonoBehaviour:
         completedText: 
         lifetime: 0
         edges: []
+  fileName: brigitte.json
+  m_whisperTalk: {fileID: 114919093851182536}
   isOnBar: 0
   finalPlace: {x: 4, y: 4, z: 0}
 --- !u!114 &114919093851182536
@@ -293,6 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_text: {fileID: 102630197575589164}
+  m_tickAlive: 3
 --- !u!212 &212141264924454976
 SpriteRenderer:
   m_ObjectHideFlags: 1

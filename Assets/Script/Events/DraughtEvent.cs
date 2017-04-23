@@ -2,5 +2,5 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightDraughtEvent : Event {
+public class DraughtEvent : Event {
 }
