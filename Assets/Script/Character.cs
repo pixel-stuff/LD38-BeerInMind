@@ -164,11 +164,13 @@ public class Character : MonoBehaviour {
 				return;
 			}
 
-			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
-				if (!isOnAnimation) {
-					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
-					isOnAnimation = true;
-				}
+			if (currentNode.GetTextMiniType() == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
+				IronCurtainManager.m_instance.SetGameOver(currentNode.GetText());
+				return;
+			}
+
+			if (currentNode.GetTextMiniType() == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+				
 				return;
 			}
 

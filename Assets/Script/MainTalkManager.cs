@@ -28,6 +28,7 @@ public class MainTalkManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void RestartInit () {
+		TimeManager.timePlay = true;
 		m_bulle.SetActive (false);
 		m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
 		m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
@@ -38,6 +39,7 @@ public class MainTalkManager : MonoBehaviour {
 		m_textToDisplay = txt;
 		RestartInit ();
 		this.GetComponent<Animation> ().Play ();
+		TimeManager.timePlay = false;
 		StartCoroutine (DisplayAnimationCorout());
 	}
 

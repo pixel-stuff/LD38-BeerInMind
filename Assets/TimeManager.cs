@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour {
 	public float realTime = 2.0f;
 	private float currentRealTime; 
 	public int gameTimeJump = 10;
-	bool timePlay = true;
+	public static bool timePlay = true;
 	public Text clockText;
 
 	// Use this for initialization
