@@ -59,7 +59,7 @@ public class TextManager : MonoBehaviour {
 			}
 
 			m_dict [type].Add (txtStruc);
-			Debug.Log ("" + txtStruc.m_textType + " / " + txtStruc.m_whisper + " / " + txtStruc.m_mainTalk);
+			//Debug.Log ("" + txtStruc.m_textType + " / " + txtStruc.m_whisper + " / " + txtStruc.m_mainTalk);
 		}
 
 

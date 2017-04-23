@@ -203,7 +203,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Bulle
+    path: Customer/RightBulle
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -211,7 +211,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -225,7 +225,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Customer/RightBulle
+    path: Back
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -445,7 +445,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Bulle
+    path: Customer/RightBulle
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -453,7 +453,7 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 103
@@ -467,7 +467,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Customer/RightBulle
+    path: Back
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
