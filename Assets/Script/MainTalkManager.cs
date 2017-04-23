@@ -8,6 +8,7 @@ public class MainTalkManager : MonoBehaviour {
 	public GameObject m_bulle;
 	public Image m_customer;
 	public Text m_text;
+	public GameObject m_back;
 
 	public string m_textToDisplay = "I'm a baby girl in a baby world";
 	public float m_animationDisplayLetterEvery = 0.07f;
@@ -30,6 +31,7 @@ public class MainTalkManager : MonoBehaviour {
 	public void RestartInit () {
 		TimeManager.timePlay = true;
 		m_bulle.SetActive (false);
+		m_back.SetActive (false);
 		m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
 		m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
 	}
