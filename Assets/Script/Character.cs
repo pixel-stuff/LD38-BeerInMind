@@ -9,6 +9,8 @@ public class Character : MonoBehaviour {
 
 	static Action<Character> CharacterHightlight;
 
+	public Sprite standSprite;
+	public Sprite finalSprite;
 	public Sprite mainSprite;
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
@@ -94,6 +96,7 @@ public class Character : MonoBehaviour {
 		m_isWaitingForClick = false;
 		Character.CharacterHightlight += OnCharacterHightlight;
 		UpdateOutline (false);
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 	}
 
 	void UpdateOutline(bool outline) {
@@ -158,9 +161,6 @@ public class Character : MonoBehaviour {
 			m_whisperTalk.StopDisplayWhisper ();
 		}
 
-
-		//idea if dans le bar et pas encore le temps, dire des phrase NPC
-
 		// check StartTime
 		if (currentNode.GetDay () == -1 ||
 		   (currentNode.GetDay () == currentGameTime.day &&
@@ -170,7 +170,7 @@ public class Character : MonoBehaviour {
 				if (!isOnAnimation) {
 					tickTimeout += 2;
 					this.gameObject.transform.position = doorPlace;
-					this.GetComponent<Animator> ().SetTrigger ("EnterBar");
+					this.GetComponent<Animation> ().Play("EnterBar");
 					isOnAnimation = true;
 				}
 				return;
@@ -186,7 +186,7 @@ public class Character : MonoBehaviour {
 			//Special Option
 			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
-					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+					this.GetComponent<Animation> ().Play("ExitBar");
 					isOnAnimation = true;
 				}
 				return;
@@ -256,21 +256,24 @@ public class Character : MonoBehaviour {
     public void OnCharacEnter()
     {
         //PLAY DING DING SOUND
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 		DisplayWhisper(TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY).m_whisper);
     }
 
     public void OnEnterFinished()
     {
         this.gameObject.transform.position = finalPlace;
+		this.GetComponent<SpriteRenderer> ().sprite = finalSprite;
 		isOnBar = true;
 		isOnAnimation = false;
     }
 
 	public void OnGoToDoor(){
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 		this.gameObject.transform.position = doorPlace;
-		m_whisperTalk.StartDisplayWhisper (Node.eTextMiniType.CHARACTEREXIT.ToString()); //Node.eTextMiniType.CHARACTEREXIT
-	}
+		DisplayWhisper (TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT).m_whisper);
 
+	}
 
 	public void OnLeaveBar(){
 		m_whisperTalk.StopDisplayWhisper();
@@ -319,7 +322,7 @@ public class Character : MonoBehaviour {
 
 	void OnEndOfDay() {
 		if (!isOnAnimation) {
-			this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+			this.GetComponent<Animation> ().Play("ExitBar");
 			isOnAnimation = true;
 		}
 	}
