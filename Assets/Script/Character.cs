@@ -89,10 +89,10 @@ public class Character : MonoBehaviour {
 	}
 
 	void subcribeAll(){
-		if(DraughtEvent.m_mainTrigger != null) 
+		if(DraughtEvent.m_mainTrigger != null)
 		foreach (Delegate d in DraughtEvent.m_mainTrigger.GetInvocationList())
 			DraughtEvent.m_mainTrigger -= (d as Action);
-		
+
 		DraughtEvent.m_mainTrigger += OnBeerReady;
 	}
 
@@ -131,7 +131,7 @@ public class Character : MonoBehaviour {
 		}
 
 		// check StartTime
-		if(currentNode.GetDay() == -1 || 
+		if(currentNode.GetDay() == -1 ||
 			(currentNode.GetDay() == currentGameTime.day &&
 				((currentNode.GetHour()*100 + currentNode.GetMinut()) <  (currentGameTime.hours *100 + currentGameTime.minutes)))){
 
@@ -149,9 +149,9 @@ public class Character : MonoBehaviour {
 			if(TVisOn)
 				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 			if(!TVisOn)
-				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TVOFF)); 
+				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TVOFF));
 
-			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit 
+			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
 					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
 					isOnAnimation = true;
@@ -212,13 +212,14 @@ public class Character : MonoBehaviour {
         if (m_isWaitingForClick)
         {
             m_isWaitingForClick = false;
-			if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
+
+				if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
 	            m_whisperTalk.StopDisplayWhisper();
 				BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk);
+				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,null);
 				subcribeAll ();
 	            //TODO: Change State
-			}
+						}
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MainTalkManager : MonoBehaviour {
 
-	public Image m_bulleText;
+	public GameObject m_bulle;
 	public Image m_customer;
 	public Text m_text;
 
@@ -17,7 +17,7 @@ public class MainTalkManager : MonoBehaviour {
 	void Awake () {
 		if(m_instance == null){
 			m_instance = this;
-			InitGameObject ();
+			RestartInit ();
 		}else{
 			//If a Singleton already exists and you find
 			//another reference in scene, destroy it!
@@ -27,15 +27,16 @@ public class MainTalkManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	public void InitGameObject () {
-		m_bulleText.gameObject.SetActive (false);
+	public void RestartInit () {
+		m_bulle.SetActive (false);
 		m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
 		m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
 	}
 
-	public void StartDisplayAnimation(string txt){
+	public void StartDisplayAnimation(string txt, Sprite sprite){
+		m_customer.sprite = sprite;
 		m_textToDisplay = txt;
-		InitGameObject ();
+		RestartInit ();
 		this.GetComponent<Animation> ().Play ();
 		StartCoroutine (DisplayAnimationCorout());
 	}
