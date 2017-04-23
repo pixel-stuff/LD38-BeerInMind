@@ -42,7 +42,8 @@ public class MainTalkManager : MonoBehaviour {
 		RestartInit ();
 		this.GetComponent<Animation> ().Play ();
 		TimeManager.timePlay = false;
-		BarmanManager.m_instance.Dismiss ();
+		if(BarmanManager.m_instance != null)
+			BarmanManager.m_instance.Dismiss ();
 		StartCoroutine (DisplayAnimationCorout());
 	}
 

@@ -95,6 +95,7 @@ public class Character : MonoBehaviour {
 		TimeManager.m_DayEnding += OnEndOfDay;
 		m_isWaitingForClick = false;
 		Character.CharacterHightlight += OnCharacterHightlight;
+		UpdateOutline (false);
 	}
 
 	void UpdateOutline(bool outline) {
@@ -111,12 +112,13 @@ public class Character : MonoBehaviour {
 			DraughtEvent.m_mainTrigger -= (d as Action);
 
 		DraughtEvent.m_mainTrigger += OnBeerReady;
+		if (BarmanManager.m_instance != null) {
+			if (BarmanManager.m_instance.Answer != null)
+				foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
+					DraughtEvent.m_mainTrigger -= (d as Action);
 
-		if(BarmanManager.m_instance.Answer != null)
-			foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
-				DraughtEvent.m_mainTrigger -= (d as Action);
-
-		BarmanManager.m_instance.Answer += OnAnswerRespond;
+			BarmanManager.m_instance.Answer += OnAnswerRespond;
+		}
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -146,7 +148,6 @@ public class Character : MonoBehaviour {
     void Update()
     {
 
-		UpdateOutline (true);
 		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
@@ -312,9 +313,9 @@ public class Character : MonoBehaviour {
 
 	void OnCharacterHightlight(Character cha) {
 		if (this == cha) {
-			this.GetComponent<SpriteRenderer> ().sprite = onFootHighlightSprite;
+			UpdateOutline (true);
 		} else {
-			this.GetComponent<SpriteRenderer> ().sprite = onFootSprite;
+			UpdateOutline (false);
 		}
 	}
 
