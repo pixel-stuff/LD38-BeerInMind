@@ -44,6 +44,10 @@ public class Character : MonoBehaviour {
             System.Int32.TryParse(hourminut[1], out minut);
         }
         System.Int32.TryParse(_node.lifetime, out lifetime);
+		Node.eMood mood = Node.eMood.DEFAULT;
+		if (_node.mood != "") {
+			mood = (Node.eMood)System.Enum.Parse (typeof(Node.eMood), _node.mood, true);
+		}
         return new Node(
             day,
             hour,
@@ -52,7 +56,7 @@ public class Character : MonoBehaviour {
             _node.text,
             _node.minitext,
             (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype, true),
-            (Node.eMood)System.Enum.Parse(typeof(Node.eMood), _node.mood, true)
+			mood
             );
     }
 
