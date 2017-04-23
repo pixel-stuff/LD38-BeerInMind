@@ -28,12 +28,14 @@ String.prototype.replaceAll = function(search, replacement) {
 
 var LinkSheet =
 {
+	Settings: 0,
 	CheckValue: function(value)
 	{
 		return value==undefined?'':value;
 	},
 	Build: function(formID, data)
 	{
+		this.Settings = data;
 		formu="";
 		formu+=libgui_build_combobox("edge-type", document.Settings.Edges.types);
 		formu+=libgui_build_combobox("edge-arrows", document.Settings.Edges.arrows);
@@ -48,8 +50,13 @@ var LinkSheet =
 		// strange, data provided by editEdge seems to not give label but gives custom value type
 		data.label = document.getElementById('edge-label').value;
 	},
-	Load: function(data)
+	Load: function(data, setDefault)
 	{
+		if(setDefault)
+		{
+			data.type = this.Settings.Edges.types.defaultvalue;
+			data.arrows = this.Settings.Edges.arrows.defaultvalue;
+		}
 		document.getElementById('edge-type').value = checkUndefined(data.type);
 		document.getElementById('edge-arrows').value = checkUndefined(data.arrows);
 		// strange, data provided by editEdge seems to not give label but gives custom value type

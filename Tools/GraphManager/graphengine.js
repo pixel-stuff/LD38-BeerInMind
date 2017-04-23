@@ -168,7 +168,7 @@ var options = {
 		addEdge: function (data, callback) {
 			// filling in the popup DOM elements
 			document.getElementById('EdgeOperation').innerHTML = "Add Edge";
-			_linkManager.Load(data);
+			_linkManager.Load(data, true);
 			document.getElementById('EdgeSaveButton').onclick = EdgeSaveData.bind(this, data, callback);
 			document.getElementById('EdgeCancelButton').onclick = EdgeClearPopUp.bind();
 			// $("#EdgeEditor").parent().show();
@@ -180,7 +180,7 @@ var options = {
 			// filling in the popup DOM elements
 			var oldData = edges.get(data.id, {fields: ['type', 'label', 'arrows']});
 			document.getElementById('EdgeOperation').innerHTML = "Edit Edge";
-			_linkManager.Load(oldData);
+			_linkManager.Load(oldData, false);
 			document.getElementById('EdgeSaveButton').onclick = EdgeSaveData.bind(this, data, callback);
 			document.getElementById('EdgeCancelButton').onclick = EdgeCancelEdit.bind(this, callback);
 			// $("#EdgeEditor").parent().show();
