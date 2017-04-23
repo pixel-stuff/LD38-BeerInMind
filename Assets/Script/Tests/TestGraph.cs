@@ -9,9 +9,9 @@ public class TestGraph : MonoBehaviour {
 	void Start ()
     {
 
-        Node start = new Node(System.DateTime.Now, 2, "Need a beer");
-        Node child1 = new Node(System.DateTime.Now, 2, "Thanks for the beer !");
-        Node child2 = new Node(System.DateTime.Now, 2, "FUCK YOU MOTHAFUCKA");
+        Node start = new Node(2, "Need a beer");
+        Node child1 = new Node(2, "Thanks for the beer !");
+        Node child2 = new Node(2, "FUCK YOU MOTHAFUCKA");
 
         Edge.Condition conditionBeer = new Edge.Condition(Edge.Condition.ENUM.BEERLIGHT);
         Edge.Condition conditionDoor = new Edge.Condition(Edge.Condition.ENUM.DOOR);

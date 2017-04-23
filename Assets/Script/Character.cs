@@ -23,7 +23,7 @@ public class Character : MonoBehaviour {
 
     public Libs.Graph.GraphNode CreateGraphNode(Libs.Graph.JSONNode _node)
     {
-        return new Node(System.DateTime.Now, System.UInt32.Parse(_node.lifetime), _node.text);
+        return new Node(System.UInt32.Parse(_node.lifetime), _node.text);
     }
 
     public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
@@ -35,30 +35,12 @@ public class Character : MonoBehaviour {
     // Use this for initialization
     void Start ()
 	{
-		Node node = new Node(System.DateTime.Now,
+		Node node = new Node(
 			(System.UInt32)m_startNode.lifetime,
 			m_startNode.text);
 		print(m_startNode.text);
 		CreateNode(node, m_startNode);
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
-
-		List<Edge.Condition> listConditions = new List<Edge.Condition>();
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OPENING));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BEERLIGHT));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BEERBROWN));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DOOR));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.KEYS));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.PHONE_POLICE));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.PHONE_TAXI));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BARCLOSED));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.MINOR));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.FIRESTARTING));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.ENDOFTHEDAY));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BASEBALLBAT));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.TV));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.FREEBEER));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OTHER));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DEFAULT));
 
 		PrintGraph(currentGraph.GetCurrentNode());
 	}
@@ -69,7 +51,7 @@ public class Character : MonoBehaviour {
 		foreach (EditorEdge c in currentNode.edges)
 		{
 			EditorNode transition = c.targetNode;
-			Node node = new Node(System.DateTime.Now,
+			Node node = new Node(
 				(System.UInt32)transition.lifetime,
 				transition.text);
 			Edge.Condition condition = new Edge.Condition(c.condition);

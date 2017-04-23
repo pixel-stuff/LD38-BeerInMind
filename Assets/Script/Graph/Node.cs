@@ -3,20 +3,47 @@ using Libs.Graph;
 
 public class Node : GraphNode
 {
-    private DateTime m_startTime;
+    public enum eTextMiniType
+    {
+        DEFAULT,
+        CHARACTERENTRY,
+        CHARACTEREXIT,
+        BEER,
+        DRINK,
+        WAIT,
+        TV,
+        NOTV,
+        FIRE,
+        ENDOFTHEDAY,
+        HYGIENA,
+        MINOR,
+        DRUNKGUY,
+        FIGHT
+    }
+
+    public enum eMood
+    {
+        DEFAULT,
+        HAPPY,
+        INFIRE
+    }
+    public uint m_day;
+    public uint m_hour;
+    public uint m_minut;
     private UInt32 m_nTicksDuration;
     private string m_text;
+    private string m_minitext;
+    private eTextMiniType m_eTextMiniType;
+    private eMood m_eMood;
 
     public Node()
     {
-        m_startTime = DateTime.Now;
         m_nTicksDuration = 1;
         m_text = "";
     }
 
-    public Node(DateTime _time, UInt32 _nTicks, string _text)
+    public Node(UInt32 _nTicks, string _text)
     {
-        m_startTime = _time;
         m_nTicksDuration = _nTicks;
         m_text = _text;
     }
@@ -32,6 +59,6 @@ public class Node : GraphNode
 
     public override string ToString()
     {
-        return m_startTime.ToLongDateString() + " " + m_nTicksDuration + " " + m_text;
+        return m_nTicksDuration + " " + m_text;
     }
 }

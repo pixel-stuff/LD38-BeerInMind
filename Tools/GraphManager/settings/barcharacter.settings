@@ -4,9 +4,36 @@ document.Settings =
 		"Html_ids_prefix": "character",
 		"CharacterSheet":
 		[
-			{"variable": "starttime", "label": "Start Time", "type": "text", "defaultvalue":""},
+			{"variable": "day", "label": "Day Start", "type": "text", "defaultvalue":""},
+			{"variable": "hourminut", "label": "Hour:Minut Start", "type": "text", "defaultvalue":"18:00"},
 			{"variable": "lifetime", "label": "Life time", "type": "text", "defaultvalue":""},
-			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""}
+			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""},
+			{"variable": "minitext", "label": "Mini Text", "type": "textarea", "defaultvalue":""},
+			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"default", "values":
+				[
+					{"value": "default",			"label": "default"},
+					{"value": "characterentry",		"label": "character enter"},
+					{"value": "characterexit",		"label": "character exit"},
+					{"value": "beer",				"label": "beer"},
+					{"value": "drink",				"label": "drink"},
+					{"value": "wait",				"label": "wait"},
+					{"value": "tv",					"label": "tv"},
+					{"value": "notv",				"label": "notv"},
+					{"value": "fire",				"label": "fire"},
+					{"value": "endoftheday",		"label": "endoftheday"},
+					{"value": "hygiena",			"label": "hygiena"},
+					{"value": "minor",				"label": "minor"},
+					{"value": "drunkguy",			"label": "drunk guy"},
+					{"value": "fight",				"label": "fight"}
+				]
+			},
+			{"variable": "mood", "label": "Mood", "type": "combobox", "defaultvalue":"default", "values":
+				[
+					{"value": "default",			"label": "default"},
+					{"value": "happy",				"label": "happy"},
+					{"value": "infire",				"label": "I'm on fiiireeee !"}
+				]
+			}
 		],
 		"Groups":
 		{

@@ -108,6 +108,56 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &853812099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 853812101}
+  - component: {fileID: 853812100}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &853812100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853812099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816ad752630184fa4ac5a15321e6a934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_startNode:
+    name: 
+    text: 
+    completedText: 
+    lifetime: 0
+    edges: []
+  fileName: footeu.json
+  m_whisperTalk: {fileID: 0}
+  isOnBar: 0
+  finalPlace: {x: 0, y: 0, z: 0}
+--- !u!4 &853812101
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 853812099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 7.428667, y: 13.008362, z: -0.31998524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &865120594
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,3 +392,6 @@ MonoBehaviour:
         lifetime: 0
         edges: []
   fileName: brigitte.json
+  m_whisperTalk: {fileID: 0}
+  isOnBar: 0
+  finalPlace: {x: 0, y: 0, z: 0}
