@@ -23,6 +23,7 @@ public class Edge : GraphEdge
             BASEBALLBAT,
             JUKEBOX,
             TV,
+            TVOFF,
             FREEBEER,
             OTHER,
             TIMEOUT,
