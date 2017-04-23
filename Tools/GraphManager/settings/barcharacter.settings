@@ -27,6 +27,7 @@ document.Settings =
 					{"value": "MINOR",				"label": "minor"},
 					{"value": "DRUNKGUY",			"label": "drunk guy"},
 					{"value": "FIGHT",				"label": "fight"},
+					{"value": "DISCUSSION",				"label": "discussion"},
 					{"value": "GAMEOVER",			"label": "Game Over"}
 				]
 			},
