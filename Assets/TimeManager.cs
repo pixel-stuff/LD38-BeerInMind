@@ -26,6 +26,7 @@ public class TimeManager : MonoBehaviour {
 		m_currentTime.hours = 18;
 		m_currentTime.minutes = 0;
 		currentRealTime = realTime;
+		timePlay = true;
 	}
 	
 	// Update is called once per frame
@@ -55,5 +56,10 @@ public class TimeManager : MonoBehaviour {
 				clockText.text += '0';
 			}
 		}
+	}
+
+
+	public void EndOfday(){
+		timePlay = false;
 	}
 }
