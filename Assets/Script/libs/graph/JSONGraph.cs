@@ -11,9 +11,13 @@ namespace Libs.Graph
         public string id;
         public string label;
         public string title;
-        public string starttime;
+        public string day;
+        public string hourminut;
         public string lifetime;
         public string text;
+        public string minitext;
+        public string textminitype;
+        public string mood;
     }
     [System.Serializable]
     public class JSONEdge

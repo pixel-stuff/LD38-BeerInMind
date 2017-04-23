@@ -26,7 +26,27 @@ public class Character : MonoBehaviour {
 
     public Libs.Graph.GraphNode CreateGraphNode(Libs.Graph.JSONNode _node)
     {
-        return new Node(System.DateTime.Now, System.UInt32.Parse(_node.lifetime), _node.text);
+        char hourminutdelimiter = ':';
+        Debug.Log(_node.hourminut);
+        string[] hourminut = _node.hourminut.Split(hourminutdelimiter);
+        int day = -1;
+        int hour = -1;
+        int minut = -1;
+        int lifetime = 0;
+        System.Int32.TryParse(_node.day, out day);
+        System.Int32.TryParse(hourminut[0], out hour);
+        System.Int32.TryParse(hourminut[1], out minut);
+        System.Int32.TryParse(_node.lifetime, out lifetime);
+        return new Node(
+            day,
+            hour,
+            minut,
+            lifetime,
+            _node.text,
+            _node.minitext,
+            (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype, true),
+            (Node.eMood)System.Enum.Parse(typeof(Node.eMood), _node.mood, true)
+            );
     }
 
     public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
@@ -38,32 +58,7 @@ public class Character : MonoBehaviour {
     // Use this for initialization
     void Start ()
 	{
-		Node node = new Node(System.DateTime.Now,
-			(System.UInt32)m_startNode.lifetime,
-			m_startNode.text);
-		print(m_startNode.text);
-		CreateNode(node, m_startNode);
-
-
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
-
-		List<Edge.Condition> listConditions = new List<Edge.Condition>();
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OPENING));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BEERLIGHT));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BEERBROWN));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DOOR));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.KEYS));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.PHONE_POLICE));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.PHONE_TAXI));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BARCLOSED));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.MINOR));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.FIRESTARTING));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.ENDOFTHEDAY));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.BASEBALLBAT));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.TV));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.FREEBEER));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.OTHER));
-		listConditions.Add(new Edge.Condition(Edge.Condition.ENUM.DEFAULT));
 
 		PrintGraph(currentGraph.GetCurrentNode());
 
@@ -73,22 +68,6 @@ public class Character : MonoBehaviour {
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		m_isWaitingForClick = false;
 
-	}
-
-	void CreateNode(Node _node, EditorNode _eNode)
-	{
-		EditorNode currentNode = _eNode;
-		foreach (EditorEdge c in currentNode.edges)
-		{
-			EditorNode transition = c.targetNode;
-			Node node = new Node(System.DateTime.Now,
-				(System.UInt32)transition.lifetime,
-				transition.text);
-			Edge.Condition condition = new Edge.Condition(c.condition);
-			Edge edge = new Edge(_node, node, condition);
-			_node.Edges.Add(edge);
-			CreateNode(node, c.targetNode);
-		}
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)

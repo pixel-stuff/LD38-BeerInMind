@@ -4,9 +4,38 @@ document.Settings =
 		"Html_ids_prefix": "character",
 		"CharacterSheet":
 		[
-			{"variable": "starttime", "label": "Start Time", "type": "text", "defaultvalue":""},
+			{"variable": "day", "label": "Day Start", "type": "text", "defaultvalue":""},
+			{"variable": "hourminut", "label": "Hour:Minut Start", "type": "text", "defaultvalue":"18:00"},
 			{"variable": "lifetime", "label": "Life time", "type": "text", "defaultvalue":""},
-			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""}
+			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""},
+			{"variable": "minitext", "label": "Mini Text", "type": "textarea", "defaultvalue":""},
+			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"default", "values":
+				[
+					{"value": "DEFAULT",			"label": "default"},
+					{"value": "CHARACTERENTRY",		"label": "character enter"},
+					{"value": "CHARACTEREXIT",		"label": "character exit"},
+					{"value": "BEER",				"label": "beer"},
+					{"value": "DRINK",				"label": "drink"},
+					{"value": "WAIT",				"label": "wait"},
+					{"value": "TV",					"label": "tv"},
+					{"value": "NOTV",				"label": "notv"},
+					{"value": "TVON",				"label": "tvon"},
+					{"value": "TVOFF",				"label": "tvoff"},
+					{"value": "FIRE",				"label": "fire"},
+					{"value": "ENDOFTHEDAY",		"label": "endoftheday"},
+					{"value": "HYGIENA",			"label": "hygiena"},
+					{"value": "MINOR",				"label": "minor"},
+					{"value": "DRUNKGUY",			"label": "drunk guy"},
+					{"value": "FIGHT",				"label": "fight"}
+				]
+			},
+			{"variable": "mood", "label": "Mood", "type": "combobox", "defaultvalue":"default", "values":
+				[
+					{"value": "DEFAULT",			"label": "default"},
+					{"value": "HAPPY",				"label": "happy"},
+					{"value": "INFIRE",				"label": "I'm on fiiireeee !"}
+				]
+			}
 		],
 		"Groups":
 		{
@@ -18,8 +47,7 @@ document.Settings =
 				"defaultvalue": 0,
 				"values":[
 					{"value": "OPENING",		"label": "OPENING",		"color": "#FF0000", "width": 2, "style": "color: #FF0000;font-weight:bold;"},
-					{"value": "BEERLIGHT",		"label": "BEERLIGHT",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
-					{"value": "BEERBROWN",		"label": "BEERBROWN",	"color": "#FF5555", "width": 1, "style": "color: #FF5555;"},
+					{"value": "BEER",		"label": "BEER",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
 					{"value": "DOOR",			"label": "DOOR",		"color": "#000000", "width": 1, "style": "color: #000000;"},
 					{"value": "KEYS",			"label": "KEYS",		"color": "#008800", "width": 1, "style": "color: #008800;"},
 					{"value": "PHONE_POLICE",	"label": "PHONE_POLICE","color": "#00FF00", "width": 1, "style": "color: #00FF00;"},
@@ -40,11 +68,7 @@ document.Settings =
 			{
 				"defaultvalue": "",
 				"values": [
-					{"value": "",			"label": "None"},
-					{"value": "to",			"label": "To"},
-					{"value": "middle",		"label": "Middle"},
-					{"value": "from",		"label": "From"},
-					{"value": "to;from",	"label": "To &amp; From"}
+					{"value": "to",			"label": "To"}
 				]
 			}
 		},
