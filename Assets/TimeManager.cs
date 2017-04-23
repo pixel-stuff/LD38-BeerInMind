@@ -45,8 +45,8 @@ public class TimeManager : MonoBehaviour {
 						timePlay = false;
 						//TODO GONEXTDAY
 					}
-					OnTicTriggered (m_currentTime);
 				}
+				OnTicTriggered (m_currentTime);
 			}
 		}
 		if (clockText) {
