@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Libs;
 using System;
+using Libs.Graph;
 
 public class Character : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class Character : MonoBehaviour {
     public WhisperTalkManager m_whisperTalk;
     public bool isOnBar = false;
 	public bool isOnAnimation = false;
+	public bool isOnDicussion = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
 	public int tickTimeout = -1;
@@ -109,6 +111,12 @@ public class Character : MonoBehaviour {
 			DraughtEvent.m_mainTrigger -= (d as Action);
 
 		DraughtEvent.m_mainTrigger += OnBeerReady;
+
+		if(BarmanManager.m_instance.Answer != null)
+			foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
+				DraughtEvent.m_mainTrigger -= (d as Action);
+
+		BarmanManager.m_instance.Answer += OnAnswerRespond;
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -144,6 +152,10 @@ public class Character : MonoBehaviour {
 			currentNode = (Node)currentGraph.GetCurrentNode();
 			tickTimeout = currentNode.GetTicksDuration ();
 			BubbleAlreadyDisplayed = false;
+			if (isOnDicussion) {
+				BarmanManager.m_instance.Dismiss ();
+				isOnDicussion = false;
+			}
 			m_whisperTalk.StopDisplayWhisper ();
 		}
 
@@ -187,8 +199,20 @@ public class Character : MonoBehaviour {
 			}
 
 			if (currentNode.GetTextMiniType() == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
-				
-				//BarmanManager.m_instance.Says();
+				isOnDicussion = true;
+				string answer1 = "";
+				string answer2 = "";
+				foreach(GraphEdge edge in currentNode.Edges){
+					Edge e = (Edge)edge;
+					if (e.Text != "") {
+						if (answer1 == "") {
+							answer1 = e.Text;
+						} else {
+							answer2 = e.Text;
+						}
+					}
+				}
+				BarmanManager.m_instance.Says(answer1,answer2);
 				return;
 			}
 
@@ -264,6 +288,12 @@ public class Character : MonoBehaviour {
 		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
 	}
 
+	void OnAnswerRespond(string response){
+		isOnDicussion = false;
+		//TODO
+		//currentGraph.Transition (response);
+	}
+
 	void OnTick(GameTime gametime){
 		currentGameTime = gametime;
 		if(!isOnAnimation)
@@ -287,4 +317,6 @@ public class Character : MonoBehaviour {
 			this.GetComponent<SpriteRenderer> ().sprite = onFootSprite;
 		}
 	}
+
+
 }
