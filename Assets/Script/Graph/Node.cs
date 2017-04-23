@@ -42,10 +42,24 @@ public class Node : GraphNode
         m_text = "";
     }
 
-    public Node(UInt32 _nTicks, string _text)
+    public Node(
+        uint _day,
+        uint _hour,
+        uint _minut,
+        UInt32 _nTicks,
+        string _text,
+        string _minitext,
+        eTextMiniType _eTextMiniType,
+        eMood _eMood)
     {
+        m_day = _day;
+        m_hour = _hour;
+        m_minut = _minut;
         m_nTicksDuration = _nTicks;
         m_text = _text;
+        m_minitext = _minitext;
+        m_eTextMiniType = _eTextMiniType;
+        m_eMood = _eMood;
     }
 
     public override void OnEnter()
