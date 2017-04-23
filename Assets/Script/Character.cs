@@ -26,10 +26,10 @@ public class Character : MonoBehaviour {
         char hourminutdelimiter = ':';
         string[] hourminut = _node.hourminut.Split(hourminutdelimiter);
         return new Node(
-            System.UInt32.Parse(_node.day),
-            System.UInt32.Parse(hourminut[0]),
-            System.UInt32.Parse(hourminut[1]),
-            System.UInt32.Parse(_node.lifetime),
+            System.Int32.Parse(_node.day),
+            System.Int32.Parse(hourminut[0]),
+            System.Int32.Parse(hourminut[1]),
+            System.Int32.Parse(_node.lifetime),
             _node.text,
             _node.minitext,
             (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype),

@@ -11,8 +11,7 @@ public class Edge : GraphEdge
         public enum ENUM
         {
             OPENING,
-            BEERLIGHT,
-            BEERBROWN,
+            BEER,
             DOOR,
             KEYS,
             PHONE_POLICE,

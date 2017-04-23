@@ -27,10 +27,10 @@ public class Node : GraphNode
         HAPPY,
         INFIRE
     }
-    public uint m_day;
-    public uint m_hour;
-    public uint m_minut;
-    private UInt32 m_nTicksDuration;
+    private int m_day;
+    private int m_hour;
+    private int m_minut;
+    private int m_nTicksDuration;
     private string m_text;
     private string m_minitext;
     private eTextMiniType m_eTextMiniType;
@@ -43,10 +43,10 @@ public class Node : GraphNode
     }
 
     public Node(
-        uint _day,
-        uint _hour,
-        uint _minut,
-        UInt32 _nTicks,
+        int _day,
+        int _hour,
+        int _minut,
+        int _nTicks,
         string _text,
         string _minitext,
         eTextMiniType _eTextMiniType,
@@ -60,6 +60,46 @@ public class Node : GraphNode
         m_minitext = _minitext;
         m_eTextMiniType = _eTextMiniType;
         m_eMood = _eMood;
+    }
+
+    public int GetDay()
+    {
+        return m_day;
+    }
+
+    public int GetHour()
+    {
+        return m_hour;
+    }
+
+    public int GetMinut()
+    {
+        return m_minut;
+    }
+
+    public int GetTicksDuration()
+    {
+        return m_nTicksDuration;
+    }
+
+    public string GetText()
+    {
+        return m_text;
+    }
+
+    public string GetMiniText()
+    {
+        return m_minitext;
+    }
+
+    public eTextMiniType GetTextMiniType()
+    {
+        return m_eTextMiniType;
+    }
+
+    public eMood GetMood()
+    {
+        return m_eMood;
     }
 
     public override void OnEnter()
