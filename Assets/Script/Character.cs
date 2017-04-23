@@ -6,7 +6,8 @@ using System;
 
 public class Character : MonoBehaviour {
 
-	public EditorNode m_startNode;
+	public Sprite mainSprite;
+	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
     public Node currentNode;
 
@@ -79,7 +80,7 @@ public class Character : MonoBehaviour {
 	{
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
-		PrintGraph(currentGraph.GetCurrentNode());
+		//PrintGraph(currentGraph.GetCurrentNode());
 
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
@@ -184,6 +185,7 @@ public class Character : MonoBehaviour {
     public void OnCharacEnter()
     {
         //PLAY DING DING SOUND
+		DisplayWhisper(TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY).m_whisper);
     }
 
     public void OnEnterFinished()
