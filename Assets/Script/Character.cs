@@ -130,6 +130,9 @@ public class Character : MonoBehaviour {
 			m_whisperTalk.StopDisplayWhisper ();
 		}
 
+
+		//idea if dans le bar et pas encore le temps, dire des phrase NPC
+
 		// check StartTime
 		if(currentNode.GetDay() == -1 ||
 			(currentNode.GetDay() == currentGameTime.day &&
@@ -150,6 +153,16 @@ public class Character : MonoBehaviour {
 				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 			if(!TVisOn)
 				currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TVOFF));
+
+
+			//Special Option
+			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
+				if (!isOnAnimation) {
+					this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+					isOnAnimation = true;
+				}
+				return;
+			}
 
 			if (currentNode.GetTextMiniType() == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
