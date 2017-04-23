@@ -28,6 +28,14 @@ namespace Libs.Graph
                     return transittedNode;
                 }
             }
+            foreach (GraphEdge e in m_edges)
+            {
+                GraphNode transittedNode = currNode;
+                if (e.TransitionDefault(out transittedNode))
+                {
+                    return transittedNode;
+                }
+            }
             return currNode;
         }
 

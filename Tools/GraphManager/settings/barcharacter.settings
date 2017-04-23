@@ -11,29 +11,29 @@ document.Settings =
 			{"variable": "minitext", "label": "Mini Text", "type": "textarea", "defaultvalue":""},
 			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"default", "values":
 				[
-					{"value": "default",			"label": "default"},
-					{"value": "characterentry",		"label": "character enter"},
-					{"value": "characterexit",		"label": "character exit"},
-					{"value": "beer",				"label": "beer"},
-					{"value": "drink",				"label": "drink"},
-					{"value": "wait",				"label": "wait"},
-					{"value": "tv",					"label": "tv"},
-					{"value": "notv",				"label": "notv"},
-					{"value": "tvon",				"label": "tvon"},
-					{"value": "tvoff",				"label": "tvoff"},
-					{"value": "fire",				"label": "fire"},
-					{"value": "endoftheday",		"label": "endoftheday"},
-					{"value": "hygiena",			"label": "hygiena"},
-					{"value": "minor",				"label": "minor"},
-					{"value": "drunkguy",			"label": "drunk guy"},
-					{"value": "fight",				"label": "fight"}
+					{"value": "DEFAULT",			"label": "default"},
+					{"value": "CHARACTERENTRY",		"label": "character enter"},
+					{"value": "CHARACTEREXIT",		"label": "character exit"},
+					{"value": "BEER",				"label": "beer"},
+					{"value": "DRINK",				"label": "drink"},
+					{"value": "WAIT",				"label": "wait"},
+					{"value": "TV",					"label": "tv"},
+					{"value": "NOTV",				"label": "notv"},
+					{"value": "TVON",				"label": "tvon"},
+					{"value": "TVOFF",				"label": "tvoff"},
+					{"value": "FIRE",				"label": "fire"},
+					{"value": "ENDOFTHEDAY",		"label": "endoftheday"},
+					{"value": "HYGIENA",			"label": "hygiena"},
+					{"value": "MINOR",				"label": "minor"},
+					{"value": "DRUNKGUY",			"label": "drunk guy"},
+					{"value": "FIGHT",				"label": "fight"}
 				]
 			},
 			{"variable": "mood", "label": "Mood", "type": "combobox", "defaultvalue":"default", "values":
 				[
-					{"value": "default",			"label": "default"},
-					{"value": "happy",				"label": "happy"},
-					{"value": "infire",				"label": "I'm on fiiireeee !"}
+					{"value": "DEFAULT",			"label": "default"},
+					{"value": "HAPPY",				"label": "happy"},
+					{"value": "INFIRE",				"label": "I'm on fiiireeee !"}
 				]
 			}
 		],
@@ -68,11 +68,7 @@ document.Settings =
 			{
 				"defaultvalue": "",
 				"values": [
-					{"value": "",			"label": "None"},
-					{"value": "to",			"label": "To"},
-					{"value": "middle",		"label": "Middle"},
-					{"value": "from",		"label": "From"},
-					{"value": "to;from",	"label": "To &amp; From"}
+					{"value": "to",			"label": "To"}
 				]
 			}
 		},

@@ -6,9 +6,9 @@ namespace Libs.Graph
 {
     public abstract class GraphEdge
     {
-        private GraphNode m_enter;
-        private GraphNode m_exit;
-        private Condition m_condition;
+        protected GraphNode m_enter;
+        protected GraphNode m_exit;
+        protected Condition m_condition;
 
         public abstract class Condition
         {
@@ -37,5 +37,7 @@ namespace Libs.Graph
             }
             return false;
         }
+
+        public abstract bool TransitionDefault(out GraphNode _outNode);
     }
 }

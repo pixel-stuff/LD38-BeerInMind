@@ -141,7 +141,7 @@ MonoBehaviour:
     completedText: 
     lifetime: 0
     edges: []
-  fileName: footeu.json
+  fileName: test.json
   m_whisperTalk: {fileID: 0}
   isOnBar: 0
   finalPlace: {x: 0, y: 0, z: 0}

@@ -11,8 +11,7 @@ public class Edge : GraphEdge
         public enum ENUM
         {
             OPENING,
-            BEERLIGHT,
-            BEERBROWN,
+            BEER,
             DOOR,
             KEYS,
             PHONE_POLICE,
@@ -43,5 +42,16 @@ public class Edge : GraphEdge
 
     public Edge(GraphNode _enter, GraphNode _exit, Condition _condition) : base(_enter, _exit, _condition)
     {
+    }
+
+    public override bool TransitionDefault(out GraphNode _outNode)
+    {
+        if (m_condition.Equals(Condition.ENUM.DEFAULT))
+        {
+            _outNode = m_exit;
+            return true;
+        }
+        _outNode = m_enter;
+        return false;
     }
 }
