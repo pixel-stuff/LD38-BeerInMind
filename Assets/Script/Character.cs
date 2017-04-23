@@ -6,6 +6,11 @@ using System;
 
 public class Character : MonoBehaviour {
 
+	static Action<Character> CharacterHightlight;
+
+	public Sprite onFootHighlightSprite;
+	public Sprite onFootSprite;
+
 	public Sprite mainSprite;
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
@@ -85,7 +90,17 @@ public class Character : MonoBehaviour {
 		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		TimeManager.OnTicTriggered += OnTick;
+		TimeManager.m_DayEnding += OnEndOfDay;
 		m_isWaitingForClick = false;
+		Character.CharacterHightlight += OnCharacterHightlight;
+	}
+
+	void UpdateOutline(bool outline) {
+		MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+		this.GetComponent<SpriteRenderer>().GetPropertyBlock(mpb);
+		mpb.SetFloat("_Outline", outline ? 1f : 0);
+		mpb.SetColor("_OutlineColor", Color.white);
+		this.GetComponent<SpriteRenderer>().SetPropertyBlock(mpb);
 	}
 
 	void subcribeAll(){
@@ -122,6 +137,8 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
+
+		UpdateOutline (true);
 		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
@@ -227,14 +244,14 @@ public class Character : MonoBehaviour {
         if (m_isWaitingForClick)
         {
             m_isWaitingForClick = false;
+			Character.CharacterHightlight (this);
 
 				if (currentNode.GetText() != "" || textStruct.m_mainTalk != "") { // OU PRECONSTRUIT TEXT
-	            m_whisperTalk.StopDisplayWhisper();
-				BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
-				subcribeAll ();
-	            //TODO: Change State
-						}
+		            m_whisperTalk.StopDisplayWhisper();
+					BubbleAlreadyDisplayed = false;
+					MainTalkManager.m_instance.StartDisplayAnimation((currentNode.GetText() != "") ? currentNode.GetText() : textStruct.m_mainTalk,mainSprite);
+					subcribeAll ();
+				}
         }
     }
 
@@ -255,5 +272,18 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-	//currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
+	void OnEndOfDay() {
+		if (!isOnAnimation) {
+			this.GetComponent<Animator> ().SetTrigger ("ExitBar");
+			isOnAnimation = true;
+		}
+	}
+
+	void OnCharacterHightlight(Character cha) {
+		if (this == cha) {
+			this.GetComponent<SpriteRenderer> ().sprite = onFootHighlightSprite;
+		} else {
+			this.GetComponent<SpriteRenderer> ().sprite = onFootSprite;
+		}
+	}
 }
