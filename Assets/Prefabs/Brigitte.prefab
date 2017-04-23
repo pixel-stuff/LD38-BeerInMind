@@ -295,10 +295,12 @@ MonoBehaviour:
         completedText: 
         lifetime: 0
         edges: []
-  fileName: brigitte.json
+  fileName: brigitte_lundi.json
   m_whisperTalk: {fileID: 114919093851182536}
   isOnBar: 0
+  isOnAnimation: 0
   finalPlace: {x: 4, y: 4, z: 0}
+  doorPlace: {x: 0, y: 0, z: 0}
 --- !u!114 &114919093851182536
 MonoBehaviour:
   m_ObjectHideFlags: 1

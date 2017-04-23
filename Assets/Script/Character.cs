@@ -64,7 +64,7 @@ public class Character : MonoBehaviour {
 
 
 
-
+		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		m_isWaitingForClick = false;
 
@@ -156,6 +156,15 @@ public class Character : MonoBehaviour {
             //TODO: Change State
         }
     }
+
+	void TvIsTrigger(bool isOn){
+		Debug.Log ("jerem was here : " + isOn);
+		if(isOn)
+			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
+		if(!isOn)
+			currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV)); //TODO change on NO TV
+	
+	}
 
 	//currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
 }
