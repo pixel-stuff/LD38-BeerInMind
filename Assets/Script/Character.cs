@@ -24,16 +24,25 @@ public class Character : MonoBehaviour {
     public Libs.Graph.GraphNode CreateGraphNode(Libs.Graph.JSONNode _node)
     {
         char hourminutdelimiter = ':';
+        Debug.Log(_node.hourminut);
         string[] hourminut = _node.hourminut.Split(hourminutdelimiter);
+        int day = -1;
+        int hour = -1;
+        int minut = -1;
+        int lifetime = 0;
+        System.Int32.TryParse(_node.day, out day);
+        System.Int32.TryParse(hourminut[0], out hour);
+        System.Int32.TryParse(hourminut[1], out minut);
+        System.Int32.TryParse(_node.lifetime, out lifetime);
         return new Node(
-            System.Int32.Parse(_node.day),
-            System.Int32.Parse(hourminut[0]),
-            System.Int32.Parse(hourminut[1]),
-            System.Int32.Parse(_node.lifetime),
+            day,
+            hour,
+            minut,
+            lifetime,
             _node.text,
             _node.minitext,
-            (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype),
-            (Node.eMood)System.Enum.Parse(typeof(Node.eMood), _node.mood)
+            (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype, true),
+            (Node.eMood)System.Enum.Parse(typeof(Node.eMood), _node.mood, true)
             );
     }
 
