@@ -64,7 +64,7 @@ public class Character : MonoBehaviour {
 
 		PrintGraph(currentGraph.GetCurrentNode());
 
-		m_whisperTalk.m_tickDisplayOverS += DisplayWhisperStop;
+		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		m_isWaitingForClick = false;
 
 	}
