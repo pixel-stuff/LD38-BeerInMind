@@ -45,7 +45,7 @@ public class TextManager : MonoBehaviour {
 		//Debug.Log ("START READING FILE");
 		foreach (string line in lines) {
 
-			string[] parts = line.Split (',');
+			string[] parts = line.Split (';');
 
 			TextStruct txtStruc = new TextStruct ();
 			string str = parts[0];
