@@ -223,9 +223,18 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
+		bool DiscussionAvoidWhiper = false;
 		if (currentNode == null || currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
+			Node oldNode = currentNode;
 			currentNode = (Node)currentGraph.GetCurrentNode();
+			//Discussion
+			if (oldNode != null) {
+				if ((currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) && (oldNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION)) {
+					DiscussionAvoidWhiper = true;
+				}
+			}
+
 			ActualNodeName = currentNode.GetLabel (); //DEBUG
 			ActualStartTime = currentNode.GetHour()+ " h " + currentNode.GetMinut();
 			tickTimeout = (currentNode.GetTicksDuration ()== 1) ? 2: currentNode.GetTicksDuration ();
@@ -288,6 +297,10 @@ public class Character : MonoBehaviour {
 					textStruct.m_mainTalk = currentNode.GetText ();
 				}
 
+				if (DiscussionAvoidWhiper) {
+					DisplayMainTalk ();
+					return;
+				}
 				DisplayWhisper (textStruct.m_whisper);
 
 			}
@@ -352,34 +365,39 @@ public class Character : MonoBehaviour {
         {
             m_isWaitingForClick = false;
 
-			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
-		            m_whisperTalk.StopDisplayWhisper();
-					BubbleAlreadyDisplayed = false;
-
-				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
-
-				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
-					isOnDicussion = true;
-					string answer1 = "";
-					string answer2 = "";
-					foreach (GraphEdge edge in currentNode.Edges) {
-						Edge e = (Edge)edge;
-						if (e.Text != "") {
-							if (answer1 == "") {
-								answer1 = e.Text;
-								answer2 = e.Text;
-							} else {
-								answer2 = e.Text;
-							}
-						}
-					}
-					BarmanManager.m_instance.Says (answer1, answer2);
-				}
-				Character.CharacterHightlight (this);
-				subcribeAll ();
-				}
+			DisplayMainTalk ();
         }
     }
+
+	void DisplayMainTalk() {
+	
+		if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
+			m_whisperTalk.StopDisplayWhisper();
+			BubbleAlreadyDisplayed = false;
+
+			MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
+
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+				isOnDicussion = true;
+				string answer1 = "";
+				string answer2 = "";
+				foreach (GraphEdge edge in currentNode.Edges) {
+					Edge e = (Edge)edge;
+					if (e.Text != "") {
+						if (answer1 == "") {
+							answer1 = e.Text;
+							answer2 = e.Text;
+						} else {
+							answer2 = e.Text;
+						}
+					}
+				}
+				BarmanManager.m_instance.Says (answer1, answer2);
+			}
+			Character.CharacterHightlight (this);
+			subcribeAll ();
+		}
+	}
 
 	void TvIsTrigger(bool isOn){
 		TVisOn = isOn;
