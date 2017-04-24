@@ -9,6 +9,8 @@ public class Character : MonoBehaviour {
 
 	static Action<Character> CharacterHightlight;
 
+	public String ActualNodeName = "";
+
 	public Sprite standSprite;
 	public Sprite finalSprite;
 	public Sprite mainSprite;
@@ -85,6 +87,11 @@ public class Character : MonoBehaviour {
         );
         return new Edge(from, to, condition, _edge.label);
     }
+	bool IsEventOnTime(){
+		return currentNode.GetDay () == -1 ||
+		(currentNode.GetDay () == currentGameTime.day &&
+		((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes)));
+	}
 
     // Use this for initialization
     void Start ()
@@ -190,9 +197,11 @@ public class Character : MonoBehaviour {
         }
     }
 
+
+
     void Update()
     {
-
+		ActualNodeName = currentNode.GetTextMiniType ().ToString ();
 		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
@@ -206,9 +215,7 @@ public class Character : MonoBehaviour {
 		}
 
 		// check StartTime
-		if (currentNode.GetDay () == -1 ||
-		   (currentNode.GetDay () == currentGameTime.day &&
-		   ((currentNode.GetHour () * 100 + currentNode.GetMinut ()) < (currentGameTime.hours * 100 + currentGameTime.minutes)))) {
+		if (IsEventOnTime()) {
 
 			if (!isOnBar) {
 				if (!isOnAnimation) {
@@ -383,7 +390,7 @@ public class Character : MonoBehaviour {
 
 	void OnTick(GameTime gametime){
 		currentGameTime = gametime;
-		if (isOnBar) {
+		if (isOnBar && IsEventOnTime()) {
 			if (!isOnAnimation)
 				tickTimeout--;
 			if (tickTimeout <= 0) {
