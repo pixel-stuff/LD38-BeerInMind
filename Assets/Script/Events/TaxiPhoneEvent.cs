@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class TaxiPhoneEvent : Event {
+public class TaxiPhoneEvent : MonoBehaviour {
+
+	public static Action m_mainTrigger;
+
 	public void OnMouseUp()
 	{
 		if (m_mainTrigger != null) {
