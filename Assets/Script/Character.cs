@@ -187,6 +187,7 @@ public class Character : MonoBehaviour {
 			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
 					this.GetComponent<Animation> ().Play("ExitBar");
+					tickTimeout = 0;
 					isOnAnimation = true;
 				}
 				return;
@@ -312,17 +313,21 @@ public class Character : MonoBehaviour {
 
 	void OnTick(GameTime gametime){
 		currentGameTime = gametime;
-		if(!isOnAnimation)
-			tickTimeout--;
-		if (tickTimeout <= 0) {
-			currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.TIMEOUT));
+		if (isOnBar) {
+			if (!isOnAnimation)
+				tickTimeout--;
+			if (tickTimeout <= 0) {
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+			}
 		}
 	}
 
 	void OnEndOfDay() {
-		if (!isOnAnimation) {
-			this.GetComponent<Animation> ().Play("ExitBar");
-			isOnAnimation = true;
+		if (isOnBar) {
+			if (!isOnAnimation) {
+				this.GetComponent<Animation> ().Play ("ExitBar");
+				isOnAnimation = true;
+			}
 		}
 	}
 
