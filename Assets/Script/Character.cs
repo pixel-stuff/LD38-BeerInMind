@@ -118,10 +118,10 @@ public class Character : MonoBehaviour {
 		DraughtEvent.m_mainTrigger += OnBeerReady;
 
 
-		if (BarmanManager.m_instance != null) {
+			if (BarmanManager.m_instance != null) 
 			if (BarmanManager.m_instance.Answer != null)
 				foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
-					DraughtEvent.m_mainTrigger -= (d as Action);
+				BarmanManager.m_instance.Answer -= (d as Action<string>);
 
 			BarmanManager.m_instance.Answer += OnAnswerRespond;
 
@@ -161,7 +161,7 @@ public class Character : MonoBehaviour {
 					FreeBeerEvent.m_mainTrigger -= (d as Action);
 
 			FreeBeerEvent.m_mainTrigger += OnFreeBeer;
-		}
+
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -313,7 +313,7 @@ public class Character : MonoBehaviour {
         if (m_isWaitingForClick)
         {
             m_isWaitingForClick = false;
-			Character.CharacterHightlight (this);
+
 
 			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
 		            m_whisperTalk.StopDisplayWhisper();
@@ -336,8 +336,8 @@ public class Character : MonoBehaviour {
 					}
 					BarmanManager.m_instance.Says (answer1, answer2);
 				}
-
-					subcribeAll ();
+				Character.CharacterHightlight (this);
+				subcribeAll ();
 				}
         }
     }
