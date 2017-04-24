@@ -116,12 +116,45 @@ public class Character : MonoBehaviour {
 			DraughtEvent.m_mainTrigger -= (d as Action);
 
 		DraughtEvent.m_mainTrigger += OnBeerReady;
+
+
 		if (BarmanManager.m_instance != null) {
 			if (BarmanManager.m_instance.Answer != null)
 				foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
 					DraughtEvent.m_mainTrigger -= (d as Action);
 
 			BarmanManager.m_instance.Answer += OnAnswerRespond;
+
+
+			if(BarClosingEvent.m_mainTrigger != null)
+				foreach (Delegate d in BarClosingEvent.m_mainTrigger.GetInvocationList())
+					BarClosingEvent.m_mainTrigger -= (d as Action);
+
+			BarClosingEvent.m_mainTrigger += OnBarClosing;
+
+			if(PolicePhoneEvent.m_mainTrigger != null)
+				foreach (Delegate d in PolicePhoneEvent.m_mainTrigger.GetInvocationList())
+					PolicePhoneEvent.m_mainTrigger -= (d as Action);
+
+			PolicePhoneEvent.m_mainTrigger += OnPoliceCalled;
+
+			if(TaxiPhoneEvent.m_mainTrigger != null)
+				foreach (Delegate d in TaxiPhoneEvent.m_mainTrigger.GetInvocationList())
+					TaxiPhoneEvent.m_mainTrigger -= (d as Action);
+
+			TaxiPhoneEvent.m_mainTrigger += OnTaxiCalled;
+
+			if(KeysEvent.m_mainTrigger != null)
+				foreach (Delegate d in KeysEvent.m_mainTrigger.GetInvocationList())
+					KeysEvent.m_mainTrigger -= (d as Action);
+
+			KeysEvent.m_mainTrigger += OnKeyTaken;
+
+			if(DoorEvent.m_mainTrigger != null)
+				foreach (Delegate d in DoorEvent.m_mainTrigger.GetInvocationList())
+					DoorEvent.m_mainTrigger -= (d as Action);
+
+			DoorEvent.m_mainTrigger += OnGetOut;
 		}
 	}
 
@@ -309,6 +342,26 @@ public class Character : MonoBehaviour {
 
 	void OnBeerReady(){
 		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
+	}
+
+	void OnBarClosing(){
+		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.BARCLOSED));
+	}
+
+	void OnPoliceCalled(){
+		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.PHONE_POLICE));
+	}
+
+	void OnTaxiCalled() {
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.PHONE_TAXI));
+	}
+
+	void OnKeyTaken() {
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.KEYS));
+	}
+
+	void OnGetOut() {
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.DOOR));
 	}
 
 	void OnAnswerRespond(string response){

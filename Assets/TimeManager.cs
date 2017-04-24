@@ -71,5 +71,8 @@ public class TimeManager : MonoBehaviour {
 		if (m_DayEnding != null) {
 			m_DayEnding ();
 		}
+		if (BarClosingEvent.m_mainTrigger != null) {
+			BarClosingEvent.m_mainTrigger ();
+		}
 	}
 }
