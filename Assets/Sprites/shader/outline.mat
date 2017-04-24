@@ -8,7 +8,7 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: outline
   m_Shader: {fileID: 4800000, guid: 95af162d2a7244d59b1800a74b6aa49b, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA HIGHQUALITY_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
@@ -54,7 +54,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - HighQuality: 0
+    - HighQuality: 1
     - PixelSnap: 0
     - _BumpScale: 1
     - _Cutoff: 0.5
