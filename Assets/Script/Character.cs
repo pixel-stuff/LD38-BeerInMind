@@ -12,6 +12,8 @@ public class Character : MonoBehaviour {
 	public Sprite standSprite;
 	public Sprite finalSprite;
 	public Sprite mainSprite;
+
+	public bool whisperOnRight= true;
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
     public Node currentNode;
@@ -99,7 +101,7 @@ public class Character : MonoBehaviour {
 		m_isWaitingForClick = false;
 		Character.CharacterHightlight += OnCharacterHightlight;
 		UpdateOutline (false);
-		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
+		//this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 	}
 
 	void UpdateOutline(bool outline) {
@@ -273,7 +275,7 @@ public class Character : MonoBehaviour {
     {
 		BubbleAlreadyDisplayed = true;
         m_isWaitingForClick = true;
-		m_whisperTalk.StartDisplayWhisper(text,displayOnRight);
+		m_whisperTalk.StartDisplayWhisper(text,whisperOnRight);
     }
 
 	void DisplayWhisperStop(){
