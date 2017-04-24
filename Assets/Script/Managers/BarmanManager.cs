@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class BarmanManager : MonoBehaviour {
 
@@ -24,8 +25,8 @@ public class BarmanManager : MonoBehaviour {
 	public GameObject m_firstBulle;
 	public GameObject m_answerClickable;
 
-	public TextMesh m_answer1;
-	public TextMesh m_answer2;
+	public Text m_answer1;
+	public Text m_answer2;
 
 	public Action<string> Answer; //renvoyer le text cliquer
 
@@ -60,6 +61,5 @@ public class BarmanManager : MonoBehaviour {
 	public void Dismiss(){
 		m_firstBulle.SetActive (false);
 		m_answerClickable.SetActive (false);
-		m_firstBulle.SetActive (false);
 	}
 }
