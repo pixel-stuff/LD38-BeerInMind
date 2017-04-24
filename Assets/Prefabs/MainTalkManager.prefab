@@ -267,7 +267,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -494,6 +494,7 @@ MonoBehaviour:
   m_text: {fileID: 114385569651418914}
   m_name: {fileID: 114214180144049470}
   m_back: {fileID: 1503960487203112}
+  m_isActivate: 0
   m_textToDisplay: I'm a barbie girl in a barbie world
   m_animationDisplayLetterEvery: 0.07
 --- !u!114 &114443442238620908

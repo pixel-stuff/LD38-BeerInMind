@@ -54,7 +54,12 @@ public class MainTalkManager : MonoBehaviour {
 			m_textToDisplay = txt;
 		}
 		m_name.text = caracName;
-		RestartInit ();
+
+		m_bulle.SetActive (false);
+		m_back.SetActive (false);
+		m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+		m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
+
 		this.GetComponent<Animation> ().Play ();
 		TimeManager.timePlay = false;
 		if(BarmanManager.m_instance != null)
