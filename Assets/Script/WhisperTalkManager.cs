@@ -30,9 +30,9 @@ public class WhisperTalkManager : MonoBehaviour {
 		} else {
 			m_container.transform.localPosition = new Vector3 (-0.42f,0.39f,0.0f);
 			Vector3 rot = m_container.transform.rotation.eulerAngles;
-			rot = new Vector3(rot.x,-180f,rot.z);
-			m_container.transform.rotation = Quaternion.Euler(rot);
 			rot = new Vector3(rot.x,180f,rot.z);
+			m_container.transform.rotation = Quaternion.Euler(rot);
+			rot = new Vector3(rot.x,-180f,rot.z);
 			m_text.transform.rotation = Quaternion.Euler(rot);
 		}
 	}
