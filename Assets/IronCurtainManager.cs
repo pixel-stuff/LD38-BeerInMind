@@ -9,6 +9,7 @@ public class IronCurtainManager : MonoBehaviour {
 	public static IronCurtainManager m_instance;
 	public Text m_textExplicatif;
 	public Text m_buttonText;
+	public bool m_isActivate = false;
 
 	void Awake(){
 		if(m_instance == null){
@@ -28,30 +29,42 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void EndTheDay(){
+		m_isActivate = true;
 		GameStateManager.setGameState (GameState.EndOfTheDay);
 		TimeManager.timePlay = false;
 		this.GetComponent<Animation> ().Play ("CurtainApparition");
 	}
 
 	public void StartNextDay(){
+		m_buttonText.text = "Start next day ";
 		GameStateManager.setGameState (GameState.Playing);
 		TimeManager.timePlay = true;
 		this.GetComponent<Animation> ().Play ("CurtainRemove");
+
+		StartCoroutine (CoolDownControl ());
 	}
 
 	public void SetGameOver(string message){
+		m_isActivate = true;
+		m_buttonText.text = "Restart From Monday ";
 		GameStateManager.setGameState (GameState.GameOver);
 		TimeManager.timePlay = false;
 		this.GetComponent<Animation> ().Play ("CurtainApparition");
 	}
 
 	public void ButtonClick(){
-		if (GameStateManager.getGameState () == GameState.EndOfTheDay) {
-			StartNextDay ();
-		} else if (GameStateManager.getGameState () == GameState.EndOfTheDay) {
+		Debug.Log ("BUTTON CLICK");
+		 if (GameStateManager.getGameState () == GameState.GameOver) {
 			GameStateManager.setGameState (GameState.Playing);
 			SceneManager.LoadScene ("levelScene");
+		} else {
+			StartNextDay ();
 		}
+	}
+
+	public IEnumerator CoolDownControl(){
+		yield return new WaitForSeconds (0.5f);
+		m_isActivate = false;
 	}
 
 	public void OnDestroy(){

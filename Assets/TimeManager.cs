@@ -28,7 +28,8 @@ public class TimeManager : MonoBehaviour {
 		m_currentTime.hours = 18;
 		m_currentTime.minutes = 0;
 		currentRealTime = realTime;
-		StartDay (); //-> Make the call from somewhere else
+		//StartDay (); //-> Make the call from somewhere else
+
 	}
 
 	public void StartDay(){
