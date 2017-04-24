@@ -123,6 +123,24 @@ public class Character : MonoBehaviour {
 		this.GetComponent<SpriteRenderer>().SetPropertyBlock(mpb);
 	}
 
+	void OnDestroy(){
+		TVEvent.m_mainTrigger -= TvIsTrigger;
+		m_whisperTalk.m_tickDisplayOver -= DisplayWhisperStop;
+		TimeManager.OnTicTriggered -= OnTick;
+		TimeManager.m_DayEnding -= OnEndOfDay;
+		Character.CharacterHightlight -= OnCharacterHightlight;
+
+		DraughtEvent.m_mainTrigger -= OnBeerReady;
+		BarmanManager.m_instance.Answer -= OnAnswerRespond;
+		BarClosingEvent.m_mainTrigger -= OnBarClosing;
+		PolicePhoneEvent.m_mainTrigger -= OnPoliceCalled;
+		TaxiPhoneEvent.m_mainTrigger -= OnTaxiCalled;
+		KeysEvent.m_mainTrigger -= OnKeyTaken;
+		DoorEvent.m_mainTrigger -= OnGetOut;
+		FreeBeerEvent.m_mainTrigger -= OnFreeBeer;
+	}
+
+
 	void subcribeAll(){
 		if(DraughtEvent.m_mainTrigger != null)
 		foreach (Delegate d in DraughtEvent.m_mainTrigger.GetInvocationList())
