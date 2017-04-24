@@ -10,6 +10,7 @@ public class IronCurtainManager : MonoBehaviour {
 	public Text m_textExplicatif;
 	public Text m_buttonText;
 	public bool m_isActivate = false;
+	public AudioClip m_background;
 
 	void Awake(){
 		if(m_instance == null){
@@ -71,5 +72,15 @@ public class IronCurtainManager : MonoBehaviour {
 		TimeManager.m_DayEnding -= EndTheDay;
 	}
 
+	public void PlayMusic(){
+		if (this.GetComponent<AudioSource> ().isPlaying) {
+			this.GetComponent<AudioSource> ().UnPause ();
+		}else{
+			this.GetComponent<AudioSource> ().Play();
+		}
+	}
 
+	public void StopMusic(){
+		this.GetComponent<AudioSource> ().Stop ();
+	}
 }
