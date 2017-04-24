@@ -18,7 +18,7 @@ public class Character : MonoBehaviour {
 	public bool whisperOnRight= true;
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
-    public Node currentNode;
+	public Node currentNode = null;
 
     public string fileName;
 
@@ -202,6 +202,10 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
+		if (currentNode == null) {
+			currentNode = (Node)currentGraph.GetCurrentNode();
+		}
+
 		ActualNodeName = currentNode.GetLabel ();
 		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
