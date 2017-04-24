@@ -303,6 +303,23 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: whisperOnRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -424,6 +441,18 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -779,6 +808,23 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: whisperOnRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -1004,6 +1050,18 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -1162,12 +1220,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114417835510542454, guid: 01be2e618802d4293851f9bacf60a953,
-        type: 2}
-      propertyPath: m_hover
-      value: 
-      objectReference: {fileID: 21300000, guid: 232140f71f12847669492c9f9e365baf,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 01be2e618802d4293851f9bacf60a953, type: 2}
   m_IsPrefabParent: 0
@@ -2108,6 +2160,23 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: whisperOnRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -2234,6 +2303,18 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -2350,6 +2431,23 @@ Prefab:
       propertyPath: m_tickAlive
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: whisperOnRight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_hoverMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: 01bb6195bb82f43a7bfd53d5c7cf1482,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_clicMouse
+      value: 
+      objectReference: {fileID: 21300000, guid: fce74eee4e617469d822c0d38a1b75ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
