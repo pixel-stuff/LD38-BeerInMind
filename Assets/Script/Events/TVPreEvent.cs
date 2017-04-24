@@ -20,6 +20,9 @@ public class TVPreEvent : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+		
 		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.Auto);
 	}
 
