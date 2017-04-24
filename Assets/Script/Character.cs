@@ -9,6 +9,8 @@ public class Character : MonoBehaviour {
 
 	static Action<Character> CharacterHightlight;
 
+	public GameObject m_keys;
+
 	public String ActualNodeName = "";
 	public String ActualStartTime = "";
 	public int tickTimeout = -1;
@@ -268,7 +270,13 @@ public class Character : MonoBehaviour {
 				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TV));
 			if (!TVisOn)
 				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TVOFF));
-
+			//KEY : 
+			foreach (GraphEdge edge in currentNode.Edges) {
+				if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.KEYS))) {
+					m_keys.GetComponent<SpriteRenderer> ().enabled = true;
+					m_keys.GetComponent<BoxCollider2D> ().enabled = true;
+				} 
+			}
 
 			//Special Option
 			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
