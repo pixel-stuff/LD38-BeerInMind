@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 public class TVPreEvent : MonoBehaviour {
 
 	public static Action m_mainTrigger;
+	public Texture2D m_hover;
 
 	public void OnMouseUp()
 	{
@@ -16,4 +17,15 @@ public class TVPreEvent : MonoBehaviour {
 		
 		UIClickManager.m_instance.StartRemoteApparition ();
 	}
+
+	void OnMouseEnter()
+	{
+		//Cursor.SetCursor (m_hover, Vector2.zero, CursorMode.Auto);
+	}
+
+	void OnMouseExit()
+	{
+		//Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+	}
+
 }
