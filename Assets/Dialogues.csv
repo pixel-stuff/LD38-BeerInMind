@@ -5,18 +5,18 @@ CHARACTEREXIT;See you !;
 CHARACTEREXIT;I hate my life !;
 CHARACTEREXIT;I drank too much;
 BEER;Beer ...;A lager, please
-BEER;... thisrty;I'd like a lager
+BEER;... thirsty;I'd like a lager
 BEER;Waiter !;Could you give me a lager please ?
 BEER;Please ?;I want a lager
-BEER;I'm gonna die ...;Barman, a lager please
+BEER;I'm so thirsty;Barman, a lager please
 BEER;Lager !;I need a lager
 BEER;Lager !;A lager would be nice
 DRINK;Glou Glou Glou !;Thanks !
 DRINK;Glou Glou;The service is fast here!
 DRINK;Glou;Best beer ever !
 DRINK;Gloup !;Good !
-DRINK;aaaaah !;Perfect !
-DRINK;aaaaah !;I love this place
+DRINK;ahhh !;Perfect !
+DRINK;aaah !;I love this place
 DRINK;GlouGlou;Beer is life
 DRINK;Yeah :);Right on time !
 WAIT;I'm waiting;Will i get that beer one day ?
@@ -40,7 +40,7 @@ DEFAULT;... trump ..;Did you see what Trump did ?
 DEFAULT;Cat ...;I think my cat doesn't love me ...
 DEFAULT;snakes !!!;Where the tail's snake start ?
 DEFAULT;Gloup !;I'll stop drinking after this one ...
-DEFAULT;my mom ...;Do you know how I can inherit quicker ?
+DEFAULT;my mom ...;Do you know how I can inherit quicker ? 
 DEFAULT;hide the body ...;I heard he cuts her in half and hide her in the garden
 DEFAULT;dog !;My dog died .... Please fill me up !
 DEFAULT;16 ...;I can't believe she already has a child ! I mean she's only 16 !
@@ -59,7 +59,7 @@ ENDOFTHEDAY;:(;Time to go back home
 ENDOFTHEDAY;:(;Yeah it's time to go ! I tell my wife i'll be home 2 hours ago
 HYGIENA;messy...;It's messy here
 HYGIENA;clean...;Could anyone clean that table ?
-MINOR;child...;He sold a beer to a child...
+MINOR;child...;He sold a beer to a child... 
 MINOR;shame !;Shame !
 MINOR;14...;I know him, he's 14 !
 DRUNKGUY;uiiouuu !;This guy is so drunk...
