@@ -27,6 +27,7 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_text.text = txt;
 		m_tickBeforeErase = m_tickAlive;
 		m_container.SetActive (true);
+		m_text.color = new Color (0f, 0f, 0f, 0f);
 		m_isDisplay = true;
 		if (!displayOnRight) {
 			m_container.transform.localRotation = Quaternion.identity;
@@ -40,13 +41,15 @@ public class WhisperTalkManager : MonoBehaviour {
 			m_arrow.transform.localPosition = new Vector3(-1.06f,-0.09f,0.0f);
 
 			//m_container.transform.rotation = m_startContainerRotation;
-			//m_text.transform.rotation = Quaternion.Euler(0,180,0);
+			//m_text.transform.rotation = Quaternion.Euler(0,180,0); 
 		}
+		this.GetComponent<Animation> ().Play ("WhisperFadeIn");
 	}
 
 	public void StopDisplayWhisper(){
+		this.GetComponent<Animation> ().Play ("WhisperFadeOut");
 		m_text.text = "";
-		m_container.SetActive (false);
+		//m_container.SetActive (false);
 		m_isDisplay = false;
 	}
 
@@ -64,5 +67,14 @@ public class WhisperTalkManager : MonoBehaviour {
 
 	public void OnDestroy(){
 		TimeManager.OnTicTriggered -= TickHappen;
+	}
+
+	public void DisplayTextFromAnimation(){
+		m_text.color = Color.white;
+	}
+
+	public void RemoveTextFromAnimation(){
+		m_container.SetActive (false);
+		m_text.color = new Color (0f, 0f, 0f, 0f);
 	}
 }

@@ -496,10 +496,13 @@ MonoBehaviour:
   m_back: {fileID: 1503960487203112}
   m_isActivate: 0
   m_middleBubble: {fileID: 1308169867721170}
+  m_leftBubble: {fileID: 1532264653993742}
+  m_rightBubble: {fileID: 1535600097584596}
   m_factorByChar: 18.5
   m_minWidth: 450
+  m_maxWidth: 1500
   m_textToDisplay: I'm a barbie girl in a barbie world
-  m_animationDisplayLetterEvery: 0.07
+  m_animationDisplayLetterEvery: 0.03
 --- !u!114 &114443442238620908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -652,7 +655,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -40, y: 0}
+  m_AnchoredPosition: {x: -40, y: -60}
   m_SizeDelta: {x: 15, y: 193}
   m_Pivot: {x: 1, y: 0}
 --- !u!224 &224414606979477072

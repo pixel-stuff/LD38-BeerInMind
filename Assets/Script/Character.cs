@@ -30,6 +30,7 @@ public class Character : MonoBehaviour {
 	public bool isOnDicussion = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
+	public bool gameOverAlreadyLaunch = false;
 
 	GameTime currentGameTime;
 
@@ -121,6 +122,24 @@ public class Character : MonoBehaviour {
 		mpb.SetColor("_OutlineColor", Color.white);
 		this.GetComponent<SpriteRenderer>().SetPropertyBlock(mpb);
 	}
+
+	void OnDestroy(){
+		TVEvent.m_mainTrigger -= TvIsTrigger;
+		m_whisperTalk.m_tickDisplayOver -= DisplayWhisperStop;
+		TimeManager.OnTicTriggered -= OnTick;
+		TimeManager.m_DayEnding -= OnEndOfDay;
+		Character.CharacterHightlight -= OnCharacterHightlight;
+
+		DraughtEvent.m_mainTrigger -= OnBeerReady;
+		BarmanManager.m_instance.Answer -= OnAnswerRespond;
+		BarClosingEvent.m_mainTrigger -= OnBarClosing;
+		PolicePhoneEvent.m_mainTrigger -= OnPoliceCalled;
+		TaxiPhoneEvent.m_mainTrigger -= OnTaxiCalled;
+		KeysEvent.m_mainTrigger -= OnKeyTaken;
+		DoorEvent.m_mainTrigger -= OnGetOut;
+		FreeBeerEvent.m_mainTrigger -= OnFreeBeer;
+	}
+
 
 	void subcribeAll(){
 		if(DraughtEvent.m_mainTrigger != null)
@@ -248,8 +267,11 @@ public class Character : MonoBehaviour {
 				return;
 			}
 
-			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
-				IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if gameover, lancer l'animation exit
+				if (!gameOverAlreadyLaunch) {
+					gameOverAlreadyLaunch = true;
+					IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
+				}
 				return;
 			}
 
