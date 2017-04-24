@@ -202,7 +202,7 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-		ActualNodeName = currentNode.GetTextMiniType ().ToString ();
+		ActualNodeName = currentNode.GetLabel ();
 		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
