@@ -61,7 +61,7 @@ namespace Libs.Graph
 			foreach (GraphEdge e in m_currentNode.Edges)
 			{
 				GraphNode transittedNode = nextNode;
-				if(e.Transition(new Edge.Condition(Edge.Condition.ENUM.OTHER), out transittedNode,text))
+				if(e.Transition(new Edge.Condition(Edge.Condition.ENUM.OTHER, text), out transittedNode))
 				{
 					nextNode = transittedNode;
 				}

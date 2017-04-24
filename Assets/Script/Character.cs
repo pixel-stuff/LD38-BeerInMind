@@ -77,7 +77,10 @@ public class Character : MonoBehaviour {
 
     public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
     {
-        Edge.Condition condition = new Edge.Condition((Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type));
+        Edge.Condition condition = new Edge.Condition(
+            (Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type),
+            _edge.label
+        );
         return new Edge(from, to, condition, _edge.label);
     }
 
