@@ -68,6 +68,7 @@ public class Character : MonoBehaviour {
 			mood = (Node.eMood)System.Enum.Parse (typeof(Node.eMood), _node.mood, true);
 		}
         return new Node(
+            _node.label,
             day,
             hour,
             minut,

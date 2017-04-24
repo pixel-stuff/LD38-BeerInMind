@@ -31,6 +31,7 @@ public class Node : GraphNode
         HAPPY,
         INFIRE
     }
+    private string m_label;
     private int m_day;
     private int m_hour;
     private int m_minut;
@@ -47,6 +48,7 @@ public class Node : GraphNode
     }
 
     public Node(
+        string _label,
         int _day,
         int _hour,
         int _minut,
@@ -56,6 +58,7 @@ public class Node : GraphNode
         eTextMiniType _eTextMiniType,
         eMood _eMood)
     {
+        m_label = _label;
         m_day = _day;
         m_hour = _hour;
         m_minut = _minut;
@@ -64,6 +67,11 @@ public class Node : GraphNode
         m_minitext = _minitext;
         m_eTextMiniType = _eTextMiniType;
         m_eMood = _eMood;
+    }
+
+    public string GetLabel()
+    {
+        return m_label;
     }
 
     public int GetDay()
