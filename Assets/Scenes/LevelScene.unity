@@ -1721,6 +1721,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300002, guid: f06d0e42d9cf1416b9f33bc3812f9cd7,
         type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: fileName
+      value: journaliste_Jane.json
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95188456089852064, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
