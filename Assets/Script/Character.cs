@@ -345,6 +345,7 @@ public class Character : MonoBehaviour {
 						if (e.Text != "") {
 							if (answer1 == "") {
 								answer1 = e.Text;
+								answer2 = e.Text;
 							} else {
 								answer2 = e.Text;
 							}
