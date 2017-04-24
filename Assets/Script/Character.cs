@@ -402,7 +402,18 @@ public class Character : MonoBehaviour {
 			if (!isOnAnimation)
 				tickTimeout--;
 			if (tickTimeout <= 0) {
-				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+				if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {
+					foreach (GraphEdge edge in currentNode.Edges) {
+						if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT))) {
+							currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+							return;
+						} 
+					}
+					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.OTHER));
+				} else {
+				//Normal Stuff
+					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+				}
 			}
 		}
 	}
