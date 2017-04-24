@@ -51,6 +51,7 @@ public class BarmanManager : MonoBehaviour {
 	}
 
 	public void StartAnswer2Click(){
+		Debug.Log ("2222222");
 		if (Answer != null) {
 			Answer (m_answer2.text);
 		}
