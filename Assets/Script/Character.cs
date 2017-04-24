@@ -202,14 +202,10 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-		if (currentNode == null) {
-			currentNode = (Node)currentGraph.GetCurrentNode();
-		}
-
-		ActualNodeName = currentNode.GetLabel ();
-		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
+		if (currentNode == null || currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
+			ActualNodeName = currentNode.GetLabel (); //DEBUG
 			tickTimeout = currentNode.GetTicksDuration ();
 			BubbleAlreadyDisplayed = false;
 			if (isOnDicussion) {
