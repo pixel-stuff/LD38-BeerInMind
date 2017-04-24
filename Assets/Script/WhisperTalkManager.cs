@@ -10,6 +10,7 @@ public class WhisperTalkManager : MonoBehaviour {
 	public GameObject m_arrow;
 	public int m_tickAlive = 3;
 	private int m_tickBeforeErase = 0;
+	private bool m_isDisplay = false;
 	private Quaternion m_startContainerRotation;
 	private Quaternion m_startTextRotation;
 
@@ -26,6 +27,7 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_text.text = txt;
 		m_tickBeforeErase = m_tickAlive;
 		m_container.SetActive (true);
+		m_isDisplay = true;
 		if (!displayOnRight) {
 			m_container.transform.localRotation = Quaternion.identity;
 			m_text.transform.localRotation = Quaternion.identity;
@@ -45,14 +47,17 @@ public class WhisperTalkManager : MonoBehaviour {
 	public void StopDisplayWhisper(){
 		m_text.text = "";
 		m_container.SetActive (false);
+		m_isDisplay = false;
 	}
 
 	public void TickHappen(GameTime gt){
-		m_tickBeforeErase--;
-		if (m_tickBeforeErase <= 0) {
-			StopDisplayWhisper ();
-			if (m_tickDisplayOver != null) {
-				m_tickDisplayOver();
+		if (m_isDisplay) {
+			m_tickBeforeErase--;
+			if (m_tickBeforeErase <= 0) {
+				StopDisplayWhisper ();
+				if (m_tickDisplayOver != null) {
+					m_tickDisplayOver ();
+				}
 			}
 		}
 	}
