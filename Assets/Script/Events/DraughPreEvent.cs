@@ -13,7 +13,7 @@ public class DraughPreEvent : MonoBehaviour {
 	public void OnMouseUp()
 	{
 
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 		
 		UIClickManager.m_instance.StartDraughApparition ();
@@ -23,7 +23,7 @@ public class DraughPreEvent : MonoBehaviour {
 	public void OnMouseDown()
 	{
 
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		Cursor.SetCursor (m_clic.texture, Vector2.zero, CursorMode.ForceSoftware);
@@ -32,7 +32,7 @@ public class DraughPreEvent : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.ForceSoftware);

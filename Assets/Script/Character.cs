@@ -363,7 +363,7 @@ public class Character : MonoBehaviour {
 
     public void OnMouseUp()
     {
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 		
         if (m_isWaitingForClick)
@@ -408,7 +408,8 @@ public class Character : MonoBehaviour {
 
 	public void OnMouseDown()
 	{
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		//Debug.Log ("DOWN : " + IronCurtainManager.m_instance.m_isActivate + " / " + UIClickManager.m_instance.m_isActivate + " / " + IronCurtainManager.m_instance.m_isActivate + " / " + BarmanManager.m_instance.m_isActive);
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		if (m_isWaitingForClick) {
@@ -419,7 +420,8 @@ public class Character : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
+		//Debug.Log ("ENTER : " + IronCurtainManager.m_instance.m_isActivate + " / " + UIClickManager.m_instance.m_isActivate + " / " + IronCurtainManager.m_instance.m_isActivate + " / " + BarmanManager.m_instance.m_isActive);
+		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		if (m_isWaitingForClick) {
