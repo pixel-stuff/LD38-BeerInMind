@@ -7,6 +7,7 @@ public class WhisperTalkManager : MonoBehaviour {
 
 	public TextMesh m_text;
 	public GameObject m_container;
+	public GameObject m_arrow;
 	public int m_tickAlive = 3;
 	private int m_tickBeforeErase = 0;
 	private Quaternion m_startContainerRotation;
@@ -18,7 +19,7 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_startContainerRotation = m_container.transform.localRotation;
 		m_startTextRotation = m_text.transform.localRotation;
 		StopDisplayWhisper ();
-		//StartDisplayWhisper ("coucou",false);
+		StartDisplayWhisper ("coucou",true);
 		TimeManager.OnTicTriggered += TickHappen;
 	}
 
@@ -30,10 +31,12 @@ public class WhisperTalkManager : MonoBehaviour {
 			m_container.transform.localRotation = Quaternion.identity;
 			m_text.transform.localRotation = Quaternion.identity;
 			m_container.transform.localPosition = new Vector3 (-4.18f,0.39f,0.0f);
+			m_arrow.transform.localPosition = new Vector3(1.06f,-0.09f,0.0f);
 		} else {
-			m_container.transform.localPosition = new Vector3 (-0.42f,0.39f,0.0f);
+			m_container.transform.localPosition = new Vector3 (-1.31f,0.39f,0.0f);
 			m_container.transform.localRotation = Quaternion.identity;
 			m_text.transform.localRotation = Quaternion.identity;
+			m_arrow.transform.localPosition = new Vector3(-1.06f,-0.09f,0.0f);
 
 			//m_container.transform.rotation = m_startContainerRotation;
 			//m_text.transform.rotation = Quaternion.Euler(0,180,0);
