@@ -70,11 +70,11 @@ public class WhisperTalkManager : MonoBehaviour {
 	}
 
 	public void DisplayTextFromAnimation(){
-		m_text.color = Color.white;
+		m_text.color = Color.black;
 	}
 
 	public void RemoveTextFromAnimation(){
 		m_container.SetActive (false);
-		m_text.color = new Color (0f, 0f, 0f, 0f);
+		m_text.color = new Color (1f, 1f, 1f, 0f);
 	}
 }
