@@ -74,8 +74,7 @@ namespace Libs.Graph
 
         public void JSONParse(string _filepath, CreateNode _cbCreateNode, CreateEdge _cbCreateEdge)
         {
-            System.IO.StreamReader reader = new System.IO.StreamReader(_filepath, System.Text.Encoding.Default);
-            string jsonData = reader.ReadToEnd();
+            string jsonData = Libs.IO.File.ReadResource(_filepath);
             Debug.Log(jsonData);
             JSONGraph jsonGraph = JsonUtility.FromJson<JSONGraph>(jsonData);
             

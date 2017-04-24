@@ -104,7 +104,7 @@ public class Character : MonoBehaviour {
     // Use this for initialization
     void Start ()
 	{
-		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
+		currentGraph = new Libs.Graph.Graph(fileName.Replace(".json", ""), CreateGraphNode, CreateGraphEdge);
 
         //Print without parcour check, this can lead to infinite loop in wrong hands
 		//PrintGraph(currentGraph.GetCurrentNode());
