@@ -18,11 +18,11 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_startContainerRotation = m_container.transform.localRotation;
 		m_startTextRotation = m_text.transform.localRotation;
 		StopDisplayWhisper ();
+		//StartDisplayWhisper ("coucou",false);
 		TimeManager.OnTicTriggered += TickHappen;
 	}
 
 	public void StartDisplayWhisper(string txt, bool displayOnRight = true){
-		Debug.Log ("");
 		m_text.text = txt;
 		m_tickBeforeErase = m_tickAlive;
 		m_container.SetActive (true);

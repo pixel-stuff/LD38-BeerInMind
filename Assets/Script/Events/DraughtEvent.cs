@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
-public class DraughtEvent : Event {
+public class DraughtEvent : MonoBehaviour {
+
+	public static Action m_mainTrigger;
 
 	public Sprite m_animatedSprite;
 	public Sprite m_idleSprite;
