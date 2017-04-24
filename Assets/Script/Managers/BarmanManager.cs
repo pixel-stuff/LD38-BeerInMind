@@ -32,10 +32,11 @@ public class BarmanManager : MonoBehaviour {
 	public void Says(string answer1, string answer2){
 		m_answer1.text = answer1;
 		m_answer2.text = answer2;
-		m_firstBulle.SetActive (false);
+		m_firstBulle.SetActive (true);
 	}
 
 	public void FirstBulleClick(){
+		TimeManager.timePlay = false;
 		m_firstBulle.SetActive (false);
 		m_answerClickable.SetActive (true);
 	}
@@ -45,6 +46,7 @@ public class BarmanManager : MonoBehaviour {
 			Answer (m_answer1.text);
 		}
 		Dismiss ();
+		TimeManager.timePlay = true;
 	}
 
 	public void StartAnswer2Click(){
@@ -52,6 +54,7 @@ public class BarmanManager : MonoBehaviour {
 			Answer (m_answer2.text);
 		}
 		Dismiss ();
+		TimeManager.timePlay = true;
 	}
 
 	public void Dismiss(){

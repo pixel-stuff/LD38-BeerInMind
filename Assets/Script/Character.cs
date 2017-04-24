@@ -201,23 +201,7 @@ public class Character : MonoBehaviour {
 				return;
 			}
 
-			if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
-				isOnDicussion = true;
-				string answer1 = "";
-				string answer2 = "";
-				foreach (GraphEdge edge in currentNode.Edges) {
-					Edge e = (Edge)edge;
-					if (e.Text != "") {
-						if (answer1 == "") {
-							answer1 = e.Text;
-						} else {
-							answer2 = e.Text;
-						}
-					}
-				}
-				BarmanManager.m_instance.Says (answer1, answer2);
-				return;
-			}
+
 
 			//display text
 			if (!BubbleAlreadyDisplayed) {
@@ -296,6 +280,24 @@ public class Character : MonoBehaviour {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
 				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainSprite,this.name);
+
+				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+					isOnDicussion = true;
+					string answer1 = "";
+					string answer2 = "";
+					foreach (GraphEdge edge in currentNode.Edges) {
+						Edge e = (Edge)edge;
+						if (e.Text != "") {
+							if (answer1 == "") {
+								answer1 = e.Text;
+							} else {
+								answer2 = e.Text;
+							}
+						}
+					}
+					BarmanManager.m_instance.Says (answer1, answer2);
+				}
+
 					subcribeAll ();
 				}
         }
