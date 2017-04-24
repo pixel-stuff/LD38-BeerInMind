@@ -15,7 +15,7 @@ public class Character : MonoBehaviour {
 
 	public Sprite standSprite;
 	public Sprite finalSprite;
-	public Sprite mainSprite;
+	public Sprite mainTalkSprite;
 
 	public bool whisperOnRight= true;
 	private EditorNode m_startNode;
@@ -224,6 +224,7 @@ public class Character : MonoBehaviour {
 			if (!isOnBar) {
 				if (!isOnAnimation) {
 					this.gameObject.transform.position = doorPlace;
+					tickTimeout += 2;
 					this.GetComponent<Animation> ().Play("EnterBar");
 					isOnAnimation = true;
 				}
@@ -333,7 +334,7 @@ public class Character : MonoBehaviour {
 			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
-				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainSprite,this.name);
+				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
 
 				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
 					isOnDicussion = true;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
+  m_IndirectSpecularColor: {r: 0.44648892, g: 0.4963268, b: 0.5747255, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -251,8 +251,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d44ff5d2d3fb948ea858eea6fcf9ff4f,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -277,6 +276,22 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.y
       value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -352,8 +367,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 0a3ca49e151d74990806d34f70425a53,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -373,6 +387,22 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 1.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -681,8 +711,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 1b8a99ba48e4442f1858bd78615d1d9c,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
       propertyPath: finalSprite
@@ -707,6 +736,22 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.x
       value: -1.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -881,8 +926,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: c6d61d83cc50a4a2684ad7f14b946721,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -907,6 +951,22 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.x
       value: 2.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -1837,8 +1897,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 660d28832785c4d9690ea726f65fabe7,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -1863,6 +1922,22 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.y
       value: 0.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -1933,8 +2008,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 96ec84a1569344a35bfcaf6f67f068ab,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
       propertyPath: finalSprite
@@ -1959,11 +2033,27 @@ Prefab:
     - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
         type: 2}
       propertyPath: m_SortingLayer
-      value: 1
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -2034,8 +2124,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 3393376807996442fa439b7a31e4ec8a,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1911352885590624, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
       propertyPath: m_IsActive
       value: 0
@@ -2055,6 +2144,22 @@ Prefab:
         type: 2}
       propertyPath: m_Size.y
       value: 1.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: standSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 72adc3dd604a4460fbd71d9ff5d69cf7,
+        type: 3}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.x
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: doorPlace.y
+      value: -4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
