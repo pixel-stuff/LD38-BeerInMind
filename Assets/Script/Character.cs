@@ -10,6 +10,8 @@ public class Character : MonoBehaviour {
 	static Action<Character> CharacterHightlight;
 
 	public String ActualNodeName = "";
+	public String ActualStartTime = "";
+	public int tickTimeout = -1;
 
 	public Sprite standSprite;
 	public Sprite finalSprite;
@@ -28,7 +30,7 @@ public class Character : MonoBehaviour {
 	public bool isOnDicussion = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
-	public int tickTimeout = -1;
+
 	GameTime currentGameTime;
 
 	TextStruct textStruct;
@@ -206,6 +208,7 @@ public class Character : MonoBehaviour {
 			//ChangeNode
 			currentNode = (Node)currentGraph.GetCurrentNode();
 			ActualNodeName = currentNode.GetLabel (); //DEBUG
+			ActualStartTime = currentNode.GetHour()+ " h " + currentNode.GetMinut();
 			tickTimeout = currentNode.GetTicksDuration ();
 			BubbleAlreadyDisplayed = false;
 			if (isOnDicussion) {
