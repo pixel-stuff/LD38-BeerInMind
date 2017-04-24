@@ -17,7 +17,7 @@ public class TVPreEvent : MonoBehaviour {
 			return;
 		
 		UIClickManager.m_instance.StartRemoteApparition ();
-		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.Auto);
+		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 	public void OnMouseDown()
@@ -26,7 +26,7 @@ public class TVPreEvent : MonoBehaviour {
 		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
 			return;
 
-		Cursor.SetCursor (m_clic.texture, Vector2.zero, CursorMode.Auto);
+		Cursor.SetCursor (m_clic.texture, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 
@@ -35,12 +35,12 @@ public class TVPreEvent : MonoBehaviour {
 		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
 			return;
 		
-		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.Auto);
+		Cursor.SetCursor (m_hover.texture, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 	void OnMouseExit()
 	{
-		Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+		Cursor.SetCursor(null, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 }
