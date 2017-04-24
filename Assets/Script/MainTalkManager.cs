@@ -21,7 +21,11 @@ public class MainTalkManager : MonoBehaviour {
 	void Awake () {
 		if(m_instance == null){
 			m_instance = this;
-			RestartInit ();
+			this.StopAllCoroutines ();
+			m_bulle.SetActive (false);
+			m_back.SetActive (false);
+			m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
+			m_customer.GetComponent<RectTransform> ().anchoredPosition = new Vector2 (0.0f,0.0f);
 		}else{
 			//If a Singleton already exists and you find
 			//another reference in scene, destroy it!
