@@ -68,9 +68,16 @@ public class TextManager : MonoBehaviour {
 
 	public TextStruct GetTextStruc(Node.eTextMiniType typeText){
 		TextStruct stru;
-		List<TextStruct> list = m_dict [typeText];
+		if (m_dict.ContainsKey (typeText)) {
+			List<TextStruct> list = m_dict [typeText];
 
-		int ran = UnityEngine.Random.Range (0, list.Count - 1);
-		return list [ran];
+			int ran = UnityEngine.Random.Range (0, list.Count - 1);
+			return list [ran];
+		} else {
+			stru.m_mainTalk = "";
+			stru.m_whisper = "";
+			stru.m_textType = typeText;
+			return stru;
+		}
 	}
 }
