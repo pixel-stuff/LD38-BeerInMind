@@ -49,7 +49,7 @@ public class BarmanManager : MonoBehaviour {
 
 	public void StartAnswer2Click(){
 		if (Answer != null) {
-			Answer (m_answer1.text);
+			Answer (m_answer2.text);
 		}
 		Dismiss ();
 	}
