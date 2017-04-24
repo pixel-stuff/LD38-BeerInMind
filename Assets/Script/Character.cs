@@ -412,9 +412,7 @@ public class Character : MonoBehaviour {
 
 	void OnMouseExit()
 	{
-		if (m_isWaitingForClick) {
-			Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
-		}
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 	void TvIsTrigger(bool isOn){
