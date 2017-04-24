@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 [System.Serializable]
 public struct GameTime {
@@ -12,12 +13,13 @@ public struct GameTime {
 
 public class TimeManager : MonoBehaviour {
 
-	public static System.Action<GameTime> OnTicTriggered;
+	public static Action<GameTime> OnTicTriggered;
+	public static Action m_DayEnding;
 	public GameTime m_currentTime;
 	public float realTime = 2.0f;
 	private float currentRealTime; 
 	public int gameTimeJump = 10;
-	bool timePlay = true;
+	public static bool timePlay = false;
 	public Text clockText;
 
 	// Use this for initialization
@@ -26,6 +28,13 @@ public class TimeManager : MonoBehaviour {
 		m_currentTime.hours = 18;
 		m_currentTime.minutes = 0;
 		currentRealTime = realTime;
+		//StartDay (); //-> Make the call from somewhere else
+
+	}
+
+	public void StartDay(){
+		timePlay = true;
+
 	}
 	
 	// Update is called once per frame
@@ -42,16 +51,25 @@ public class TimeManager : MonoBehaviour {
 						m_currentTime.day++;
 						m_currentTime.hours = 18;
 						m_currentTime.minutes = 0;
-						timePlay = false;
-						//GONEXTDAY
+						EndOfday ();
 					}
-					OnTicTriggered (m_currentTime);
 				}
+				OnTicTriggered (m_currentTime);
 			}
 		}
-		clockText.text = m_currentTime.hours.ToString() + ':' + m_currentTime.minutes.ToString();
-		if (m_currentTime.minutes == 0) {
-			clockText.text += '0';
+		if (clockText) {
+			clockText.text = m_currentTime.hours.ToString () + ':' + m_currentTime.minutes.ToString ();
+			if (m_currentTime.minutes == 0) {
+				clockText.text += '0';
+			}
+		}
+	}
+
+
+	public void EndOfday(){
+		timePlay = false;
+		if (m_DayEnding != null) {
+			m_DayEnding ();
 		}
 	}
 }

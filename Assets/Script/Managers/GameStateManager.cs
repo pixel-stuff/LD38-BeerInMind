@@ -6,6 +6,7 @@ public enum GameState{
 	Menu,
 	Playing,
 	Pause,
+	EndOfTheDay,
 	GameOver
 }
 

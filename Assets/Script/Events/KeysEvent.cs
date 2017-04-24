@@ -4,7 +4,4 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class KeysEvent : Event {
-	void Awake(){
-
-	}
 }

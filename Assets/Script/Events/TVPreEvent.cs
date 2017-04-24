@@ -10,6 +10,10 @@ public class TVPreEvent : MonoBehaviour {
 
 	public void OnMouseUp()
 	{
+
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+		
 		UIClickManager.m_instance.StartRemoteApparition ();
 	}
 }

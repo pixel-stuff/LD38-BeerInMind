@@ -20,7 +20,9 @@ public class Node : GraphNode
         HYGIENA,
         MINOR,
         DRUNKGUY,
-        FIGHT
+        FIGHT,
+        DISCUSSION,
+        GAMEOVER
     }
 
     public enum eMood

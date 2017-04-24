@@ -23,6 +23,7 @@ public class Edge : GraphEdge
             BASEBALLBAT,
             JUKEBOX,
             TV,
+            TVOFF,
             FREEBEER,
             OTHER,
             TIMEOUT,
@@ -30,19 +31,39 @@ public class Edge : GraphEdge
         }
         private ENUM m_condition;
         public ENUM Value { get { return m_condition; } set { } }
+
+        private string m_text;
+        public string Text { get { return m_text; } set { } }
+
         public Condition(ENUM _condition)
         {
             m_condition = _condition;
+            m_text = "";
+        }
+
+        public Condition(ENUM _condition, string _text)
+        {
+            m_condition = _condition;
+            m_text = _text;
         }
 
         public override bool Equals(GraphEdge.Condition _condition)
         {
+            Condition condition = (Condition)_condition;
+            if (condition.Value.Equals(Condition.ENUM.OTHER))
+            {
+                return Text.Equals(condition.Text);
+            }
             return m_condition == ((Edge.Condition)_condition).Value;
         }
     }
 
-    public Edge(GraphNode _enter, GraphNode _exit, Condition _condition) : base(_enter, _exit, _condition)
+    private string m_label;
+    public string Text { get { return m_label; } set { } }
+
+    public Edge(GraphNode _enter, GraphNode _exit, Condition _condition, string _label) : base(_enter, _exit, _condition)
     {
+        m_label = _label;
     }
 
     public override bool TransitionDefault(out GraphNode _outNode)

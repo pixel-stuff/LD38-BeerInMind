@@ -9,7 +9,7 @@ document.Settings =
 			{"variable": "lifetime", "label": "Life time", "type": "text", "defaultvalue":""},
 			{"variable": "text", "label": "Text", "type": "textarea", "defaultvalue":""},
 			{"variable": "minitext", "label": "Mini Text", "type": "textarea", "defaultvalue":""},
-			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"default", "values":
+			{"variable": "textminitype", "label": "Mini Text Type", "type": "combobox", "defaultvalue":"DEFAULT", "values":
 				[
 					{"value": "DEFAULT",			"label": "default"},
 					{"value": "TIMEOUT",			"label": "timeout"},
@@ -21,16 +21,17 @@ document.Settings =
 					{"value": "TV",					"label": "tv"},
 					{"value": "NOTV",				"label": "notv"},
 					{"value": "TVON",				"label": "tvon"},
-					{"value": "TVOFF",				"label": "tvoff"},
 					{"value": "FIRE",				"label": "fire"},
 					{"value": "ENDOFTHEDAY",		"label": "endoftheday"},
 					{"value": "HYGIENA",			"label": "hygiena"},
 					{"value": "MINOR",				"label": "minor"},
 					{"value": "DRUNKGUY",			"label": "drunk guy"},
-					{"value": "FIGHT",				"label": "fight"}
+					{"value": "FIGHT",				"label": "fight"},
+					{"value": "DISCUSSION",			"label": "discussion"},
+					{"value": "GAMEOVER",			"label": "Game Over"}
 				]
 			},
-			{"variable": "mood", "label": "Mood", "type": "combobox", "defaultvalue":"default", "values":
+			{"variable": "mood", "label": "Mood", "type": "combobox", "defaultvalue":"DEFAULT", "values":
 				[
 					{"value": "DEFAULT",			"label": "default"},
 					{"value": "HAPPY",				"label": "happy"},
@@ -45,30 +46,31 @@ document.Settings =
 		{
 			"types":
 			{
-				"defaultvalue": 0,
+				"defaultvalue": "DEFAULT",
 				"values":[
-					{"value": "OPENING",		"label": "OPENING",		"color": "#FF0000", "width": 2, "style": "color: #FF0000;font-weight:bold;"},
-					{"value": "BEER",		"label": "BEER",	"color": "#FF0000", "width": 1, "style": "color: #FF0000;"},
-					{"value": "DOOR",			"label": "DOOR",		"color": "#000000", "width": 1, "style": "color: #000000;"},
-					{"value": "KEYS",			"label": "KEYS",		"color": "#008800", "width": 1, "style": "color: #008800;"},
-					{"value": "PHONE_POLICE",	"label": "PHONE_POLICE","color": "#00FF00", "width": 1, "style": "color: #00FF00;"},
-					{"value": "PHONE_TAXI",		"label": "PHONE_TAXI",	"color": "#FF0088", "width": 1, "style": "color: #FF0088;"},
-					{"value": "BARCLOSED",		"label": "BARCLOSED",	"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;"},
-					{"value": "MINOR",			"label": "MINOR",		"color": "#FF0088", "width": 2, "style": "color: #FF0088;font-weight: bold;font-size: 18px;"},
-					{"value": "FIRESTARTING",	"label": "FIRESTARTING","color": "#B56617", "width": 3, "style": "color: #B56617;font-weight: bold;"},
-					{"value": "ENDOFTHEDAY",	"label": "ENDOFTHEDAY",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "BASEBALLBAT",	"label": "BASEBALLBAT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "JUKEBOX",		"label": "JUKEBOX",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "TV",				"label": "TV",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "FREEBEER",		"label": "FREEBEER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "OTHER",			"label": "OTHER",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "TIMEOUT",		"label": "TIMEOUT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"},
-					{"value": "DEFAULT",		"label": "DEFAULT",	"color": "#008B8B", "width": 4, "style": "color: #008B8B;font-weight: bold;"}
+					{"value": "DEFAULT",		"label": "DEFAULT",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "OPENING",		"label": "OPENING",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight:bold;"},
+					{"value": "BEER",			"label": "BEER",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "DOOR",			"label": "DOOR",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "KEYS",			"label": "KEYS",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "PHONE_POLICE",	"label": "PHONE_POLICE","color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "PHONE_TAXI",		"label": "PHONE_TAXI",	"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "BARCLOSED",		"label": "BARCLOSED",	"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "MINOR",			"label": "MINOR",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "FIRESTARTING",	"label": "FIRESTARTING","color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "ENDOFTHEDAY",	"label": "ENDOFTHEDAY",	"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "BASEBALLBAT",	"label": "BASEBALLBAT",	"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "JUKEBOX",		"label": "JUKEBOX",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "TV",				"label": "TV",			"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "TVOFF",			"label": "TVOFF",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "FREEBEER",		"label": "FREEBEER",	"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "OTHER",			"label": "OTHER",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"},
+					{"value": "TIMEOUT",		"label": "TIMEOUT",		"color": "#000000", "width": 1, "style": "color: #000000;font-weight: bold;"}
 				]
 			},
 			"arrows":
 			{
-				"defaultvalue": "",
+				"defaultvalue": "to",
 				"values": [
 					{"value": "to",			"label": "To"}
 				]
@@ -76,12 +78,15 @@ document.Settings =
 		},
 		"CharactersheetPresentation": 
 					"<h2 id=\"{Html_ids_prefix}-info-label\"></h2> \
-					<span id=\"{Html_ids_prefix}-info-firstname\"></span> <span id=\"{Html_ids_prefix}-info-lastname\"></span> (<span id=\"{Html_ids_prefix}-info-sex\"></span>) <span id=\"{Html_ids_prefix}-info-condition\"></span><hr/><span id=\"{Html_ids_prefix}-info-race\" style=\"font-weight: bold;\"></span> \
-					<br/><span id=\"{Html_ids_prefix}-info-clan\"></span> generation <span id=\"{Html_ids_prefix}-info-generation\"></span> \
+					<p>Start day: <span id=\"{Html_ids_prefix}-info-day\"></span></p> \
+					<p>Hour: <span id=\"{Html_ids_prefix}-info-hourminut\"></span></p> \
+					<p>Ticks(x10 in minuts): <span id=\"{Html_ids_prefix}-info-lifetime\"></span> \
 					<hr/> \
-					<p id=\"{Html_ids_prefix}-info-description\"></p> \
-					<p>Affiliation: <span id=\"{Html_ids_prefix}-info-group\"></span></p> \
-					<p>File attached: <a id=\"{Html_ids_prefix}-info-file\"></span></p> \
+					<p id=\"{Html_ids_prefix}-info-text\"></p> \
+					<p id=\"{Html_ids_prefix}-info-minitext\"></p> \
+					<hr/> \
+					<p>textminitype: <span id=\"{Html_ids_prefix}-info-textminitype\"></span> \
+					<p>mood: <span id=\"{Html_ids_prefix}-info-mood\"></span></p> \
 					<h2>Connections from</h2> \
 					<div id=\"{Html_ids_prefix}-info-connections\"></div>"
 	};

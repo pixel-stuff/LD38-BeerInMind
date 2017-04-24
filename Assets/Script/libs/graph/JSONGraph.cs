@@ -27,6 +27,7 @@ namespace Libs.Graph
         public string type;
         public string arrows;
         public string label;
+        public bool processed = false;
     }
     [System.Serializable]
     public class JSONGraph
@@ -64,7 +65,7 @@ namespace Libs.Graph
             List<JSONEdge> rEdges = new List<JSONEdge>();
             foreach (JSONEdge e in edges)
             {
-                if (_node.id == e.from)
+                if (_node.id == e.from && !e.processed)
                 {
                     rEdges.Add(e);
                 }

@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Libs;
+using System;
+using Libs.Graph;
 
 public class Character : MonoBehaviour {
 
-	public EditorNode m_startNode;
+	static Action<Character> CharacterHightlight;
+
+	public Sprite standSprite;
+	public Sprite finalSprite;
+	public Sprite mainSprite;
+	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
     public Node currentNode;
 
@@ -14,9 +21,16 @@ public class Character : MonoBehaviour {
     public WhisperTalkManager m_whisperTalk;
     public bool isOnBar = false;
 	public bool isOnAnimation = false;
+	public bool isOnDicussion = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
+	public int tickTimeout = -1;
+	GameTime currentGameTime;
 
+	TextStruct textStruct;
+
+	public bool TVisOn = false;
+	public bool BubbleAlreadyDisplayed = false;
     private bool m_isWaitingForClick = false;
 
     Character()
@@ -34,9 +48,21 @@ public class Character : MonoBehaviour {
         int minut = -1;
         int lifetime = 0;
         System.Int32.TryParse(_node.day, out day);
-        System.Int32.TryParse(hourminut[0], out hour);
-        System.Int32.TryParse(hourminut[1], out minut);
+        if (hourminut.Length > 1)
+        {
+            System.Int32.TryParse(hourminut[0], out hour);
+            System.Int32.TryParse(hourminut[1], out minut);
+        }
         System.Int32.TryParse(_node.lifetime, out lifetime);
+        Node.eTextMiniType textMiniType = Node.eTextMiniType.DEFAULT;
+        if(_node.textminitype!="")
+        {
+            textMiniType = (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype, true);
+        }
+		Node.eMood mood = Node.eMood.DEFAULT;
+		if (_node.mood != "") {
+			mood = (Node.eMood)System.Enum.Parse (typeof(Node.eMood), _node.mood, true);
+		}
         return new Node(
             day,
             hour,
@@ -44,15 +70,18 @@ public class Character : MonoBehaviour {
             lifetime,
             _node.text,
             _node.minitext,
-            (Node.eTextMiniType)System.Enum.Parse(typeof(Node.eTextMiniType), _node.textminitype, true),
-            (Node.eMood)System.Enum.Parse(typeof(Node.eMood), _node.mood, true)
+            textMiniType,
+			mood
             );
     }
 
     public Libs.Graph.GraphEdge CreateGraphEdge(Libs.Graph.JSONEdge _edge, Libs.Graph.GraphNode from, Libs.Graph.GraphNode to)
     {
-        Edge.Condition condition = new Edge.Condition((Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type));
-        return new Edge(from, to, condition);
+        Edge.Condition condition = new Edge.Condition(
+            (Edge.Condition.ENUM)System.Enum.Parse(typeof(Edge.Condition.ENUM), _edge.type),
+            _edge.label
+        );
+        return new Edge(from, to, condition, _edge.label);
     }
 
     // Use this for initialization
@@ -60,14 +89,40 @@ public class Character : MonoBehaviour {
 	{
 		currentGraph = new Libs.Graph.Graph("Assets/Data/"+fileName, CreateGraphNode, CreateGraphEdge);
 
-		PrintGraph(currentGraph.GetCurrentNode());
+        //Print without parcour check, this can lead to infinite loop in wrong hands
+		//PrintGraph(currentGraph.GetCurrentNode());
 
-
-
-
+		TVEvent.m_mainTrigger += TvIsTrigger;
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
+		TimeManager.OnTicTriggered += OnTick;
+		TimeManager.m_DayEnding += OnEndOfDay;
 		m_isWaitingForClick = false;
+		Character.CharacterHightlight += OnCharacterHightlight;
+		UpdateOutline (false);
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
+	}
 
+	void UpdateOutline(bool outline) {
+		MaterialPropertyBlock mpb = new MaterialPropertyBlock();
+		this.GetComponent<SpriteRenderer>().GetPropertyBlock(mpb);
+		mpb.SetFloat("_Outline", outline ? 1f : 0);
+		mpb.SetColor("_OutlineColor", Color.white);
+		this.GetComponent<SpriteRenderer>().SetPropertyBlock(mpb);
+	}
+
+	void subcribeAll(){
+		if(DraughtEvent.m_mainTrigger != null)
+		foreach (Delegate d in DraughtEvent.m_mainTrigger.GetInvocationList())
+			DraughtEvent.m_mainTrigger -= (d as Action);
+
+		DraughtEvent.m_mainTrigger += OnBeerReady;
+		if (BarmanManager.m_instance != null) {
+			if (BarmanManager.m_instance.Answer != null)
+				foreach (Delegate d in BarmanManager.m_instance.Answer.GetInvocationList())
+					DraughtEvent.m_mainTrigger -= (d as Action);
+
+			BarmanManager.m_instance.Answer += OnAnswerRespond;
+		}
 	}
 
 	private void PrintGraph(Libs.Graph.GraphNode _node, List<Edge.Condition> _conditions)
@@ -96,54 +151,122 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
-		currentNode = (Node)currentGraph.GetCurrentNode();
 
-		// check StartTime
-
-		if (!isOnBar) {
-			if (!isOnAnimation) {
-				this.gameObject.transform.position = doorPlace;
-				this.GetComponent<Animator> ().SetTrigger ("EnterBar");
-				isOnAnimation = true;
+		if (currentNode != (Node)currentGraph.GetCurrentNode ()) {
+			//ChangeNode
+			currentNode = (Node)currentGraph.GetCurrentNode();
+			tickTimeout = currentNode.GetTicksDuration ();
+			BubbleAlreadyDisplayed = false;
+			if (isOnDicussion) {
+				BarmanManager.m_instance.Dismiss ();
+				isOnDicussion = false;
 			}
-			return;
+			m_whisperTalk.StopDisplayWhisper ();
 		}
 
-            // Node non changer
-			//check Transition
+		// check StartTime
+		if (currentNode.GetDay () == -1 ||
+		   (currentNode.GetDay () == currentGameTime.day &&
+		   ((currentNode.GetHour () * 100 + currentNode.GetMinut ()) < (currentGameTime.hours * 100 + currentGameTime.minutes)))) {
+
+			if (!isOnBar) {
+				if (!isOnAnimation) {
+					tickTimeout += 2;
+					this.gameObject.transform.position = doorPlace;
+					this.GetComponent<Animation> ().Play("EnterBar");
+					isOnAnimation = true;
+				}
+				return;
+			}
+
+			//check Transition (ETAT)
+			if (TVisOn)
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TV));
+			if (!TVisOn)
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TVOFF));
+
+
+			//Special Option
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
+				if (!isOnAnimation) {
+					this.GetComponent<Animation> ().Play("ExitBar");
+					tickTimeout = 0;
+					isOnAnimation = true;
+				}
+				return;
+			}
+
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
+				IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
+				return;
+			}
+
+
+
 			//display text
-			// if exitState, lancer l'animation exit 
-		this.GetComponent<Animator> ().SetTrigger ("ExitBar");
-		isOnAnimation = true;
-      
-  
+			if (!BubbleAlreadyDisplayed) {
+				textStruct = TextManager.m_instance.GetTextStruc (currentNode.GetTextMiniType ());
+				//override with node value
+				if (currentNode.GetMiniText () != "" && currentNode.GetMiniText () != null) {
+					textStruct.m_whisper = currentNode.GetMiniText ();
+				}
+				if (currentNode.GetText () != "" && currentNode.GetText () != null) {
+					textStruct.m_mainTalk = currentNode.GetText ();
+				}
+
+				DisplayWhisper (textStruct.m_whisper);
+
+			}
+		} else {
+			// NOT ON TIME YET
+			if(isOnBar){
+				//tell default conversation
+				if(!BubbleAlreadyDisplayed){
+					textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.DEFAULT);
+					DisplayWhisper (textStruct.m_whisper);
+
+				}
+			}
+		}
     }
 
 	void DisplayWhisper(string text, bool displayOnRight = true)
     {
+		BubbleAlreadyDisplayed = true;
         m_isWaitingForClick = true;
 		m_whisperTalk.StartDisplayWhisper(text,displayOnRight);
     }
 
 	void DisplayWhisperStop(){
-		//TODO display an other wisper
+		BubbleAlreadyDisplayed = false;
 	}
 
     public void OnCharacEnter()
     {
         //PLAY DING DING SOUND
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
+		DisplayWhisper(TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY).m_whisper);
     }
 
     public void OnEnterFinished()
     {
         this.gameObject.transform.position = finalPlace;
+		this.GetComponent<SpriteRenderer> ().sprite = finalSprite;
 		isOnBar = true;
-		isOnAnimation = true;
+		isOnAnimation = false;
     }
 
-	public void OnDoorExit(){
+	public void OnGoToDoor(){
+		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
+		this.gameObject.transform.position = doorPlace;
+		DisplayWhisper (TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT).m_whisper);
 
+	}
 
+	public void OnLeaveBar(){
+		m_whisperTalk.StopDisplayWhisper();
+		isOnAnimation = false;
+		isOnBar = false;
 	}
 
     public void OnMouseUp()
@@ -151,11 +274,75 @@ public class Character : MonoBehaviour {
         if (m_isWaitingForClick)
         {
             m_isWaitingForClick = false;
-            m_whisperTalk.StopDisplayWhisper();
-            MainTalkManager.m_instance.StartDisplayAnimation("Jeremy a un tout petit zizi");
-            //TODO: Change State
+			Character.CharacterHightlight (this);
+
+			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
+		            m_whisperTalk.StopDisplayWhisper();
+					BubbleAlreadyDisplayed = false;
+				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainSprite,this.name);
+
+				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+					isOnDicussion = true;
+					string answer1 = "";
+					string answer2 = "";
+					foreach (GraphEdge edge in currentNode.Edges) {
+						Edge e = (Edge)edge;
+						if (e.Text != "") {
+							if (answer1 == "") {
+								answer1 = e.Text;
+							} else {
+								answer2 = e.Text;
+							}
+						}
+					}
+					BarmanManager.m_instance.Says (answer1, answer2);
+				}
+
+					subcribeAll ();
+				}
         }
     }
 
-	//currentNode.Transition(new Edge.Condition(Edge.Condition.ENUM.TV));
+	void TvIsTrigger(bool isOn){
+		TVisOn = isOn;
+	}
+
+	void OnBeerReady(){
+		currentGraph.Transition(new Edge.Condition(Edge.Condition.ENUM.BEER));
+	}
+
+	void OnAnswerRespond(string response){
+		isOnDicussion = false;
+		currentGraph.Transition (response);
+	}
+
+	void OnTick(GameTime gametime){
+		currentGameTime = gametime;
+		if (isOnBar) {
+			if (!isOnAnimation)
+				tickTimeout--;
+			if (tickTimeout <= 0) {
+				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+			}
+		}
+	}
+
+	void OnEndOfDay() {
+		if (isOnBar) {
+			if (!isOnAnimation) {
+				this.GetComponent<Animation> ().Play ("ExitBar");
+				isOnAnimation = true;
+			}
+		}
+	}
+
+	void OnCharacterHightlight(Character cha) {
+		if (this == cha) {
+			UpdateOutline (true);
+		} else {
+			UpdateOutline (false);
+		}
+	}
+
+
 }

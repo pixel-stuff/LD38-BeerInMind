@@ -27,13 +27,13 @@ namespace Libs.Graph
             return m_exit;
         }
 
-        public bool Transition(Condition _condition, out GraphNode _outNode)
+		public bool Transition(Condition _condition, out GraphNode _outNode)
         {
             _outNode = m_enter;
             if (m_condition.Equals(_condition))
             {
-                _outNode = m_exit;
-                return true;
+				_outNode = m_exit;
+				return true;
             }
             return false;
         }
