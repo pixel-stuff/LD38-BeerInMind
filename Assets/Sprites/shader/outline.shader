@@ -90,9 +90,10 @@ Shader "Sprites/Outline"
             fixed4 frag(v2f IN) : SV_Target
             {
                 fixed4 c = SampleSpriteTexture (IN.texcoord) * IN.color;
-				fixed4 o = fixed4(1, 1, 1, 1) * _OutlineColor;
+				fixed4 o = fixed4(1, 1, 1, 0) * _OutlineColor;
                 // If outline is enabled and there is a pixel, try to draw an outline.
                 if (_Outline > 0 && c.a != 0) {
+					o.a = 1;
                     // Get the neighbouring four pixels.
                     /*fixed4 pixelUp = tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y));
                     fixed4 pixelDown = tex2D(_MainTex, IN.texcoord - fixed2(0, _MainTex_TexelSize.y));
@@ -108,34 +109,69 @@ Shader "Sprites/Outline"
 					#define N 3
 					if (HighQuality)
 					{
+						[unroll]
 						for (int i = -N; i <= N; i++)
+							[unroll]
 							for (int j = -N; j < N; j++)
 						{
-							if (i == 0 && j==0) continue;
-							float a = tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x*i, _MainTex_TexelSize.y*j)).a;
+							#if !defined(SHADER_API_OPENGL)
+							fixed4 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*i, _MainTex_TexelSize.y*j), 0, 0);
+							#else
+							fixed3 uv = fixed3(IN.texcoord + fixed2(_MainTex_TexelSize.x*i, _MainTex_TexelSize.y*j), 0);
+							#endif
+								
+							float a = tex2Dlod(_MainTex, uv).a;
 							alphaOutlineX *= a < 0.8 ? a : 1.0f;
 						}
-						o.a *= (1.0 - alphaOutlineX);
+						o.a = (1.0 - alphaOutlineX);
 					}
 					else
 					{
-						for (int i = -N; i <= N; i++)
+						[unroll]
+						for (int i = -N; i <= 0; i++)
 						{
-							if (i == 0) continue;
-							alphaOutlineX *= tex2D(_MainTex, IN.texcoord + fixed2(_MainTex_TexelSize.x*i, 0)).a *i*i;
+							#if !defined(SHADER_API_OPENGL)
+							fixed4 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*i, 0), 0, 0);
+							#else
+							fixed3 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*i, 0), 0);
+							#endif
+							alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
 						}
-						for (int j = -N; j < N; j++)
+						[unroll]
+						for (int ip = 1; ip <= N; ip++)
 						{
-							if (j == 0) continue;
-							alphaOutlineY *= tex2D(_MainTex, IN.texcoord + fixed2(0, _MainTex_TexelSize.y*j)).a * j*j;
+							#if !defined(SHADER_API_OPENGL)
+							fixed4 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*ip, 0), 0, 0);
+							#else
+							fixed3 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*ip, 0), 0);
+							#endif
+							alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
 						}
-						o.a *= (1.0 - alphaOutlineX * alphaOutlineY);
+						[unroll]
+						for (int j = -N; j < 0; j++)
+						{
+							#if !defined(SHADER_API_OPENGL)
+							fixed4 uv = fixed4(IN.texcoord + fixed2(0, _MainTex_TexelSize.y*j), 0, 0);
+							#else
+							fixed3 uv = fixed4(IN.texcoord + fixed2(0, _MainTex_TexelSize.y*j), 0);
+							#endif
+							alphaOutlineY *= tex2Dlod(_MainTex, uv).a;
+						}
+						[unroll]
+						for (int jp = 0; jp <= N; jp++)
+						{
+							#if !defined(SHADER_API_OPENGL)
+							fixed4 uv = fixed4(IN.texcoord + fixed2(0, _MainTex_TexelSize.y*jp), 0, 0);
+							#else
+							fixed3 uv = fixed4(IN.texcoord + fixed2(0, _MainTex_TexelSize.y*jp), 0);
+							#endif
+							alphaOutlineY *= tex2Dlod(_MainTex, uv).a;
+						}
+						o.a = floor(1.0-alphaOutlineX * alphaOutlineY);
 					}
                 }
 
-                c.rgb = lerp(c.rgba, o.rgba, o.a);
-				c.rgb *= c.a;
-
+                c.rgb = lerp(c.rgba, o.rgba, o.a)*c.a;
                 return c;
             }
             ENDCG
