@@ -243,6 +243,15 @@ Prefab:
       propertyPath: finalPlace.x
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -308,6 +317,15 @@ Prefab:
         type: 2}
       propertyPath: isOnAnimation
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -608,6 +626,15 @@ Prefab:
       propertyPath: finalPlace.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -772,6 +799,15 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
@@ -1725,6 +1761,15 @@ Prefab:
       propertyPath: fileName
       value: jane_journaliste.json
       objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -1786,6 +1831,15 @@ Prefab:
       propertyPath: finalPlace.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -1846,6 +1900,15 @@ Prefab:
         type: 2}
       propertyPath: finalPlace.y
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1960738001543532, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212975325814348994, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
