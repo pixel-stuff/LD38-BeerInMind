@@ -256,7 +256,7 @@ public class Character : MonoBehaviour {
 
 
 			//display text
-			if (!BubbleAlreadyDisplayed) {
+			if (!BubbleAlreadyDisplayed && !MainTalkManager.m_instance.m_isActivate) {
 				textStruct = TextManager.m_instance.GetTextStruc (currentNode.GetTextMiniType ());
 				//override with node value
 				if (currentNode.GetMiniText () != "" && currentNode.GetMiniText () != null) {
@@ -330,10 +330,10 @@ public class Character : MonoBehaviour {
         {
             m_isWaitingForClick = false;
 
-
 			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
+
 				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
 
 				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
@@ -345,6 +345,7 @@ public class Character : MonoBehaviour {
 						if (e.Text != "") {
 							if (answer1 == "") {
 								answer1 = e.Text;
+								answer2 = e.Text;
 							} else {
 								answer2 = e.Text;
 							}
@@ -401,7 +402,18 @@ public class Character : MonoBehaviour {
 			if (!isOnAnimation)
 				tickTimeout--;
 			if (tickTimeout <= 0) {
-				currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+				if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {
+					foreach (GraphEdge edge in currentNode.Edges) {
+						if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT))) {
+							currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+							return;
+						} 
+					}
+					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.OTHER));
+				} else {
+				//Normal Stuff
+					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
+				}
 			}
 		}
 	}
