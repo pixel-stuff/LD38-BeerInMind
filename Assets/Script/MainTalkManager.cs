@@ -13,11 +13,14 @@ public class MainTalkManager : MonoBehaviour {
 	public GameObject m_back;
 	public bool m_isActivate = false;
 	public GameObject m_middleBubble;
+	public GameObject m_leftBubble;
+	public GameObject m_rightBubble;
 	public float m_factorByChar = 600f/35f;
-	public int m_minWidth = 450;
+	public int m_minWidth = 200;
+	public int m_maxWidth = 1500;
 
 	public string m_textToDisplay = "I'm a baby girl in a baby world";
-	public float m_animationDisplayLetterEvery = 0.03f;
+	public float m_animationDisplayLetterEvery = 0.015f;
 
 	public static MainTalkManager m_instance;
 	// Use this for initialization
@@ -58,10 +61,17 @@ public class MainTalkManager : MonoBehaviour {
 		}
 		m_name.text = caracName;
 		int nb_char = txt.Length/2 +1;
-		int totalLength = (int)(m_factorByChar * nb_char) + 50;
-		totalLength = (totalLength > m_minWidth) ? totalLength : m_minWidth;
-		m_middleBubble.GetComponent<RectTransform> ().sizeDelta = new Vector2 (totalLength +50 ,m_middleBubble.GetComponent<RectTransform> ().rect.height);
-		m_text.GetComponent<RectTransform> ().sizeDelta = new Vector2 (totalLength ,m_text.GetComponent<RectTransform> ().rect.height);
+		int addHeight = 0;
+		int totalLength = (int)(m_factorByChar * nb_char);
+		totalLength = (totalLength < m_minWidth) ? m_minWidth : totalLength;
+		totalLength = (totalLength > m_maxWidth) ? m_maxWidth : totalLength;
+		if (totalLength == m_maxWidth) {
+			addHeight = 96 / 2;
+		}
+		m_middleBubble.GetComponent<RectTransform> ().sizeDelta = new Vector2 (totalLength +50 ,m_middleBubble.GetComponent<RectTransform> ().rect.height + addHeight);
+		m_text.GetComponent<RectTransform> ().sizeDelta = new Vector2 (totalLength ,m_text.GetComponent<RectTransform> ().rect.height + addHeight);
+		m_leftBubble.GetComponent<RectTransform> ().sizeDelta = new Vector2 (m_leftBubble.GetComponent<RectTransform> ().rect.width ,m_leftBubble.GetComponent<RectTransform> ().rect.height + addHeight);
+		m_rightBubble.GetComponent<RectTransform> ().sizeDelta = new Vector2 (m_rightBubble.GetComponent<RectTransform> ().rect.width ,m_rightBubble.GetComponent<RectTransform> ().rect.height + addHeight);
 		m_bulle.SetActive (false);
 		m_back.SetActive (false);
 		m_customer.color = new Color (0.0f, 0.0f, 0.0f, 0.0f);
