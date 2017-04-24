@@ -53,7 +53,7 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void ButtonClick(){
-		Debug.Log ("BUTTON CLICK");
+		//Debug.Log ("BUTTON CLICK");
 		 if (GameStateManager.getGameState () == GameState.GameOver) {
 			GameStateManager.setGameState (GameState.Playing);
 			SceneManager.LoadScene ("levelScene");

@@ -192,6 +192,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4745182949247460}
+  - component: {fileID: 114828778762814136}
   m_Layer: 0
   m_Name: TV
   m_TagString: Untagged
@@ -516,6 +517,19 @@ Transform:
   m_Father: {fileID: 4684370157896044}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114828778762814136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1689786533898264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0dfc3ee63a5694ca0b2f8dc9aa6a164c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_on: {fileID: 1563605787291692}
+  m_off: {fileID: 1170713115558766}
 --- !u!212 &212057558269435922
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -30,7 +30,7 @@ public class PlayerManager : MonoBehaviour {
 	}*/
 
     void handleChangeGameState(GameState newState){
-		Debug.Log ("PLAYER SEE THE NEW STATE : " + newState);
+		//Debug.Log ("PLAYER SEE THE NEW STATE : " + newState);
 	}
 
 	#region Intéraction

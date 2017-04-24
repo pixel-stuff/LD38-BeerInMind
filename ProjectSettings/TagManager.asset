@@ -47,6 +47,9 @@ TagManager:
   - name: Background
     uniqueID: 4131929899
     locked: 0
+  - name: BarElement
+    uniqueID: 3826659967
+    locked: 0
   - name: Character
     uniqueID: 4174610077
     locked: 0
