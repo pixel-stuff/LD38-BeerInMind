@@ -109,7 +109,6 @@ Shader "Sprites/Outline"
 					#define N 3
 					if (HighQuality)
 					{
-						[unroll]
 						for (int i = -N; i <= N; i++)
 							[unroll]
 							for (int j = -N; j < N; j++)
@@ -127,7 +126,6 @@ Shader "Sprites/Outline"
 					}
 					else
 					{
-						[unroll]
 						for (int i = -N; i <= 0; i++)
 						{
 							#if !defined(SHADER_API_OPENGL)
@@ -137,7 +135,6 @@ Shader "Sprites/Outline"
 							#endif
 							alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
 						}
-						[unroll]
 						for (int ip = 1; ip <= N; ip++)
 						{
 							#if !defined(SHADER_API_OPENGL)
@@ -147,7 +144,6 @@ Shader "Sprites/Outline"
 							#endif
 							alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
 						}
-						[unroll]
 						for (int j = -N; j < 0; j++)
 						{
 							#if !defined(SHADER_API_OPENGL)
@@ -157,7 +153,6 @@ Shader "Sprites/Outline"
 							#endif
 							alphaOutlineY *= tex2Dlod(_MainTex, uv).a;
 						}
-						[unroll]
 						for (int jp = 0; jp <= N; jp++)
 						{
 							#if !defined(SHADER_API_OPENGL)
