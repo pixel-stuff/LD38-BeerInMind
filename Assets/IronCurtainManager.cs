@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class IronCurtainManager : MonoBehaviour {
 
 	public static IronCurtainManager m_instance;
-	public Text m_textExplicatif;
-	public Text m_buttonText;
-	public bool m_isActivate = false;
+	public Text m_looseTextExplicatif;
+	public bool m_isActivate = true;
 	public AudioClip m_background;
+
+
+	public GameObject m_firstPanel;
+	public GameObject m_winPanel;
+	public GameObject m_loosePanel;
 
 	void Awake(){
 		if(m_instance == null){
@@ -33,11 +37,12 @@ public class IronCurtainManager : MonoBehaviour {
 		m_isActivate = true;
 		GameStateManager.setGameState (GameState.EndOfTheDay);
 		TimeManager.timePlay = false;
+		m_winPanel.SetActive (true);
+		m_loosePanel.SetActive (false);
 		this.GetComponent<Animation> ().Play ("CurtainApparition");
 	}
 
 	public void StartNextDay(){
-		m_buttonText.text = "Start next day ";
 		GameStateManager.setGameState (GameState.Playing);
 		TimeManager.timePlay = true;
 		this.GetComponent<Animation> ().Play ("CurtainRemove");
@@ -46,12 +51,17 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void SetGameOver(string message){
-		m_textExplicatif.text = message;
+		m_looseTextExplicatif.text = message;
 		m_isActivate = true;
-		m_buttonText.text = "Restart From Monday ";
+		m_winPanel.SetActive (false);
+		m_loosePanel.SetActive (true);
 		GameStateManager.setGameState (GameState.GameOver);
 		TimeManager.timePlay = false;
 		this.GetComponent<Animation> ().Play ("CurtainApparition");
+	}
+
+	public void FirstButtonClick(){
+		StartNextDay ();
 	}
 
 	public void ButtonClick(){
@@ -67,6 +77,7 @@ public class IronCurtainManager : MonoBehaviour {
 	public IEnumerator CoolDownControl(){
 		yield return new WaitForSeconds (0.5f);
 		m_isActivate = false;
+		m_firstPanel.SetActive (false);
 	}
 
 	public void OnDestroy(){
