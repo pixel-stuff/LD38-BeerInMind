@@ -11,14 +11,17 @@ namespace Libs.Graph
         {
             public string from;
             public string to;
-            public Link(string _from, string _to)
+            public GraphEdge instance;
+
+            public Link(string _from, string _to, GraphEdge _instance)
             {
                 from = _from;
                 to = _to;
+                instance = _instance;
             }
         }
         private Dictionary<string, GraphNode> m_nodeDictionary;
-        private List<Link> m_linkDictionary;
+        private List<JSONEdge> m_linkDictionary;
 
         public delegate GraphNode CreateNode(JSONNode _node);
         public delegate GraphEdge CreateEdge(JSONEdge _edge, GraphNode _nodeFrom, GraphNode _nodeTo);
@@ -26,7 +29,7 @@ namespace Libs.Graph
         public Graph(string filepath, CreateNode _cbCreateNode, CreateEdge _cbCreateEdge)
         {
             m_nodeDictionary = new Dictionary<string, GraphNode>();
-            m_linkDictionary = new List<Link>();
+            m_linkDictionary = new List<JSONEdge>();
             JSONParse(filepath, _cbCreateNode, _cbCreateEdge);
         }
 
@@ -96,9 +99,8 @@ namespace Libs.Graph
         {
             foreach(JSONEdge e in _graph.GetEdgesFromNode(node))
             {
-                if (!(m_linkDictionary.Exists(x => x.from == e.from && x.to == e.to)))
+                if (!(m_linkDictionary.Exists(x => x.from == e.from && x.to == e.to && x.type == e.type && x.label.Equals(e.label))))
                 {
-                    m_linkDictionary.Add(new Link(e.from, e.to));
                     JSONNode nTo = _graph.GetNodeFromID(e.to);
                     GraphNode newNode = null;
                     if (!m_nodeDictionary.TryGetValue(e.to, out newNode))
@@ -108,6 +110,7 @@ namespace Libs.Graph
                     }
                     
                     GraphEdge newEdge = _cbCreateEdge(e, currentNode, newNode);
+                    m_linkDictionary.Add(e);
                     currentNode.Edges.Add(newEdge);
                     e.processed = true;
                     JSONMakeNode(nTo, newNode, _graph, _cbCreateNode, _cbCreateEdge);
