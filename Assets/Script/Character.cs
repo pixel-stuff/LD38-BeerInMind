@@ -324,7 +324,8 @@ public class Character : MonoBehaviour {
 	void DisplayWhisper(string text, bool displayOnRight = true)
     {
 		BubbleAlreadyDisplayed = true;
-        m_isWaitingForClick = true;
+		if(textStruct.m_mainTalk != null && textStruct.m_mainTalk != "" )
+       	 m_isWaitingForClick = true;
 		m_whisperTalk.StartDisplayWhisper(text,whisperOnRight);
     }
 
@@ -370,13 +371,14 @@ public class Character : MonoBehaviour {
             m_isWaitingForClick = false;
 
 			DisplayMainTalk ();
-			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+
         }
     }
 
 	void DisplayMainTalk() {
 	
 		if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
+			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
 			m_whisperTalk.StopDisplayWhisper();
 			BubbleAlreadyDisplayed = false;
 
