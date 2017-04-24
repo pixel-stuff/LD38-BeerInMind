@@ -1420,7 +1420,7 @@ Prefab:
         type: 2}
       propertyPath: m_answer2
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1500805393}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d20caca5db424171abe7b0894d7717c, type: 2}
   m_IsPrefabParent: 0
@@ -1909,6 +1909,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff278753a7acf4fed8310e271d2494b9, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1500805393 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114966774221951364, guid: a9b237da644f941f29ebc091e6e948fb,
+    type: 2}
+  m_PrefabInternal: {fileID: 831067328}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1553060777
 GameObject:
   m_ObjectHideFlags: 0
