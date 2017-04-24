@@ -25,8 +25,8 @@ public class TimeManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		m_currentTime.day = 0;
-		m_currentTime.hours = 18;
-		m_currentTime.minutes = 0;
+		m_currentTime.hours = 17;
+		m_currentTime.minutes = 50;
 		currentRealTime = realTime;
 		//StartDay (); //-> Make the call from somewhere else
 
@@ -49,8 +49,8 @@ public class TimeManager : MonoBehaviour {
 					m_currentTime.minutes -= 60;
 					if (m_currentTime.hours > 24) {
 						m_currentTime.day++;
-						m_currentTime.hours = 18;
-						m_currentTime.minutes = 0;
+						m_currentTime.hours = 17;
+						m_currentTime.minutes = 50;
 						EndOfday ();
 					}
 				}
@@ -58,9 +58,13 @@ public class TimeManager : MonoBehaviour {
 			}
 		}
 		if (clockText) {
-			clockText.text = m_currentTime.hours.ToString () + ':' + m_currentTime.minutes.ToString ();
-			if (m_currentTime.minutes == 0) {
-				clockText.text += '0';
+			if (m_currentTime.hours >= 18) {
+				clockText.text = m_currentTime.hours.ToString () + ':' + m_currentTime.minutes.ToString ();
+				if (m_currentTime.minutes == 0) {
+					clockText.text += '0';
+				}
+			} else {
+				clockText.text = ""; 
 			}
 		}
 	}
