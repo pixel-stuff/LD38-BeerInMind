@@ -30,6 +30,7 @@ public class Character : MonoBehaviour {
 	public bool isOnDicussion = false;
     public Vector3 finalPlace;
 	public Vector3 doorPlace;
+	public bool gameOverAlreadyLaunch = false;
 
 	GameTime currentGameTime;
 
@@ -248,8 +249,11 @@ public class Character : MonoBehaviour {
 				return;
 			}
 
-			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if exitState, lancer l'animation exit
-				IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.GAMEOVER) {// if gameover, lancer l'animation exit
+				if (!gameOverAlreadyLaunch) {
+					gameOverAlreadyLaunch = true;
+					IronCurtainManager.m_instance.SetGameOver (currentNode.GetText ());
+				}
 				return;
 			}
 
