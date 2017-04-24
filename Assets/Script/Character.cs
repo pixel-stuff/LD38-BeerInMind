@@ -40,6 +40,10 @@ public class Character : MonoBehaviour {
 	public bool BubbleAlreadyDisplayed = false;
     private bool m_isWaitingForClick = false;
 
+
+	public Sprite m_hoverMouse;
+	public Sprite m_clicMouse;
+
     Character()
     {
         currentGraph = new Libs.Graph.Graph(new Node());
@@ -366,6 +370,7 @@ public class Character : MonoBehaviour {
             m_isWaitingForClick = false;
 
 			DisplayMainTalk ();
+			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
         }
     }
 
@@ -397,6 +402,35 @@ public class Character : MonoBehaviour {
 			Character.CharacterHightlight (this);
 			subcribeAll ();
 		}
+	}
+
+	public void OnMouseDown()
+	{
+
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+
+		if (m_isWaitingForClick) {
+			Cursor.SetCursor (m_clicMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+		}
+	}
+
+
+	void OnMouseEnter()
+	{
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+
+		if (m_isWaitingForClick) {
+			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+		} else {
+			Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
+		}
+	}
+
+	void OnMouseExit()
+	{
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
 	}
 
 	void TvIsTrigger(bool isOn){
