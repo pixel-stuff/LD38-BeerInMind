@@ -307,8 +307,7 @@ public class Character : MonoBehaviour {
 
 	void OnAnswerRespond(string response){
 		isOnDicussion = false;
-		//TODO
-		//currentGraph.Transition (response);
+		currentGraph.Transition (response);
 	}
 
 	void OnTick(GameTime gametime){

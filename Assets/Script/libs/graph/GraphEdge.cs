@@ -27,13 +27,22 @@ namespace Libs.Graph
             return m_exit;
         }
 
-        public bool Transition(Condition _condition, out GraphNode _outNode)
+		public bool Transition(Condition _condition, out GraphNode _outNode, string text = "")
         {
             _outNode = m_enter;
             if (m_condition.Equals(_condition))
             {
-                _outNode = m_exit;
-                return true;
+				if (text == "") {
+					_outNode = m_exit;
+					return true;
+				} else {
+					//Discussion transition
+					Edge e = (Edge)this;
+					if (text == e.Text) {
+						_outNode = m_exit;
+						return true;
+					}
+				}
             }
             return false;
         }

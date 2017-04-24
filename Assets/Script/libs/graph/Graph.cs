@@ -55,6 +55,20 @@ namespace Libs.Graph
 			m_currentNode = nextNode;
         }
 
+		public void Transition(string text)
+		{
+			GraphNode nextNode = m_currentNode;
+			foreach (GraphEdge e in m_currentNode.Edges)
+			{
+				GraphNode transittedNode = nextNode;
+				if(e.Transition(new Edge.Condition(Edge.Condition.ENUM.OTHER), out transittedNode,text))
+				{
+					nextNode = transittedNode;
+				}
+			}
+			m_currentNode = nextNode;
+		}
+
         public void JSONParse(string _filepath, CreateNode _cbCreateNode, CreateEdge _cbCreateEdge)
         {
             System.IO.StreamReader reader = new System.IO.StreamReader(_filepath, System.Text.Encoding.Default);
