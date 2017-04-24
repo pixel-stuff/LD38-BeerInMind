@@ -209,7 +209,7 @@ public class Character : MonoBehaviour {
 			currentNode = (Node)currentGraph.GetCurrentNode();
 			ActualNodeName = currentNode.GetLabel (); //DEBUG
 			ActualStartTime = currentNode.GetHour()+ " h " + currentNode.GetMinut();
-			tickTimeout = currentNode.GetTicksDuration ();
+			tickTimeout = (currentNode.GetTicksDuration ()== 1) ? 2: currentNode.GetTicksDuration ();
 			BubbleAlreadyDisplayed = false;
 			if (isOnDicussion) {
 				BarmanManager.m_instance.Dismiss ();
@@ -223,7 +223,6 @@ public class Character : MonoBehaviour {
 
 			if (!isOnBar) {
 				if (!isOnAnimation) {
-					tickTimeout += 2;
 					this.gameObject.transform.position = doorPlace;
 					this.GetComponent<Animation> ().Play("EnterBar");
 					isOnAnimation = true;
