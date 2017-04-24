@@ -1615,11 +1615,6 @@ Prefab:
       propertyPath: m_Name
       value: Brigitte lasticot
       objectReference: {fileID: 0}
-    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
