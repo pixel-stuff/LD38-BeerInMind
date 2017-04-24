@@ -378,7 +378,6 @@ function updateEdge(data) {
 			width = e.width;
 		}
 	});
-	data.label = "["+type+"] "+data.label;
 	data.color = {color: color, hover: color};
 	data.width = width;
 	edges.update(data);
