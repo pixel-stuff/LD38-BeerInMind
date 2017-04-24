@@ -47,9 +47,6 @@ TagManager:
   - name: Background
     uniqueID: 4131929899
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Object World
     uniqueID: 3826659967
     locked: 0
@@ -61,6 +58,9 @@ TagManager:
     locked: 0
   - name: UI World
     uniqueID: 485935141
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Object Canvas
     uniqueID: 3430172635
