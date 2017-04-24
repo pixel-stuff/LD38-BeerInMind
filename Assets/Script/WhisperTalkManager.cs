@@ -9,12 +9,16 @@ public class WhisperTalkManager : MonoBehaviour {
 	public GameObject m_container;
 	public int m_tickAlive = 3;
 	private int m_tickBeforeErase = 0;
+	private Quaternion m_startContainerRotation;
+	private Quaternion m_startTextRotation;
 
 	public Action m_tickDisplayOver;
 	// Use this for initialization
 	void Awake () {
+		m_startContainerRotation = m_container.transform.localRotation;
+		m_startTextRotation = m_text.transform.localRotation;
 		StopDisplayWhisper ();
-		StartDisplayWhisper ("bfsbrv",true);
+		StartDisplayWhisper ("bfsbrv",false);
 		TimeManager.OnTicTriggered += TickHappen;
 	}
 
@@ -29,11 +33,11 @@ public class WhisperTalkManager : MonoBehaviour {
 			m_container.transform.localPosition = new Vector3 (-4.18f,0.39f,0.0f);
 		} else {
 			m_container.transform.localPosition = new Vector3 (-0.42f,0.39f,0.0f);
-			Vector3 rot = m_container.transform.rotation.eulerAngles;
-			rot = new Vector3(rot.x,180f,rot.z);
-			m_container.transform.rotation = Quaternion.Euler(rot);
-			rot = new Vector3(rot.x,-180f,rot.z);
-			m_text.transform.rotation = Quaternion.Euler(rot);
+			m_container.transform.localRotation = Quaternion.identity;
+			m_text.transform.localRotation = Quaternion.identity;
+
+			//m_container.transform.rotation = m_startContainerRotation;
+			//m_text.transform.rotation = Quaternion.Euler(0,180,0);
 		}
 	}
 
