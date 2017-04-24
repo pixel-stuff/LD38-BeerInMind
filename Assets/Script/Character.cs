@@ -155,6 +155,12 @@ public class Character : MonoBehaviour {
 					DoorEvent.m_mainTrigger -= (d as Action);
 
 			DoorEvent.m_mainTrigger += OnGetOut;
+
+			if(FreeBeerEvent.m_mainTrigger != null)
+				foreach (Delegate d in FreeBeerEvent.m_mainTrigger.GetInvocationList())
+					FreeBeerEvent.m_mainTrigger -= (d as Action);
+
+			FreeBeerEvent.m_mainTrigger += OnFreeBeer;
 		}
 	}
 
@@ -362,6 +368,10 @@ public class Character : MonoBehaviour {
 
 	void OnGetOut() {
 		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.DOOR));
+	}
+
+	void OnFreeBeer() {
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.FREEBEER));
 	}
 
 	void OnAnswerRespond(string response){
