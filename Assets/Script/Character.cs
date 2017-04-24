@@ -256,7 +256,7 @@ public class Character : MonoBehaviour {
 
 
 			//display text
-			if (!BubbleAlreadyDisplayed) {
+			if (!BubbleAlreadyDisplayed && !MainTalkManager.m_instance.m_isActivate) {
 				textStruct = TextManager.m_instance.GetTextStruc (currentNode.GetTextMiniType ());
 				//override with node value
 				if (currentNode.GetMiniText () != "" && currentNode.GetMiniText () != null) {
@@ -330,10 +330,10 @@ public class Character : MonoBehaviour {
         {
             m_isWaitingForClick = false;
 
-
 			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
 		            m_whisperTalk.StopDisplayWhisper();
 					BubbleAlreadyDisplayed = false;
+
 				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
 
 				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
