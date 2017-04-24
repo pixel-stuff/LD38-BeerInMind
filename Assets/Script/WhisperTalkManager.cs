@@ -19,7 +19,6 @@ public class WhisperTalkManager : MonoBehaviour {
 		m_startContainerRotation = m_container.transform.localRotation;
 		m_startTextRotation = m_text.transform.localRotation;
 		StopDisplayWhisper ();
-		StartDisplayWhisper ("coucou",true);
 		TimeManager.OnTicTriggered += TickHappen;
 	}
 
