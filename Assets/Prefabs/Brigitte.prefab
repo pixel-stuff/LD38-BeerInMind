@@ -155,7 +155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654648536554978}
   m_LocalRotation: {x: -1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 1.06, y: -0.09, z: 0}
+  m_LocalPosition: {x: -1.06, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4555097441240664}
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1960738001543532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.51, y: 0.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4843380605632998}
@@ -373,7 +373,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1886923083507954}
-  m_Text: coucou 1
+  m_Text: Perhaps I should leave...
   m_OffsetZ: 0
   m_CharacterSize: 0.15
   m_LineSpacing: 1
@@ -452,9 +452,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816ad752630184fa4ac5a15321e6a934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ActualNodeName: 
   standSprite: {fileID: 21300002, guid: f06d0e42d9cf1416b9f33bc3812f9cd7, type: 3}
   finalSprite: {fileID: 21300008, guid: f06d0e42d9cf1416b9f33bc3812f9cd7, type: 3}
   mainSprite: {fileID: 21300000, guid: 4d5630156cddd406bbf71a142de80bf0, type: 3}
+  whisperOnRight: 1
   fileName: journaliste_Jane.json
   m_whisperTalk: {fileID: 114919093851182536}
   isOnBar: 0
