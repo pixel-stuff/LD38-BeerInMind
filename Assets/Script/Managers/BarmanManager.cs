@@ -28,6 +28,8 @@ public class BarmanManager : MonoBehaviour {
 	public Text m_answer1;
 	public Text m_answer2;
 
+	public bool m_isActive = false;
+
 	public Action<string> Answer; //renvoyer le text cliquer
 
 	public void Says(string answer1, string answer2){
@@ -40,6 +42,7 @@ public class BarmanManager : MonoBehaviour {
 		TimeManager.timePlay = false;
 		m_firstBulle.SetActive (false);
 		m_answerClickable.SetActive (true);
+		m_isActive = true;
 	}
 
 	public void StartAnswer1Click(){
@@ -59,6 +62,7 @@ public class BarmanManager : MonoBehaviour {
 	}
 
 	public void Dismiss(){
+		m_isActive = false;
 		m_firstBulle.SetActive (false);
 		m_answerClickable.SetActive (false);
 	}

@@ -363,7 +363,7 @@ public class Character : MonoBehaviour {
 
     public void OnMouseUp()
     {
-		if (MainTalkManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 		
         if (m_isWaitingForClick)
@@ -408,8 +408,7 @@ public class Character : MonoBehaviour {
 
 	public void OnMouseDown()
 	{
-
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		if (m_isWaitingForClick) {
@@ -420,7 +419,7 @@ public class Character : MonoBehaviour {
 
 	void OnMouseEnter()
 	{
-		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate || BarmanManager.m_instance.m_isActive)
 			return;
 
 		if (m_isWaitingForClick) {
