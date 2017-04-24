@@ -32,7 +32,7 @@ public class BarmanManager : MonoBehaviour {
 	public void Says(string answer1, string answer2){
 		m_answer1.text = answer1;
 		m_answer2.text = answer2;
-		m_firstBulle.SetActive (true);
+		m_firstBulle.SetActive (false);
 	}
 
 	public void FirstBulleClick(){

@@ -10,6 +10,10 @@ public class Event : MonoBehaviour {
 
 	public void OnMouseUp()
 	{
+		Debug.Log (IronCurtainManager.m_instance.m_isActivate + " / " + UIClickManager.m_instance.m_isActivate + " / " + IronCurtainManager.m_instance.m_isActivate);
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+				
 		if (m_mainTrigger != null) {
 			m_mainTrigger ();
 		}

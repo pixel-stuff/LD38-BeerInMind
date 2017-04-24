@@ -15,4 +15,14 @@ public class DraughtEvent : Event {
 	public void DisplayIdleSprite(){
 		this.GetComponent<Image> ().sprite = m_idleSprite;
 	}
+
+	public void OnMouseUp()
+	{
+		if (m_mainTrigger != null) {
+			m_mainTrigger ();
+		}
+		if (this.GetComponent<AudioSource> () != null) {
+			this.GetComponent<AudioSource> ().Play ();
+		}
+	}
 }

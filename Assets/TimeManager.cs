@@ -19,7 +19,7 @@ public class TimeManager : MonoBehaviour {
 	public float realTime = 2.0f;
 	private float currentRealTime; 
 	public int gameTimeJump = 10;
-	public static bool timePlay = true;
+	public static bool timePlay = false;
 	public Text clockText;
 
 	// Use this for initialization
@@ -28,7 +28,8 @@ public class TimeManager : MonoBehaviour {
 		m_currentTime.hours = 18;
 		m_currentTime.minutes = 0;
 		currentRealTime = realTime;
-		StartDay (); //-> Make the call from somewhere else
+		//StartDay (); //-> Make the call from somewhere else
+
 	}
 
 	public void StartDay(){
