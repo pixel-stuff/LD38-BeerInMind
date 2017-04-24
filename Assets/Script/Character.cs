@@ -40,6 +40,10 @@ public class Character : MonoBehaviour {
 	public bool BubbleAlreadyDisplayed = false;
     private bool m_isWaitingForClick = false;
 
+
+	public Sprite m_hoverMouse;
+	public Sprite m_clicMouse;
+
     Character()
     {
         currentGraph = new Libs.Graph.Graph(new Node());
@@ -223,9 +227,18 @@ public class Character : MonoBehaviour {
 
     void Update()
     {
+		bool DiscussionAvoidWhiper = false;
 		if (currentNode == null || currentNode != (Node)currentGraph.GetCurrentNode ()) {
 			//ChangeNode
+			Node oldNode = currentNode;
 			currentNode = (Node)currentGraph.GetCurrentNode();
+			//Discussion
+			if (oldNode != null) {
+				if ((currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) && (oldNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION)) {
+					DiscussionAvoidWhiper = true;
+				}
+			}
+
 			ActualNodeName = currentNode.GetLabel (); //DEBUG
 			ActualStartTime = currentNode.GetHour()+ " h " + currentNode.GetMinut();
 			tickTimeout = (currentNode.GetTicksDuration ()== 1) ? 2: currentNode.GetTicksDuration ();
@@ -288,6 +301,10 @@ public class Character : MonoBehaviour {
 					textStruct.m_mainTalk = currentNode.GetText ();
 				}
 
+				if (DiscussionAvoidWhiper) {
+					DisplayMainTalk ();
+					return;
+				}
 				DisplayWhisper (textStruct.m_whisper);
 
 			}
@@ -307,7 +324,8 @@ public class Character : MonoBehaviour {
 	void DisplayWhisper(string text, bool displayOnRight = true)
     {
 		BubbleAlreadyDisplayed = true;
-        m_isWaitingForClick = true;
+		if(textStruct.m_mainTalk != null && textStruct.m_mainTalk != "" )
+       	 m_isWaitingForClick = true;
 		m_whisperTalk.StartDisplayWhisper(text,whisperOnRight);
     }
 
@@ -352,34 +370,70 @@ public class Character : MonoBehaviour {
         {
             m_isWaitingForClick = false;
 
-			if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
-		            m_whisperTalk.StopDisplayWhisper();
-					BubbleAlreadyDisplayed = false;
+			DisplayMainTalk ();
 
-				MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
-
-				 if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
-					isOnDicussion = true;
-					string answer1 = "";
-					string answer2 = "";
-					foreach (GraphEdge edge in currentNode.Edges) {
-						Edge e = (Edge)edge;
-						if (e.Text != "") {
-							if (answer1 == "") {
-								answer1 = e.Text;
-								answer2 = e.Text;
-							} else {
-								answer2 = e.Text;
-							}
-						}
-					}
-					BarmanManager.m_instance.Says (answer1, answer2);
-				}
-				Character.CharacterHightlight (this);
-				subcribeAll ();
-				}
         }
     }
+
+	void DisplayMainTalk() {
+	
+		if (textStruct.m_mainTalk != "" && textStruct.m_mainTalk != null) {
+			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+			m_whisperTalk.StopDisplayWhisper();
+			BubbleAlreadyDisplayed = false;
+
+			MainTalkManager.m_instance.StartDisplayAnimation(textStruct.m_mainTalk,mainTalkSprite,this.name);
+
+			if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {// if exitState, lancer l'animation exit
+				isOnDicussion = true;
+				string answer1 = "";
+				string answer2 = "";
+				foreach (GraphEdge edge in currentNode.Edges) {
+					Edge e = (Edge)edge;
+					if (e.Text != "") {
+						if (answer1 == "") {
+							answer1 = e.Text;
+							answer2 = e.Text;
+						} else {
+							answer2 = e.Text;
+						}
+					}
+				}
+				BarmanManager.m_instance.Says (answer1, answer2);
+			}
+			Character.CharacterHightlight (this);
+			subcribeAll ();
+		}
+	}
+
+	public void OnMouseDown()
+	{
+
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+
+		if (m_isWaitingForClick) {
+			Cursor.SetCursor (m_clicMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+		}
+	}
+
+
+	void OnMouseEnter()
+	{
+		if (IronCurtainManager.m_instance.m_isActivate || UIClickManager.m_instance.m_isActivate || IronCurtainManager.m_instance.m_isActivate)
+			return;
+
+		if (m_isWaitingForClick) {
+			Cursor.SetCursor (m_hoverMouse.texture, Vector2.zero, CursorMode.ForceSoftware);
+		} else {
+			Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
+		}
+	}
+
+	void OnMouseExit()
+	{
+		Cursor.SetCursor (null, Vector2.zero, CursorMode.ForceSoftware);
+	}
 
 	void TvIsTrigger(bool isOn){
 		TVisOn = isOn;
