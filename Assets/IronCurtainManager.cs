@@ -46,6 +46,7 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void SetGameOver(string message){
+		m_textExplicatif = message;
 		m_isActivate = true;
 		m_buttonText.text = "Restart From Monday ";
 		GameStateManager.setGameState (GameState.GameOver);
