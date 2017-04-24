@@ -528,8 +528,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dfc3ee63a5694ca0b2f8dc9aa6a164c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_on: {fileID: 1170713115558766}
-  m_off: {fileID: 1563605787291692}
+  m_on: {fileID: 1563605787291692}
+  m_off: {fileID: 1170713115558766}
 --- !u!212 &212057558269435922
 SpriteRenderer:
   m_ObjectHideFlags: 1
