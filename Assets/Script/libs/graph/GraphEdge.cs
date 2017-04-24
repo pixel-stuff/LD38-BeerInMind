@@ -9,6 +9,7 @@ namespace Libs.Graph
         protected GraphNode m_enter;
         protected GraphNode m_exit;
         protected Condition m_condition;
+		public Condition condition { get { return m_condition; } set { } }
 
         public abstract class Condition
         {
