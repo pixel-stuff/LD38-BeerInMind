@@ -466,6 +466,8 @@ public class Character : MonoBehaviour {
 
 	void OnKeyTaken() {
 		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.KEYS));
+		m_keys.GetComponent<SpriteRenderer> ().enabled = false;
+		m_keys.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 
 	void OnGetOut() {
