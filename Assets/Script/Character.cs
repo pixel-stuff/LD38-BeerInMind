@@ -346,7 +346,9 @@ public class Character : MonoBehaviour {
     {
         //PLAY DING DING SOUND
 		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
-		DisplayWhisper(TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY).m_whisper);
+		textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY);
+		DisplayWhisper (textStruct.m_whisper);
+		//DisplayWhisper(TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY).m_whisper);
     }
 
     public void OnEnterFinished()
@@ -360,7 +362,9 @@ public class Character : MonoBehaviour {
 	public void OnGoToDoor(){
 		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 		this.gameObject.transform.position = doorPlace;
-		DisplayWhisper (TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT).m_whisper);
+		textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY);
+		DisplayWhisper (textStruct.m_whisper);
+		//DisplayWhisper (TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT).m_whisper);
 
 	}
 
