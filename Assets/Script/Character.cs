@@ -274,6 +274,7 @@ public class Character : MonoBehaviour {
 			foreach (GraphEdge edge in currentNode.Edges) {
 				if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.KEYS))) {
 					m_keys.GetComponent<SpriteRenderer> ().enabled = true;
+					m_keys.GetComponentInChildren<ParticleSystem> ().gameObject.SetActive (true);
 					m_keys.GetComponent<BoxCollider2D> ().enabled = true;
 				} 
 			}
@@ -467,6 +468,7 @@ public class Character : MonoBehaviour {
 	void OnKeyTaken() {
 		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.KEYS));
 		m_keys.GetComponent<SpriteRenderer> ().enabled = false;
+		m_keys.GetComponentInChildren<ParticleSystem> ().gameObject.SetActive (false);
 		m_keys.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 

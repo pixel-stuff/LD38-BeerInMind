@@ -2168,11 +2168,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 198109997286385408, guid: 66aec4f8a26d349ceaa2b62a79ef607b,
-        type: 2}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 66aec4f8a26d349ceaa2b62a79ef607b, type: 2}
   m_IsPrefabParent: 0
