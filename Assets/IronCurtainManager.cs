@@ -31,6 +31,7 @@ public class IronCurtainManager : MonoBehaviour {
 	// Update is called once per frame
 	public void Init () {
 		TimeManager.m_DayEnding += EndTheDay;
+		StartEven.m_startTrigger += FirstButtonClick;
 	}
 
 	public void EndTheDay(){
