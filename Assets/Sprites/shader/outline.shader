@@ -109,6 +109,7 @@ Shader "Sprites/Outline"
 					#define N 3
 					if (HighQuality)
 					{
+						//fixed2 pos = fixed2(0, 0);
 						for (int i = -N; i <= N; i++)
 							[unroll]
 							for (int j = -N; j < N; j++)
@@ -120,12 +121,19 @@ Shader "Sprites/Outline"
 							#endif
 								
 							float a = tex2Dlod(_MainTex, uv).a;
-							alphaOutlineX *= a < 0.8 ? a : 1.0f;
+							//alphaOutlineX *= a > 0.8 ? a : 1.0f;
+							if (a == 0.0)
+							{
+								o.a = min(o.a, length(fixed2(i, j)))*N;
+								//pos = min(pos, fixed2(i, j));
+							}
 						}
-						o.a = (1.0 - alphaOutlineX);
+						//o.a = (1.0 - alphaOutlineX);
+						//o.a = length(pos);
 					}
 					else
 					{
+						fixed2 pos = fixed2(0.0, 0.0);
 						for (int i = -N; i <= 0; i++)
 						{
 							#if !defined(SHADER_API_OPENGL)
@@ -133,7 +141,12 @@ Shader "Sprites/Outline"
 							#else
 							fixed3 uv = fixed4(IN.texcoord + fixed2(_MainTex_TexelSize.x*i, 0), 0);
 							#endif
-							alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
+							float a = tex2Dlod(_MainTex, uv).a;
+							//alphaOutlineX *= tex2Dlod(_MainTex, uv).a;
+							if (a == 0.0)
+							{
+								pos.x = min(pos.x, i);
+							}
 						}
 						for (int ip = 1; ip <= N; ip++)
 						{
@@ -166,7 +179,8 @@ Shader "Sprites/Outline"
 					}
                 }
 
-                c.rgb = lerp(c.rgba, o.rgba, o.a)*c.a;
+                c.rgb = lerp(c.rgba, o.rgba, min(1.0, (1.0-c.a)*o.a))*c.a;
+				//c.rgb = fixed3(c.a, c.a, c.a);
                 return c;
             }
             ENDCG
