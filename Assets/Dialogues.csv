@@ -2,9 +2,14 @@ CHARACTERENTRY;Hi;
 CHARACTERENTRY;Hello;
 CHARACTEREXIT;Bye;
 CHARACTEREXIT;See you !;
-CHARACTEREXIT;I hate my life !;
+CHARACTEREXIT;I need to go;
 CHARACTEREXIT;I drank too much;
+CHARACTEREXIT;See you tomorrow!;
+CHARACTEREXIT;Bye Bye !;
+CHARACTEREXIT;Auf Wiedersehen;
 CHARACTEREXIT;That's what she said;
+CHARACTEREXIT;I'll keep drinking anyway;
+CHARACTEREXIT;I'll miss you tonight budy !;
 BEER;Beer ...;A lager, please
 BEER;... thirsty;I'd like a lager
 BEER;Waiter !;Could you give me a lager please ?
@@ -41,7 +46,7 @@ DEFAULT;... trump ..;Did you see what Trump did ?
 DEFAULT;Cat ...;I think my cat doesn't love me ...
 DEFAULT;snakes !!!;Where the tail's snake start ?
 DEFAULT;Gloup !;I'll stop drinking after this one ...
-DEFAULT;my mom ...;Do you know how I can inherit quicker ? 
+DEFAULT;my mom ...;Do you know how I can inherit quicker ?
 DEFAULT;hide the body ...;I heard he cuts her in half and hide her in the garden
 DEFAULT;dog !;My dog died .... Please fill me up !
 DEFAULT;16 ...;I can't believe she already has a child ! I mean she's only 16 !
@@ -49,6 +54,13 @@ DEFAULT;job ...;I think i'm gonna quit my job
 DEFAULT;alone ;No one cares about me...
 DEFAULT;why...;Why did she leave me ?
 DEFAULT;car;Should I buy that car ?
+DEFAULT;friend ..;Do you know how to make friends ?
+DEFAULT;fiouuu;After a long day at work, there's nothing better than that !
+DEFAULT;how ?;how did he do this magic trick ! ... I really need to know !
+DEFAULT;why ?;why elephant can fly ?
+DEFAULT;what if;what if we are all programed to be here and tell you this ? This shit is scaring me.
+DEFAULT;You'll see;One day I'll be famous :)
+DEFAULT;Movie;Have you seen the last star wars ?
 FIRE;firefighters;Call the firefighters !
 FIRE;girl ;This girl is on firreee !
 FIRE;Fire !;Fire !
@@ -60,7 +72,7 @@ ENDOFTHEDAY;:(;Time to go back home
 ENDOFTHEDAY;:(;Yeah it's time to go ! I tell my wife i'll be home 2 hours ago
 HYGIENA;messy...;It's messy here
 HYGIENA;clean...;Could anyone clean that table ?
-MINOR;child...;He sold a beer to a child... 
+MINOR;child...;He sold a beer to a child...
 MINOR;shame !;Shame !
 MINOR;14...;I know him, he's 14 !
 DRUNKGUY;uiiouuu !;This guy is so drunk...
