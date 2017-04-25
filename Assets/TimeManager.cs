@@ -59,7 +59,11 @@ public class TimeManager : MonoBehaviour {
 		}
 		if (clockText) {
 			if (m_currentTime.hours >= 18) {
-				clockText.text = m_currentTime.hours.ToString () + ':' + m_currentTime.minutes.ToString ();
+				string hoursString = m_currentTime.hours.ToString ();
+				if (m_currentTime.hours == 24) {
+					hoursString = "00";
+				}
+				clockText.text = hoursString + ':' + m_currentTime.minutes.ToString ();
 				if (m_currentTime.minutes == 0) {
 					clockText.text += '0';
 				}
