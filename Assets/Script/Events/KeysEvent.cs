@@ -19,7 +19,5 @@ public class KeysEvent : MonoBehaviour {
 		if (this.GetComponent<AudioSource> () != null) {
 			this.GetComponent<AudioSource> ().Play ();
 		}
-		this.GetComponent<SpriteRenderer> ().enabled = false;
-		this.GetComponent<BoxCollider2D> ().enabled = false;
 	}
 }
