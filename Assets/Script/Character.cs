@@ -372,6 +372,7 @@ public class Character : MonoBehaviour {
 
 	public void OnLeaveBar(){
 		m_whisperTalk.StopDisplayWhisper();
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
 		isOnAnimation = false;
 		isOnBar = false;
 	}
