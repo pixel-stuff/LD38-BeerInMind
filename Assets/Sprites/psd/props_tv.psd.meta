@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 601abbd32a0d24131a652ad7023b21f1
-timeCreated: 1493037835
+timeCreated: 1493227470
 licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
@@ -109,8 +109,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 195
-        height: 174
+        width: 207
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,10 +120,10 @@ TextureImporter:
       name: props_tv_1
       rect:
         serializedVersion: 2
-        x: 196
+        x: 210
         y: 0
-        width: 195
-        height: 174
+        width: 207
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
