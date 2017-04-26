@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 1415c10f3c0d64986b85982cb51e5cbb
-timeCreated: 1493061970
-licenseType: Pro
+timeCreated: 1493228878
+licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: object_tireuse_0
@@ -109,10 +109,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
+        width: 604
         height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -120,12 +120,12 @@ TextureImporter:
       name: object_tireuse_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 604
         y: 0
-        width: 600
+        width: 604
         height: 800
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

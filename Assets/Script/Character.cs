@@ -375,6 +375,7 @@ public class Character : MonoBehaviour {
 		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
 		isOnAnimation = false;
 		isOnBar = false;
+		this.gameObject.transform.position = new Vector3 (100f, 100f, 0f);
 	}
 
     public void OnMouseUp()
