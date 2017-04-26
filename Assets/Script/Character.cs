@@ -257,7 +257,7 @@ public class Character : MonoBehaviour {
 		// check StartTime
 		if (IsEventOnTime()) {
 
-			if (!isOnBar && currentNode.GetTextMiniType () != Node.eTextMiniType.CHARACTEREXIT) {
+			if (!isOnBar) {
 				if (!isOnAnimation) {
 					this.gameObject.transform.position = doorPlace;
 					tickTimeout += 2;
