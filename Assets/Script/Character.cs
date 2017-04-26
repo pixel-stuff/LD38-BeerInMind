@@ -101,7 +101,7 @@ public class Character : MonoBehaviour {
 
 	bool IsEventOnTime(){
 		return (currentNode.GetDay () == -1 ||
-		(currentNode.GetDay () == currentGameTime.day &&
+		(currentNode.GetDay () <= currentGameTime.day &&
 				((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes))));
 	}
 
