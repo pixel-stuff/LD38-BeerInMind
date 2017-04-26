@@ -101,7 +101,7 @@ public class Character : MonoBehaviour {
 
 	bool IsEventOnTime(){
 		return (currentNode.GetDay () == -1 ||
-		(currentNode.GetDay () == currentGameTime.day &&
+		(currentNode.GetDay () <= currentGameTime.day &&
 				((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes))));
 	}
 
@@ -275,9 +275,7 @@ public class Character : MonoBehaviour {
 			//KEY : 
 			foreach (GraphEdge edge in currentNode.Edges) {
 				if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.KEYS))) {
-					m_keys.GetComponent<SpriteRenderer> ().enabled = true;
-					m_keys.GetComponentInChildren<ParticleSystem> ().gameObject.SetActive (true);
-					m_keys.GetComponent<BoxCollider2D> ().enabled = true;
+					m_keys.SetActive(true);
 				} 
 			}
 
@@ -372,8 +370,10 @@ public class Character : MonoBehaviour {
 
 	public void OnLeaveBar(){
 		m_whisperTalk.StopDisplayWhisper();
+		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
 		isOnAnimation = false;
 		isOnBar = false;
+		this.gameObject.transform.position = new Vector3 (100f, 100f, 0f);
 	}
 
     public void OnMouseUp()
@@ -473,9 +473,7 @@ public class Character : MonoBehaviour {
 
 	void OnKeyTaken() {
 		currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.KEYS));
-		m_keys.GetComponent<SpriteRenderer> ().enabled = false;
-		m_keys.GetComponentInChildren<ParticleSystem> ().gameObject.SetActive (false);
-		m_keys.GetComponent<BoxCollider2D> ().enabled = false;
+		m_keys.SetActive( false);
 	}
 
 	void OnGetOut() {

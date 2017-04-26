@@ -44,6 +44,9 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void StartNextDay(){
+		if (TimeManager.m_instance.skipClicked) {
+			TimeManager.m_instance.ResetRealTimeToNormal ();
+		}
 		GameStateManager.setGameState (GameState.Playing);
 		TimeManager.timePlay = true;
 		this.GetComponent<Animation> ().Play ("CurtainRemove");
