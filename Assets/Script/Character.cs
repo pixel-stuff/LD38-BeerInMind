@@ -97,10 +97,12 @@ public class Character : MonoBehaviour {
         );
         return new Edge(from, to, condition, _edge.label);
     }
+
+
 	bool IsEventOnTime(){
-		return currentNode.GetDay () == -1 ||
+		return (currentNode.GetDay () == -1 ||
 		(currentNode.GetDay () == currentGameTime.day &&
-		((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes)));
+				((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes))));
 	}
 
     // Use this for initialization
@@ -255,7 +257,7 @@ public class Character : MonoBehaviour {
 		// check StartTime
 		if (IsEventOnTime()) {
 
-			if (!isOnBar) {
+			if (!isOnBar && currentNode.GetTextMiniType () != Node.eTextMiniType.CHARACTEREXIT) {
 				if (!isOnAnimation) {
 					this.gameObject.transform.position = doorPlace;
 					tickTimeout += 2;
@@ -362,7 +364,7 @@ public class Character : MonoBehaviour {
 	public void OnGoToDoor(){
 		this.GetComponent<SpriteRenderer> ().sprite = standSprite;
 		this.gameObject.transform.position = doorPlace;
-		textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTERENTRY);
+		textStruct = TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT);
 		DisplayWhisper (textStruct.m_whisper);
 		//DisplayWhisper (TextManager.m_instance.GetTextStruc(Node.eTextMiniType.CHARACTEREXIT).m_whisper);
 
