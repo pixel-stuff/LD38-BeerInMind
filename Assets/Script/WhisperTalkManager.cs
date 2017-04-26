@@ -24,7 +24,15 @@ public class WhisperTalkManager : MonoBehaviour {
 	}
 
 	public void StartDisplayWhisper(string txt, bool displayOnRight = true){
-		m_text.text = txt;
+		if (txt.Length >= 20) {
+			try {
+				m_text.text = txt.Insert (txt.IndexOf (" ", txt.Length / 2), "\n");
+			} catch (Exception e) {
+				m_text.text = txt;
+			}
+		} else {
+			m_text.text = txt;
+		}
 		m_tickBeforeErase = m_tickAlive;
 		m_container.SetActive (true);
 		m_text.color = new Color (0f, 0f, 0f, 0f);
