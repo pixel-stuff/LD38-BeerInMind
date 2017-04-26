@@ -374,6 +374,7 @@ public class Character : MonoBehaviour {
 		m_whisperTalk.StopDisplayWhisper();
 		isOnAnimation = false;
 		isOnBar = false;
+		this.gameObject.transform.position = new Vector3 (100f, 100f, 0f);
 	}
 
     public void OnMouseUp()
