@@ -14624,7 +14624,7 @@ MonoBehaviour:
     day: 0
     hours: 0
     minutes: 0
-  realTime: 3
+  realTime: 2.5
   gameTimeJump: 10
   clockText: {fileID: 1424749013}
 --- !u!4 &1752694310
