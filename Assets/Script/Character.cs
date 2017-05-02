@@ -100,9 +100,13 @@ public class Character : MonoBehaviour {
 
 
 	bool IsEventOnTime(){
-		return (currentNode.GetDay () == -1 ||
-		(currentNode.GetDay () <= currentGameTime.day &&
-				((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes))));
+		if((currentNode.GetDay () == -1 ||
+			(currentNode.GetDay () <= currentGameTime.day &&
+				((currentNode.GetHour () * 100 + currentNode.GetMinut ()) <= (currentGameTime.hours * 100 + currentGameTime.minutes))))){
+			//Debug.Log (this.gameObject.name + "  ISEVENTONTIME " + currentNode.GetDay () +" <= "+ currentGameTime.day);
+			return true;
+		}
+		return false;
 	}
 
     // Use this for initialization
@@ -283,7 +287,7 @@ public class Character : MonoBehaviour {
 			if (currentNode.GetTextMiniType () == Node.eTextMiniType.CHARACTEREXIT) {// if exitState, lancer l'animation exit
 				if (!isOnAnimation) {
 					this.GetComponent<Animation> ().Play("ExitBar");
-					tickTimeout = 0;
+					tickTimeout = 1;
 					isOnAnimation = true;
 				}
 				return;
@@ -498,6 +502,7 @@ public class Character : MonoBehaviour {
 				if (currentNode.GetTextMiniType () == Node.eTextMiniType.DISCUSSION) {
 					foreach (GraphEdge edge in currentNode.Edges) {
 						if (edge.condition.Equals (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT))) {
+						//	Debug.Log (this.gameObject.name + "  send timeout Discussion");
 							currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
 							return;
 						} 
@@ -505,6 +510,7 @@ public class Character : MonoBehaviour {
 					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.OTHER));
 				} else {
 				//Normal Stuff
+					//Debug.Log (this.gameObject.name + "  send timeout");
 					currentGraph.Transition (new Edge.Condition (Edge.Condition.ENUM.TIMEOUT));
 				}
 			}

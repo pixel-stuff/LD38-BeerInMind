@@ -33,6 +33,7 @@ namespace Libs.Graph
             _outNode = m_enter;
             if (m_condition.Equals(_condition))
             {
+				Debug.Log ("Transition de node "+ ((Node)_outNode).GetLabel()+ "vers node "+ ((Node)m_exit).GetLabel());
 				_outNode = m_exit;
 				return true;
             }
