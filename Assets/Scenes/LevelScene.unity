@@ -3342,6 +3342,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e6c911c1b7874660823a32a38df295a,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -3514,6 +3520,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: c2a5b3704e51e4a2c9aa076968a0a1ff,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -3925,6 +3937,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: 10bb417fe9a374b3da5febc615b8c9ef,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -4274,6 +4292,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: b5c99f11722d133488dd547b0cd967e0,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -14907,6 +14931,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: 15131bf8443664bc78b8131b962c5f13,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -15084,6 +15114,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: 4a14ebb22134a478c9fc6b8ec9b4e65b,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
@@ -15256,6 +15292,12 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: 1.485
       objectReference: {fileID: 0}
+    - target: {fileID: 114909780105756536, guid: 9673f45d7cb5645d78bbb05554b7dda9,
+        type: 2}
+      propertyPath: finalSpriteOutline
+      value: 
+      objectReference: {fileID: 21300000, guid: 2f304533700a44346849f9df2d941575,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9673f45d7cb5645d78bbb05554b7dda9, type: 2}
   m_IsPrefabParent: 0
