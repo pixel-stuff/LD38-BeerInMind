@@ -18,6 +18,7 @@ public class Character : MonoBehaviour {
 
 	public Sprite standSprite;
 	public Sprite finalSprite;
+	public Sprite finalSpriteOutline;
 	public Sprite mainTalkSprite;
 
 	public bool whisperOnRight= true;
@@ -133,11 +134,12 @@ public class Character : MonoBehaviour {
 	}
 
 	void UpdateOutline(bool outline) {
-		MaterialPropertyBlock mpb = new MaterialPropertyBlock();
-		this.GetComponent<SpriteRenderer>().GetPropertyBlock(mpb);
-		mpb.SetFloat("_Outline", outline ? 1f : 0);
-		mpb.SetColor("_OutlineColor", Color.white);
-		this.GetComponent<SpriteRenderer>().SetPropertyBlock(mpb);
+		if (outline) {
+			this.GetComponent<SpriteRenderer>().sprite = finalSpriteOutline;
+		} else {
+			this.GetComponent<SpriteRenderer>().sprite = finalSprite;
+		}
+
 	}
 
 	void OnDestroy(){
