@@ -44,6 +44,11 @@ namespace Libs.Graph
             return m_currentNode;
         }
 
+		public void SetCurrentNode(GraphNode node)
+		{
+			m_currentNode = node;
+		}
+
         public void Transition(GraphEdge.Condition _condition)
         {
             GraphNode nextNode = m_currentNode;

@@ -28,6 +28,7 @@ public class TimeManager : MonoBehaviour {
 
 
 	public static Action<GameTime> OnTicTriggered;
+	bool firstDayTriggered = false;
 	public static Action m_DayEnding;
 	public GameTime m_currentTime;
 	public float realTime = 2.0f;
@@ -44,6 +45,7 @@ public class TimeManager : MonoBehaviour {
 		m_currentTime.minutes = 50;
 		currentRealTime = realTime;
 		currentSecondIngrement =  realTime / gameTimeJump;
+		IronCurtainManager.OnDayRestart += OnDayRestart;
 		//StartDay (); //-> Make the call from somewhere else
 
 	}
@@ -55,6 +57,13 @@ public class TimeManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (!firstDayTriggered) {
+			if (m_DayEnding != null) {
+				m_DayEnding ();
+			}
+			firstDayTriggered = true;
+		}
+
 		if (timePlay) {
 			float secondeIngrement = realTime / gameTimeJump;
 			currentSecondIngrement -=Time.deltaTime;
@@ -99,12 +108,13 @@ public class TimeManager : MonoBehaviour {
 
 	public void EndOfday(){
 		timePlay = false;
-		if (m_DayEnding != null) {
-			m_DayEnding ();
-		}
 		if (BarClosingEvent.m_mainTrigger != null) {
 			BarClosingEvent.m_mainTrigger ();
 		}
+		if (m_DayEnding != null) {
+			m_DayEnding ();
+		}
+
 	}
 
 
@@ -119,5 +129,12 @@ public class TimeManager : MonoBehaviour {
 	public void ResetRealTimeToNormal(){
 		skipClicked = false;
 		realTime = previousRealTime;
+	}
+
+	void OnDayRestart(){
+		//m_currentTime.day-=1;
+		m_currentTime.hours = 17;
+		m_currentTime.minutes = 50;
+		OnTicTriggered (m_currentTime);
 	}
 }

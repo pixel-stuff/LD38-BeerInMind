@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
 
 public class IronCurtainManager : MonoBehaviour {
 
 	public static IronCurtainManager m_instance;
+	public static Action OnDayRestart;
+
 	public Text m_looseTextExplicatif;
 	public bool m_isActivate = true;
 	public AudioClip m_background;
@@ -35,12 +38,14 @@ public class IronCurtainManager : MonoBehaviour {
 	}
 
 	public void EndTheDay(){
-		m_isActivate = true;
-		GameStateManager.setGameState (GameState.EndOfTheDay);
-		TimeManager.timePlay = false;
-		m_winPanel.SetActive (true);
-		m_loosePanel.SetActive (false);
-		this.GetComponent<Animation> ().Play ("CurtainApparition");
+		if(!m_isActivate){
+			m_isActivate = true;
+			GameStateManager.setGameState (GameState.EndOfTheDay);
+			TimeManager.timePlay = false;
+			m_winPanel.SetActive (true);
+			m_loosePanel.SetActive (false);
+			this.GetComponent<Animation> ().Play ("CurtainApparition");
+		}
 	}
 
 	public void StartNextDay(){
@@ -72,7 +77,8 @@ public class IronCurtainManager : MonoBehaviour {
 		//Debug.Log ("BUTTON CLICK");
 		 if (GameStateManager.getGameState () == GameState.GameOver) {
 			GameStateManager.setGameState (GameState.Playing);
-			SceneManager.LoadScene ("levelScene");
+			OnDayRestart ();
+			StartNextDay ();
 		} else {
 			StartNextDay ();
 		}

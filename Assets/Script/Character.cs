@@ -6,7 +6,8 @@ using System;
 using Libs.Graph;
 
 public class Character : MonoBehaviour {
-
+	static int personnageCount = 0;
+	static int uselessThisDay = 0;
 	static Action<Character> CharacterHightlight;
 
 	public GameObject m_keys;
@@ -23,6 +24,8 @@ public class Character : MonoBehaviour {
 	private EditorNode m_startNode;
 	public Libs.Graph.Graph currentGraph;
 	public Node currentNode = null;
+
+	public Node nodeAtTheStartOfTheDay = null;
 
     public string fileName;
 
@@ -108,6 +111,7 @@ public class Character : MonoBehaviour {
     // Use this for initialization
     void Start ()
 	{
+		personnageCount++;
 		currentGraph = new Libs.Graph.Graph(fileName.Replace(".json", ""), CreateGraphNode, CreateGraphEdge);
 
         //Print without parcour check, this can lead to infinite loop in wrong hands
@@ -117,6 +121,7 @@ public class Character : MonoBehaviour {
 		m_whisperTalk.m_tickDisplayOver += DisplayWhisperStop;
 		TimeManager.OnTicTriggered += OnTick;
 		TimeManager.m_DayEnding += OnEndOfDay;
+		IronCurtainManager.OnDayRestart += OnDayRestart;
 		m_isWaitingForClick = false;
 		Character.CharacterHightlight += OnCharacterHightlight;
 		UpdateOutline (false);
@@ -512,6 +517,12 @@ public class Character : MonoBehaviour {
 	}
 
 	void OnEndOfDay() {
+		if (currentNode == null) {
+			nodeAtTheStartOfTheDay = (Node)currentGraph.GetCurrentNode ();
+		} else {
+			nodeAtTheStartOfTheDay = currentNode;
+		}
+
 		if (isOnBar) {
 			if (!isOnAnimation) {
 				this.GetComponent<Animation> ().Play ("ExitBar");
@@ -528,5 +539,9 @@ public class Character : MonoBehaviour {
 		}
 	}
 
-
+	void OnDayRestart(){
+		OnLeaveBar (); // carefull Timeout send in this function
+		currentGraph.SetCurrentNode (nodeAtTheStartOfTheDay);
+		m_keys.SetActive( false);
+	}
 }
