@@ -26,10 +26,10 @@ DRINK;That was refreshing!;Perfect!
 DRINK;I needed that one.;I love this place.
 DRINK;Finally, a drink!;Beer is life.
 DRINK;Yeah!;Right on time!
-WAIT;I'm waiting for my beer...;Will I ever get that beer one day ?
+WAIT;I'm waiting for my beer...;Will I ever get that beer ?
 WAIT;What is taking so much time?;The service is awful here
 WAIT;I came in before them!;Still waiting...
-WAIT;sight ...;Should I to go to an other place?
+WAIT;sight ...;Should I go to an other place?
 WAIT;Do...myself;Do I have to serve myself?
 WAIT;...Murder !!!!...;I will kill someone if I can't get that beer!
 TV;I don't want to miss the football game!;There is a match tonight, can you turn on the TV?
@@ -42,13 +42,13 @@ NOTV;sigh...;This place is so noisy...
 NOTV;I hate football...;Switch off that TV !
 NOTV;...;Football again...
 NOTV;Turn it off!;Could you please turn off the tv?
-NOTV;I can't hear you! It's too loud!;Can you at least turns off the sound of this TV?
+NOTV;I can't hear you! It's too loud!;Can you at least turn off the sound of this TV?
 DEFAULT;...This bloody idiot...;Did you see what Trump did yesterday?
 DEFAULT;Oh kitty...my sweet kitty...;I think my cat doesn't love me ...
-DEFAULT;Snakes!!!;Where the tail's snake start?
+DEFAULT;Snakes!!!;Where does the snake's tail start?
 DEFAULT;Glug!;I'll stop drinking after this one...
 DEFAULT;...My mom...;Do you have an idea how I can inherit faster? 
-DEFAULT;...hide the body...;I heard he cuts her in half and hide the corpse in the garden...
+DEFAULT;...hide the body...;I heard he cut her in half and hid the corpse in the garden...
 DEFAULT;Doggy! Why?!;My dog died yesterday....Please fill me up!
 DEFAULT;...16...;I can't believe she already has a child! I mean she's only 16!
 DEFAULT;...my job...;I think i'm gonna quit my job, man...
@@ -58,8 +58,8 @@ DEFAULT;...get that car...;Should I buy that car?
 DEFAULT;...new friends...;Do you know how to make friends? 
 DEFAULT;...fiouuu !;After a long day at work, there's nothing better than this!
 DEFAULT;...How?;How did he do this magic trick!...I really need to know!
-DEFAULT;...Why ?;Why elephants can fly?
-DEFAULT;What if...;What if we are all programed to be here and tell you this ? This **** is scaring me.
+DEFAULT;...Why ?;Why can't elephants fly?
+DEFAULT;What if...;What if we are all programmed to be here and tell you this ? This **** is scaring me.
 DEFAULT;...You'll see...;One day I'll be famous!
 DEFAULT;...that movie...;Have you seen the last Star Wars?
 FIRE;Firefighters !;Call the firefighters!
